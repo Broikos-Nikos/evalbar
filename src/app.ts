@@ -13,6 +13,7 @@ import { parseArgs } from 'node:util'
 import { loadCases } from './cases.ts'
 import { UserError } from './errors.ts'
 import { gradeExact } from './graders/exact.ts'
+import { programGrader } from './graders/program.ts'
 import { commandProvider } from './providers/command.ts'
 import { openaiProvider } from './providers/openai.ts'
 import { ProviderError, type Provider } from './providers/types.ts'
@@ -43,7 +44,7 @@ run, the system under test (one of)
   --command "<cmd>"                 your own program: one JSON line in, one out
 
 run, the rest
-  --grader exact                    the grader (exact is the default)
+  --grader exact | program:<file>   the grader: exact (the default), or your own module
   --bar <rate>                      the pass rate it must clear, 0 to 1
   --price-in <usd> --price-out <usd> [--price-cached <usd>]   per million tokens
   --out <dir>                       where results go (default .evalbar/runs/<time>)
@@ -110,9 +111,16 @@ async function run(argv: string[], io: Io): Promise<number> {
   const seed = num(values.seed, '--seed', 0)
   if (command && (values.temperature !== undefined || seed !== undefined)) throw new UsageError('--temperature and --seed go to an endpoint; your own command sets its own')
 
-  const graderName = values.grader ?? (typeof cfg.grader === 'string' ? cfg.grader : 'exact')
-  if (graderName !== 'exact') throw new UsageError(`unknown grader "${graderName}": this version has exact`)
-  const grader: Grader = { name: 'exact', grade: (c, out) => gradeExact(out, c.expected) }
+  // --grader program:<file> is relative to where you are; suite.json's {"program": file} to the suite's folder
+  let grader: Grader
+  const flag = values.grader
+  if (flag?.startsWith('program:')) grader = await programGrader(flag.slice('program:'.length))
+  else if (!flag && cfg.grader && typeof cfg.grader === 'object') grader = await programGrader(cfg.grader.program, suite.dir)
+  else {
+    const name = flag ?? (typeof cfg.grader === 'string' ? cfg.grader : 'exact')
+    if (name !== 'exact') throw new UsageError(`unknown grader "${name}": exact, or program:<file>`)
+    grader = { name: 'exact', grade: (c, out) => gradeExact(out, c.expected) }
+  }
 
   const cases = loadCases(suite.casesPath, values.encoding ?? cfg.encoding)
   const provider: Provider = command

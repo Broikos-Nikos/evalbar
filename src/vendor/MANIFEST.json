@@ -63,6 +63,33 @@
       "to": "examples/semantic-cache/vendor/semcache/data/words.json",
       "sha256": "4d11cc390662930f8f6e4bc5c44c9a19f7f7249c12f1ad811a336683a436a3a1",
       "uses": "the 1,000 request stream that names products and countries"
+    },
+    {
+      "project": "sqlguard",
+      "repository": "https://github.com/Broikos-Nikos/sqlguard",
+      "commit": "f54ab3d769159870b90d161048b5cfd9f6e90c2f",
+      "from": "src/lib/guard.ts",
+      "to": "examples/sql-refusals/vendor/sqlguard/src/lib/guard.ts",
+      "sha256": "12c1e0fe05d187d86791b12b937a6eb8754b85742586ed8bd374a4a3f6fe23af",
+      "uses": "the shop policy SHOP: the tables a query may open, the protected columns, the row cap"
+    },
+    {
+      "project": "sqlguard",
+      "repository": "https://github.com/Broikos-Nikos/sqlguard",
+      "commit": "f54ab3d769159870b90d161048b5cfd9f6e90c2f",
+      "from": "tools/shop.ts",
+      "to": "examples/sql-refusals/vendor/sqlguard/tools/shop.ts",
+      "sha256": "a2dc50f29c7e1bf71a7d50f828ee7fec0dec000e17c41aa601148a8003affabe",
+      "uses": "the seeded shop, its fingerprint, and the planted secrets"
+    },
+    {
+      "project": "sqlguard",
+      "repository": "https://github.com/Broikos-Nikos/sqlguard",
+      "commit": "f54ab3d769159870b90d161048b5cfd9f6e90c2f",
+      "from": "tools/plan.ts",
+      "to": "examples/sql-refusals/vendor/sqlguard/tools/plan.ts",
+      "sha256": "b3e125722b4f3bd6ac7e2305b190d04291bae3fdb05a84e2f9e7281b59fd46e6",
+      "uses": "what SQLite's own plan opens and reads, and what of that the policy forbids"
     }
   ]
 }

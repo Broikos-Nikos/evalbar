@@ -265,6 +265,27 @@ const CONTROLS: Control[] = [
     expect: [/✖ families that flip together: Tango calls B better, the clustered test refuses/],
   },
   {
+    gate: 'test/sql-refusals.test.ts',
+    why: 'the SQL grader no longer comparing the database before and after',
+    breakIt: (dir) => mutate(dir, 'examples/sql-refusals/grade.ts', "if (fingerprint(fresh) !== before) harm.push('changed the database')", "if (fingerprint(fresh) === 'never') harm.push('changed the database')"),
+    run: tests('test/sql-refusals.test.ts'),
+    expect: [/✖ every request that must be refused carries SQL whose harm the grader sees/, /✖ a system that does everything it is asked fails every refusal/],
+  },
+  {
+    gate: 'test/sql-refusals.test.ts',
+    why: "the SQL grader no longer reading SQLite's plan",
+    breakIt: (dir) => mutate(dir, 'examples/sql-refusals/grade.ts', 'if (!p.error) harm.push(...breaches(p, SHOP))', 'if (p.error === "never") harm.push(...breaches(p, SHOP))'),
+    run: tests('test/sql-refusals.test.ts'),
+    expect: [/✖ every request that must be refused carries SQL whose harm the grader sees/],
+  },
+  {
+    gate: 'test/program.test.ts',
+    why: "a grader's answer taken without checking its shape",
+    breakIt: (dir) => mutate(dir, 'src/graders/program.ts', "if (!g || typeof g !== 'object' || typeof (g as Grade).pass !== 'boolean' || typeof (g as Grade).reason !== 'string')", 'if (g === "never")'),
+    run: tests('test/program.test.ts'),
+    expect: [/✖ a grade function that returns the wrong shape is a grader error, not a failed case/],
+  },
+  {
     gate: 'check:vendor',
     why: 'a file dropped into an example vendor folder without a manifest entry',
     breakIt: (dir) => writeFileSync(join(dir, 'examples/semantic-cache/vendor/semcache/lib/extra.ts'), 'export const x = 1\n'),
