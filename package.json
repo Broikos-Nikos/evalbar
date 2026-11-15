@@ -1,0 +1,35 @@
+{
+  "name": "evalbar",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Point it at your own cases and get a pass rate with its interval, and a verdict against the bar you set: pass, fail, or this sample cannot tell.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Nikolaos Broikos",
+  "bin": {
+    "evalbar": "dist/cli.js"
+  },
+  "files": [
+    "dist",
+    "examples",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "prepare": "tsc -p tsconfig.build.json",
+    "build": "tsc -p tsconfig.build.json && npm run check",
+    "typecheck": "tsc --noEmit",
+    "test": "node --test \"test/**/*.test.ts\"",
+    "check": "npm run typecheck && npm test && npm run check:source && npm run check:licence",
+    "check:source": "node tools/check-source.ts",
+    "check:licence": "node tools/check-licence.ts",
+    "controls": "node tools/controls.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^24.13.6",
+    "typescript": "5.9.3"
+  }
+}
