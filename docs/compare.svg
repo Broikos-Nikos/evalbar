@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="232" viewBox="0 0 920 232" role="img" aria-label="evalbar compare on semcache's two caches: the guard served 3 wrong answers where similarity alone served none, in 2,000 requests, and evalbar refuses to call the difference">
+  <rect width="920" height="232" rx="6" fill="#080604"/>
+  <g font-family="ui-monospace, SFMono-Regular, Consolas, 'Liberation Mono', monospace" font-size="14.5">
+  <text x="28" y="44" fill="#9a8f88">$ evalbar compare similarity-0.92 digits-guard-0.58</text>
+  <text x="28" y="68" fill="#ffffff">evalbar compare  A similarity-0.92  against  B digits-guard-0.58</text>
+  <text x="28" y="92" fill="#ffffff">2,000 cases graded in both: B passed 0 that A failed, and failed 3 that A passed</text>
+  <text x="28" y="116" fill="#ffffff">difference minus 0.15 points, 95% interval minus 0.44 to plus 0.04; McNemar mid-p 0.125</text>
+  <text x="28" y="140" fill="#ff6a00" font-weight="600">REFUSED: the interval includes no difference, so this sample cannot tell. At this rate of</text>
+  <text x="28" y="164" fill="#ff6a00" font-weight="600">  disagreement (0.15% of cases) it detects 0.24 points and more; about 5,231 cases would detect</text>
+  <text x="28" y="188" fill="#ff6a00" font-weight="600">  a difference of 0.15</text>
+  </g>
+</svg>

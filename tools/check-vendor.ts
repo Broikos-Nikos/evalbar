@@ -14,7 +14,7 @@
  *    byte for byte `git show <commit>:<path>` there, so the manifest's hash was
  *    taken from the real commit and not from a copy edited before it was hashed.
  */
-import { execFileSync } from 'node:child_process'
+import { execFileSync, spawnSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
 import { existsSync, readFileSync, readdirSync } from 'node:fs'
 import { dirname, join, relative, resolve } from 'node:path'
@@ -66,6 +66,10 @@ for (const f of manifest.files) {
     }
   }
 }
+
+// the one derived copy must still be its original with the import paths given extensions, and nothing else
+const derived = spawnSync(process.execPath, [join(root, 'tools/derive-vendor.ts'), '--check', '--root', root], { encoding: 'utf8' })
+if (derived.status !== 0) fails.push(...`${derived.stdout}${derived.stderr}`.trim().split('\n').map((l) => l.replace(/^FAIL\s+/, '')))
 
 if (fails.length) {
   console.error(fails.map((f) => 'FAIL  ' + f).join('\n'))

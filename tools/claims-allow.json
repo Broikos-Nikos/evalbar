@@ -1,0 +1,7 @@
+[
+  { "number": "24", "why": "the Node version required" },
+  { "number": "24.18", "why": "the Node version tested, 24.18.0" },
+  { "number": "2024", "why": "the year of the cited XSTest paper" },
+  { "number": "95", "why": "the convention for the interval, two-sided 95 percent" },
+  { "number": "2.5", "why": "the error a two-sided 95 percent interval promises on each side" }
+]

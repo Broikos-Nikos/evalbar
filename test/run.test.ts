@@ -52,6 +52,7 @@ const config = (provider: string): RunConfig => ({
   seed: null,
   prices: null,
   graderPrices: null,
+  judge: null,
   startedAt: '',
 })
 

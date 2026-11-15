@@ -29,6 +29,7 @@ const config = (bar: number | null): RunConfig => ({
   seed: null,
   prices: null,
   graderPrices: null,
+  judge: null,
   startedAt: '',
 })
 const row = (id: string, pass: boolean, cluster: string | null): Row => ({
@@ -43,6 +44,7 @@ const row = (id: string, pass: boolean, cluster: string | null): Row => ({
   model: null,
   usage: null,
   graderUsage: null,
+  graderModel: null,
   finish: null,
   latencyMs: 1,
   attempts: 1,

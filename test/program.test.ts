@@ -24,7 +24,7 @@ const echo: Provider = {
   close: async () => {},
 }
 const cases = [{ id: 'a', input: 'yes', expected: 'yes', tags: [], cluster: null, line: 1, extra: {} }]
-const config = { evalbar: 't', suite: 's', suiteSha256: 'x', cases: 1, provider: 'echo', requestedModel: null, grader: 'program', bar: null, temperature: 0, seed: null, prices: null, graderPrices: null, startedAt: '' }
+const config = { evalbar: 't', suite: 's', suiteSha256: 'x', cases: 1, provider: 'echo', requestedModel: null, grader: 'program', bar: null, temperature: 0, seed: null, prices: null, graderPrices: null, judge: null, startedAt: '' }
 
 test('a program grader grades, async or not', async () => {
   const g = await programGrader(mod('ok.mjs', 'export async function grade(c, out) { return { pass: out === c.expected, reason: "compared" } }'), root)

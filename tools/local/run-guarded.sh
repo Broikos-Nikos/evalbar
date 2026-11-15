@@ -4,11 +4,13 @@
 # every 5 s, if free RAM falls under 1.2 GB the server's process tree and the run are killed and logged.
 # One model at a time. A file named STOP in .evalbar/ ends it before the next step.
 #
-#   PY=<python with torch and transformers> tools/local/run-guarded.sh <model> <revision> <suite> <out> [evalbar flags]
+#   PY=<python with torch and transformers> tools/local/run-guarded.sh <model> <revision> <evalbar arguments, @URL@ for the server>
+#
+#   ... run-guarded.sh Qwen/Qwen2.5-Coder-1.5B-Instruct <revision> run examples/sql-refusals --base-url @URL@ --model Qwen/Qwen2.5-Coder-1.5B-Instruct --out <dir>
 set -u
 cd "$(dirname "$0")/../.."
 PY=${PY:-python}
-MODEL=$1; REVISION=$2; SUITE=$3; OUT=$4; shift 4
+MODEL=$1; REVISION=$2; shift 2
 PORT=8977; NEED_MB=5120; NEED_GPU_MB=3000; KILL_MB=1200
 mkdir -p .evalbar
 LOG=.evalbar/run-guarded.log
@@ -42,7 +44,8 @@ for _ in $(seq 1 120); do
   sleep 5
 done
 say "serving: $(curl -s "http://127.0.0.1:$PORT/health")"
-node src/cli.ts run "$SUITE" --base-url "http://127.0.0.1:$PORT/v1" --model "$MODEL" --out "$OUT" "$@" &
+ARGS=(); for a in "$@"; do ARGS+=("${a//@URL@/http://127.0.0.1:$PORT/v1}"); done
+node src/cli.ts "${ARGS[@]}" &
 RUN=$!
 while kill -0 "$RUN" 2>/dev/null; do guard || exit 2; sleep 5; done
 wait "$RUN"; rc=$?

@@ -3,3 +3,4 @@ dist
 .DS_Store
 *.local
 .evalbar
+examples/judge-calibration/data

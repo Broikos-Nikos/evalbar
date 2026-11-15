@@ -90,6 +90,51 @@
       "to": "examples/sql-refusals/vendor/sqlguard/tools/plan.ts",
       "sha256": "b3e125722b4f3bd6ac7e2305b190d04291bae3fdb05a84e2f9e7281b59fd46e6",
       "uses": "what SQLite's own plan opens and reads, and what of that the policy forbids"
+    },
+    {
+      "project": "logs-to-evals",
+      "repository": "https://github.com/Broikos-Nikos/logs-to-evals",
+      "commit": "568adb41cf103c0df11aade551556b4fe9525bc3",
+      "from": "src/lib/scrub.ts",
+      "to": "src/vendor/logs-to-evals/scrub.ts",
+      "sha256": "cda3d5d11fa233eed85d450605146b9f94f2295320bfa51b3b79633f5c334745",
+      "uses": "the scrubber: emails, cards, phones, order numbers, a name after an introduction"
+    },
+    {
+      "project": "logs-to-evals",
+      "repository": "https://github.com/Broikos-Nikos/logs-to-evals",
+      "commit": "568adb41cf103c0df11aade551556b4fe9525bc3",
+      "from": "src/lib/embed.ts",
+      "to": "src/vendor/logs-to-evals/embed.ts",
+      "sha256": "deff5ec63e1938ab28c1d592f07cbb85d912475175d0509339a2a55c70ad6f90",
+      "uses": "the hashed n-gram embedder, for near duplicates and the selector"
+    },
+    {
+      "project": "logs-to-evals",
+      "repository": "https://github.com/Broikos-Nikos/logs-to-evals",
+      "commit": "568adb41cf103c0df11aade551556b4fe9525bc3",
+      "from": "src/lib/select.ts",
+      "to": "src/vendor/logs-to-evals/select.ts",
+      "sha256": "417c2c9b643b6c8df8925ac1175c5e4b59b9c92016c4e589a6673a4802be4927",
+      "uses": "the selector; loaded through src/vendor-derived, which differs in its two import paths only"
+    },
+    {
+      "project": "logs-to-evals",
+      "repository": "https://github.com/Broikos-Nikos/logs-to-evals",
+      "commit": "568adb41cf103c0df11aade551556b4fe9525bc3",
+      "from": "tools/gen-log.ts",
+      "to": "examples/importer/vendor/logs-to-evals/gen-log.ts",
+      "sha256": "f5a842697017ac3d5f2648e82b116510e3a6a964404989979dc2e8971db3beea",
+      "uses": "the synthetic support log, its planted failures, signal and personal data"
+    },
+    {
+      "project": "logs-to-evals",
+      "repository": "https://github.com/Broikos-Nikos/logs-to-evals",
+      "commit": "568adb41cf103c0df11aade551556b4fe9525bc3",
+      "from": "tools/intents.ts",
+      "to": "examples/importer/vendor/logs-to-evals/intents.ts",
+      "sha256": "3cf6f9789c646d33bda2712ce45cfdb50695520c6f3da493c26da6c4768901ae",
+      "uses": "the requests the synthetic log is made of"
     }
   ]
 }

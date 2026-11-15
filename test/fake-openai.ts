@@ -39,7 +39,18 @@ export async function fakeOpenAi(answers: Record<string, string>): Promise<Fake>
         choices: [{ message: { role: 'assistant', content: text }, finish_reason: extra.finish ?? 'stop' }],
         ...(extra.usage === false ? {} : { usage: { prompt_tokens: 10 + input.length, completion_tokens: 2 + text.length, prompt_tokens_details: { cached_tokens: 4 } } }),
       })
-    switch (body.model) {
+    // judges read the request and the answer out of the user turn the judge prompt builds
+    const between = (tag: string) => input.match(new RegExp(`<${tag}>\\n([\\s\\S]*?)\\n</${tag}>`))?.[1] ?? ''
+    const verdict = (v: 'pass' | 'fail') => ok(`{"reasoning": "the rule says so", "verdict": "${v}"}`)
+    // a "qwen-" prefix keeps the behaviour and gives the model a family, for decision B10
+    switch (body.model.replace(/^qwen-/, '')) {
+      case 'judge-good':
+        // the hidden rule the human labels follow: an answer that starts "Sure" and is about this request
+        return verdict(between('answer').startsWith('Sure') && between('answer').includes(between('request')) ? 'pass' : 'fail')
+      case 'judge-always-pass':
+        return verdict('pass')
+      case 'judge-garbage':
+        return ok('I think this answer is quite good overall.')
       case 'oracle':
         return ok(answer)
       case 'null':

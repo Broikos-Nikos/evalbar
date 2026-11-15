@@ -1,0 +1,9 @@
+{
+  "about": "Figures the README quotes from the sibling repositories, each pinned to the file and commit it is read from and that file's sha256. check:claims requires each quote to be in that file, and where the repository is checked out beside this one, the file at that commit to have that hash.",
+  "claims": [
+    { "project": "evalkit", "commit": "62b8e1bcb193c6d9165ba20caa0860d6d8bb1562", "file": "README.md", "sha256": "42d288a12d7f8f946e1dac3b37bcc5ae0d54a092c9d77c5eeb3328674bf366a1", "quotes": ["10,578", "178 rows", "5.3"] },
+    { "project": "logs-to-evals", "commit": "568adb41cf103c0df11aade551556b4fe9525bc3", "file": "README.md", "sha256": "e777e346c5fd33eb6f0a2f526c1b906004ee147394946468d667c6bbc3ff41c3", "quotes": ["7.62 of 8", "60 picked at random hold 2.92"] },
+    { "project": "semcache", "commit": "a5ed7297779261f2f579e57044db848e69d98280", "file": "README.md", "sha256": "145f518463b559f12b2686084a2e16e15e0aa98dfc29e445028ac32a63618eb3", "quotes": ["79.5%"] },
+    { "project": "sqlguard", "commit": "f54ab3d769159870b90d161048b5cfd9f6e90c2f", "file": "README.md", "sha256": "8295868f90e438e2fabff0430562401d4d0d6433f25a716cd2f7570e27310adf", "quotes": ["0 of 613", "136 of 1,664"] }
+  ]
+}

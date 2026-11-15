@@ -65,6 +65,7 @@ try {
       seed: null,
       prices: PRICES,
       graderPrices: null,
+      judge: null,
       startedAt: '',
     }
     try {

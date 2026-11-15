@@ -15,6 +15,7 @@
 import { createHash } from 'node:crypto'
 import { appendFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
+import type { CalibrationRecord } from './calibration.ts'
 import { inputText, type Case } from './cases.ts'
 import { UserError } from './errors.ts'
 import type { Grade } from './graders/exact.ts'
@@ -40,6 +41,8 @@ export type Row = {
   usage: Usage | null
   /** what grading cost, when the grader is a model: a judge's own usage */
   graderUsage: Usage | null
+  /** the model that graded it, when the grader is a judge */
+  graderModel: string | null
   finish: string | null
   latencyMs: number
   attempts: number
@@ -62,6 +65,8 @@ export type RunConfig = {
   seed: number | null
   prices: Prices | null
   graderPrices: Prices | null
+  /** set when the grader is a judge: what it is and the calibration it brought (B10) */
+  judge: { promptSha256: string; requested: string; kappaBar: number; calibration: Omit<CalibrationRecord, 'items'> | null } | null
   startedAt: string
 }
 
@@ -78,7 +83,7 @@ export function readRows<T>(path: string): T[] {
 }
 
 /** The grader's own usage, when it reports one: a judge does, an exact match does not. */
-export type GradeWithUsage = Grade & { usage?: Usage | null }
+export type GradeWithUsage = Grade & { usage?: Usage | null; model?: string | null }
 
 export async function runSuite(o: {
   cases: Case[]
@@ -150,6 +155,7 @@ export async function runSuite(o: {
       model: reply.model,
       usage: reply.usage,
       graderUsage: grade.usage ?? null,
+      graderModel: grade.model ?? null,
       finish: reply.finish,
       latencyMs: Math.round(reply.latencyMs),
       attempts: reply.attempts,

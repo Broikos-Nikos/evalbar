@@ -24,6 +24,10 @@ const MEASUREMENTS = [
   { script: 'tools/measure/tag-verdicts.ts', output: 'measurements/tag-verdicts.json' },
   { script: 'tools/measure/clusters.ts', output: 'measurements/clusters.json' },
   { script: 'tools/measure/semantic-cache.ts', output: 'measurements/semantic-cache.json' },
+  { script: 'tools/measure/importer.ts', output: 'measurements/importer.json' },
+  { script: 'tools/measure/greek.ts', output: 'measurements/greek.json' },
+  { script: 'tools/measure/sql-run.ts', output: 'measurements/sql-run.json' },
+  { script: 'tools/picture.ts', output: 'docs/compare.svg' },
 ]
 
 const fails: string[] = []

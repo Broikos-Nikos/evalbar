@@ -295,6 +295,51 @@ const CONTROLS: Control[] = [
     expect: [/✖ a grade function that returns the wrong shape is a grader error, not a failed case/],
   },
   {
+    gate: 'test/judge.test.ts',
+    why: 'a judge trusted without looking at any record',
+    breakIt: (dir) => mutate(dir, 'src/calibration.ts', "  if (!record) return { trusted: false, why: 'no calibration record was given (evalbar calibrate makes one)' }", "  if (!record) return { trusted: true, why: 'taken on trust' }"),
+    run: tests('test/judge.test.ts'),
+    expect: [/✖ without a calibration record a judge grades and decides nothing/],
+  },
+  {
+    gate: 'test/judge.test.ts',
+    why: "a judge grading its own family taken at its word, decision B10 removed",
+    breakIt: (dir) => mutate(dir, 'src/calibration.ts', "if (judgeFamily !== 'unknown' && judgeFamily === candidateFamily", "if (judgeFamily === 'never' && judgeFamily === candidateFamily"),
+    run: tests('test/judge.test.ts'),
+    expect: [/✖ a judge grading its own family needs a record made on that family's outputs/],
+  },
+  {
+    gate: 'test/judge.test.ts',
+    why: 'the usual judge validation: raw agreement against the bar, and no negative tests',
+    breakIt: (dir) => {
+      mutate(dir, 'src/calibration.ts', 'if (agreement.kappaLo < o.kappaBar)', 'if (agreement.agreement < o.kappaBar)')
+      mutate(dir, 'src/calibration.ts', '  if (missed.length) reasons.push', '  if (missed.length < 0) reasons.push')
+    },
+    run: tests('test/judge.test.ts'),
+    expect: [/✖ a judge that always says pass agrees with two thirds of the labels, has a kappa of 0, and is not trusted/],
+  },
+  {
+    gate: 'test/importer.test.ts',
+    why: "logs-to-evals's scrubber alone, without the Greek identifiers",
+    breakIt: (dir) => mutate(dir, 'src/importer/scrub.ts', '  for (const rule of RULES) {', '  for (const rule of RULES.slice(0, 0)) {'),
+    run: tests('test/importer.test.ts'),
+    expect: [/✖ Greek identifiers go before the generic rules can eat their digits/, /✖ nine digits are a tax number only beside a word that says so/],
+  },
+  {
+    gate: 'test/importer.test.ts',
+    why: 'a holdout by time that sends each row by its own time, splitting sessions',
+    breakIt: (dir) => mutate(dir, 'src/importer/import.ts', '    if (!it.cluster) return own', '    if (it.cluster !== "never") return own'),
+    run: tests('test/importer.test.ts'),
+    expect: [/✖ a holdout by time never splits a session/],
+  },
+  {
+    gate: 'test/importer.test.ts',
+    why: 'a sealed file scored without --sealed, and so without a record of the look',
+    breakIt: (dir) => mutate(dir, 'src/importer/seal.ts', '  if (!sealed) throw new UserError(', '  if (sealed === undefined) throw new UserError('),
+    run: tests('test/importer.test.ts'),
+    expect: [/✖ the held-out file is sealed/],
+  },
+  {
     gate: 'check:vendor',
     why: 'a file dropped into an example vendor folder without a manifest entry',
     breakIt: (dir) => writeFileSync(join(dir, 'examples/semantic-cache/vendor/semcache/lib/extra.ts'), 'export const x = 1\n'),
@@ -307,6 +352,28 @@ const CONTROLS: Control[] = [
     breakIt: (dir) => mutate(dir, 'examples/semantic-cache/system.ts', 'const guards = { none: null, digits, names: digitsAndNames(CATALOG) } as const', 'const guards = { none: null, digits: null, names: digitsAndNames(CATALOG) } as const'),
     run: gate('tools/check-measure.ts'),
     expect: [/measurements\/semantic-cache\.json is not what tools\/measure\/semantic-cache\.ts prints today/],
+  },
+  {
+    gate: 'check:calibration',
+    why: "the judge's record flattered by hand: one verdict flipped to agree with the humans, kappa left as it was",
+    breakIt: (dir) => mutate(dir, 'examples/judge-calibration/records/qwen2.5-coder-1.5b.json', '"id": "v2-1",\n   "human": false,\n   "judge": true', '"id": "v2-1",\n   "human": false,\n   "judge": false'),
+    run: gate('tools/check-calibration.ts'),
+    expect: [/qwen2\.5-coder-1\.5b\.json: kappa is 0\.\d+ in the record and 0\.\d+ from its items/],
+  },
+  {
+    gate: 'check:claims',
+    why: "a number in the README that no command printed: the SQL run's interval nudged from 0.534 to 0.537",
+    breakIt: (dir) => mutate(dir, 'README.md', '0.534 to 0.835', '0.537 to 0.835'),
+    run: gate('tools/check-claims.ts'),
+    expect: [/README\.md:\d+ says 0\.537, and no committed output holds it/],
+  },
+  {
+    gate: 'check:claims',
+    why: "a sibling's quoted figure no longer what the sibling says: evalkit's 178 rows quoted as 177",
+    breakIt: (dir) => mutate(dir, 'docs/sibling-claims.json', '"178 rows"', '"177 rows"'),
+    // the throwaway copy has no siblings beside it, so the gate is pointed at the real ones
+    run: (dir) => [process.execPath, join(root, 'tools/check-claims.ts'), '--root', dir, '--siblings', resolve(root, '..')],
+    expect: [/evalkit 62b8e1b:README\.md does not say "177 rows"/],
   },
   {
     gate: 'check:measure',

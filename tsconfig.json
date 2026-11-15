@@ -28,5 +28,8 @@
     "src",
     "tools",
     "test"
+  ],
+  "exclude": [
+    "src/vendor/logs-to-evals/select.ts"
   ]
 }

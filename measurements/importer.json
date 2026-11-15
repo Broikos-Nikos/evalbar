@@ -1,0 +1,127 @@
+{
+ "made_by": "node tools/measure/importer.ts",
+ "log": "examples/importer/log.jsonl",
+ "options": {
+  "minChars": 12,
+  "near": 0.9,
+  "holdoutAfter": "2026-10-17"
+ },
+ "rows": {
+  "request": 1500,
+  "short": 100,
+  "pasted": 60,
+  "context": 120
+ },
+ "funnel": {
+  "read": 1780,
+  "noRequest": 0,
+  "short": 128,
+  "pasted": 60,
+  "needsContext": 75,
+  "exactDuplicate": 1066,
+  "nearDuplicate": 20,
+  "kept": 431,
+  "picked": null,
+  "dev": 360,
+  "test": 71,
+  "clusters": 341,
+  "removed": {
+   "<EMAIL>": 47,
+   "<ORDER>": 375,
+   "<NAME>": 51,
+   "<CARD>": 42,
+   "<PHONE>": 74,
+   "<AFM>": 24,
+   "<ID>": 22,
+   "<IBAN>": 20,
+   "<AMKA>": 26
+  }
+ },
+ "byKind": {
+  "request": {
+   "kept": 429,
+   "exact duplicate": 1047,
+   "near duplicate": 20,
+   "needs context": 4
+  },
+  "short": {
+   "short": 100
+  },
+  "pasted": {
+   "pasted": 60
+  },
+  "context": {
+   "needs context": 71,
+   "kept": 2,
+   "short": 28,
+   "exact duplicate": 19
+  }
+ },
+ "scrub": {
+  "email": {
+   "inKept": 38,
+   "survived": 0
+  },
+  "name": {
+   "inKept": 64,
+   "survived": 45
+  },
+  "card": {
+   "inKept": 28,
+   "survived": 0
+  },
+  "gr-name": {
+   "inKept": 22,
+   "survived": 0
+  },
+  "phone": {
+   "inKept": 37,
+   "survived": 0
+  },
+  "afm": {
+   "inKept": 20,
+   "survived": 0
+  },
+  "gr-phone": {
+   "inKept": 18,
+   "survived": 0
+  },
+  "id-card": {
+   "inKept": 18,
+   "survived": 0
+  },
+  "iban": {
+   "inKept": 19,
+   "survived": 0
+  },
+  "amka": {
+   "inKept": 23,
+   "survived": 0
+  }
+ },
+ "holdout": {
+  "dev": 360,
+  "test": 71,
+  "casesInATestSessionAlsoInDev": 0
+ },
+ "floors": [
+  {
+   "minChars": 0,
+   "requestsDroppedAsShort": 0,
+   "shortLinesCaught": 0,
+   "shortLinesKept": 10
+  },
+  {
+   "minChars": 12,
+   "requestsDroppedAsShort": 0,
+   "shortLinesCaught": 100,
+   "shortLinesKept": 0
+  },
+  {
+   "minChars": 20,
+   "requestsDroppedAsShort": 180,
+   "shortLinesCaught": 100,
+   "shortLinesKept": 0
+  }
+ ]
+}

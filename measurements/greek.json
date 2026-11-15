@@ -1,0 +1,26 @@
+{
+ "made_by": "node tools/measure/greek.ts",
+ "pairs": 9,
+ "wrong": {
+  "lowerCase": 8,
+  "stripEveryAccent": 1,
+  "evalbar": 0
+ },
+ "reads": [
+  {
+   "file": "windows-1253",
+   "plainUtf8Read": "reads, with the Greek turned into replacement characters",
+   "evalbar": "refuses: line 1, byte 12 is not UTF-8 (d0 ef e9 e1). It reads as Greek in windows-1253: save it as UTF-8, or pass --encoding windows-1253."
+  },
+  {
+   "file": "UTF-16 from a PowerShell 5 redirect",
+   "plainUtf8Read": "fails to parse",
+   "evalbar": "reads the Greek"
+  },
+  {
+   "file": "UTF-8 with a byte order mark",
+   "plainUtf8Read": "fails to parse",
+   "evalbar": "reads the Greek"
+  }
+ ]
+}

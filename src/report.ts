@@ -21,6 +21,7 @@
  *    bound the sample supports; a run without prices or without usage says it
  *    is not priced rather than costing $0.00.
  */
+import { family, trusts, type CalibrationRecord } from './calibration.ts'
 import { UserError } from './errors.ts'
 import { againstBar, binomTestP, clusteredRate, compare, compareClustered, exactInterval, holm, type BarVerdict, type ClusterCount, type Clustered, type Comparison, type PairCount } from './stats.ts'
 import type { ErrorRow, Prices, Row, RunConfig } from './run.ts'
@@ -65,6 +66,8 @@ export type Report = {
   latency: { median: number; p95: number } | null
   retried: number
   sampling: { temperature: number | null; seed: number | null; note: string | null }
+  /** set when the grader is a judge: whether its verdicts may decide anything, and why */
+  judge: { trusted: boolean; why: string; judgeModel: string | null; judgeFamily: string; candidateFamily: string } | null
 }
 
 /** A rate's interval read at an effective sample size: the counts times `factor`, which is 1 without clusters. */
@@ -146,7 +149,21 @@ export function buildReport(config: RunConfig, rows: Row[], errorRows: ErrorRow[
   const clusters = clustered ? clusteredRate(clusterCounts(graded)) : null
   const factor = clusters?.factor ?? 1
   const rate = rateAt(passed, graded.length, factor)
-  const bar = config.bar
+  // a judge that is not trusted grades, and its grades decide nothing (07-evaluation/02 section 5, B10)
+  const mostCommon = (xs: (string | null)[]) => {
+    const n = new Map<string, number>()
+    for (const x of xs) if (x) n.set(x, (n.get(x) ?? 0) + 1)
+    return [...n.entries()].sort((a, b) => b[1] - a[1])[0]?.[0] ?? null
+  }
+  let judge: Report['judge'] = null
+  if (config.judge) {
+    const judgeModel = mostCommon(final.map((r) => r.graderModel))
+    const candidate = mostCommon(final.map((r) => r.model)) ?? config.requestedModel
+    const t = trusts(config.judge.calibration as CalibrationRecord | null, { promptSha256: config.judge.promptSha256, judgeAnswered: judgeModel, candidate, kappaBar: config.judge.kappaBar })
+    judge = { ...t, judgeModel, judgeFamily: family(judgeModel ?? config.judge.requested), candidateFamily: family(candidate) }
+  }
+  const withheld = judge !== null && !judge.trusted
+  const bar = withheld ? null : config.bar
   const verdict = bar !== null && graded.length ? verdictAt(passed, graded.length, bar, factor) : null
   const out = truncated + errored + notRun
   const sensitivity =
@@ -191,6 +208,7 @@ export function buildReport(config: RunConfig, rows: Row[], errorRows: ErrorRow[
     models: { requested: config.requestedModel, answered },
     latency: lat.length ? { median: percentile(lat, 0.5), p95: percentile(lat, 0.95) } : null,
     retried: final.filter((r) => r.attempts > 1).length,
+    judge,
     sampling: {
       temperature: config.temperature,
       seed: config.seed,
@@ -235,6 +253,7 @@ export function renderReport(r: Report): string {
   const kept = [r.truncated && `${r.truncated} cut off by the token limit`, r.errored && `${count(r.errored, "error")} (${Object.entries(r.errorKinds).map(([k, n]) => `${n} ${k}`).join(', ')})`, r.notRun && `${r.notRun} not run`].filter(Boolean)
   L.push(`graded ${int(r.graded)} of ${int(r.cases)} cases${r.clusters ? ` in ${count(r.clusters.clusters, 'cluster')}` : ''}${kept.length ? `; kept out of the rate: ${kept.join(', ')}` : ''}`)
   L.push('')
+  if (r.judge && !r.judge.trusted) L.push(`JUDGE NOT TRUSTED: ${r.judge.why}. Its grades are shown and decide nothing: no PASS or FAIL.`, '')
   if (!r.rate) L.push('no case was graded, so there is no rate')
   else {
     L.push(sayRate(r.rate))
@@ -277,10 +296,31 @@ export function renderReport(r: Report): string {
   return `${L.join('\n')}\n`
 }
 
-/** 0 pass or no bar, 1 fail, 3 cannot tell: a CI step can treat the last as it likes. */
+/** 0 pass or no bar, 1 fail, 3 cannot tell (an untrusted judge cannot tell either): a CI step can treat the last as it likes. */
 export function exitCode(r: Report): number {
+  if (r.judge && !r.judge.trusted) return 3
   if (!r.verdict) return 0
   return r.verdict.verdict === 'pass' ? 0 : r.verdict.verdict === 'fail' ? 1 : 3
+}
+
+/** What calibrate measured, in the order a reader needs it: kappa first, raw agreement beside it, never instead of it. */
+export function renderCalibration(c: CalibrationRecord): string {
+  const a = c.agreement
+  const pct = (x: number | null) => (x === null ? 'n/a' : x.toFixed(3))
+  const L = [
+    `evalbar calibrate  ${c.judge.answered ?? c.judge.requested} against ${c.labels.n} human labels (${c.labels.file})`,
+    `the humans passed ${Math.round(a.prevalence * a.n)} of ${a.n}${c.errors ? `; no verdict on ${c.errors}` : ''}`,
+    '',
+    `kappa ${a.kappa.toFixed(3)}, 95% interval ${a.kappaLo.toFixed(3)} to ${a.kappaHi.toFixed(3)}`,
+    `  raw agreement ${pct(a.agreement)} (a judge that always said pass would agree ${pct(a.prevalence)}), PABAK ${pct(a.pabak)}`,
+    `  it passed ${pct(a.tpr)} of what the humans passed, and failed ${pct(a.tnr)} of what they failed`,
+  ]
+  if (c.humans) L.push(`two humans on the same items: kappa ${c.humans.kappa.toFixed(3)} (${c.humans.kappaLo.toFixed(3)} to ${c.humans.kappaHi.toFixed(3)}), the most a judge can be expected to reach`)
+  const n = c.negatives
+  L.push(`negatives it must fail: an empty answer ${n.empty ? 'failed' : 'PASSED'}, "I don't know" ${n.dontKnow ? 'failed' : 'PASSED'}, an answer to another question ${n.otherQuestion ? 'failed' : 'PASSED'}`)
+  L.push('')
+  L.push(c.trusted ? `TRUSTED at a kappa bar of ${c.kappaBar}: ${c.why}` : `NOT TRUSTED at a kappa bar of ${c.kappaBar}: ${c.why}`)
+  return `${L.join('\n')}\n`
 }
 
 export type Pairing = {
@@ -327,7 +367,12 @@ export function pairRuns(a: { config: RunConfig; rows: Row[] }, b: { config: Run
   }
 }
 
-const pts = (x: number) => `${x >= 0 ? 'plus' : 'minus'} ${Math.abs(x * 100).toFixed(1)}`
+/**
+ * Points, with two decimals under one point: 3 cases in 2,000 is 0.15 points, and one decimal printed it as
+ * 0.1 with an interval ending at "plus 0.0" (found drawing the README's picture, tick 10).
+ */
+const pnum = (x: number) => (Math.abs(x * 100) < 1 ? Math.abs(x * 100).toFixed(2) : Math.abs(x * 100).toFixed(1))
+const pts = (x: number) => `${x >= 0 ? 'plus' : 'minus'} ${pnum(x)}`
 
 export function renderComparison(p: Pairing, nameA: string, nameB: string): string {
   const c = p.comparison
@@ -343,8 +388,8 @@ export function renderComparison(p: Pairing, nameA: string, nameB: string): stri
   else if (c.verdict === 'worse') L.push('B IS WORSE: the whole interval is below zero')
   else {
     const disc = (c.won + c.lost) / c.n
-    const sees = c.detectable === null ? 'the runs disagree on no case, so there is no rate of disagreement to size a test on' : `at this rate of disagreement (${(disc * 100).toFixed(1)}% of cases) it detects ${(c.detectable * 100).toFixed(1)} points and more`
-    const need = c.needed === null ? '' : `; about ${int(c.needed)} cases would detect a difference of ${(Math.abs(c.diff) * 100).toFixed(1)}`
+    const sees = c.detectable === null ? 'the runs disagree on no case, so there is no rate of disagreement to size a test on' : `at this rate of disagreement (${pnum(disc)}% of cases) it detects ${pnum(c.detectable)} points and more`
+    const need = c.needed === null ? '' : `; about ${int(c.needed)} cases would detect a difference of ${pnum(c.diff)}`
     L.push(`REFUSED: the interval includes no difference, so this sample cannot tell. ${sees[0].toUpperCase()}${sees.slice(1)}${need}`)
   }
   if (c.margin !== null) {

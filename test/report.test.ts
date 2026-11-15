@@ -26,6 +26,7 @@ const config = (over: Partial<RunConfig> = {}): RunConfig => ({
   seed: null,
   prices: null,
   graderPrices: null,
+  judge: null,
   startedAt: '',
   ...over,
 })
@@ -43,6 +44,7 @@ const row = (id: string, s: Spec = {}): Row => ({
   model: s.model ?? 'm',
   usage: s.usage === undefined ? { input: 100, output: 10, cachedInput: 0 } : s.usage,
   graderUsage: null,
+  graderModel: null,
   finish: 'stop',
   latencyMs: 100,
   attempts: 1,
@@ -159,7 +161,8 @@ test('compare: better, worse and refused, with their exit codes', async () => {
   const kbB = kbA.map((r, i) => ({ ...r, pass: i === 0 ? false : i < 26 }))
   const refused = await cli('compare', folder(config(), kbA), folder(config(), kbB))
   assert.equal(refused.code, 3)
-  assert.match(refused.out, /difference plus 11\.1 points, 95% interval minus 0\.5 to plus 24\.5; McNemar mid-p 0\.070/)
+  // the base prints minus 0.5; under one point evalbar gives two decimals, so the same end reads 0.53
+  assert.match(refused.out, /difference plus 11\.1 points, 95% interval minus 0\.53 to plus 24\.5; McNemar mid-p 0\.070/)
   assert.match(refused.out, /REFUSED: .* it detects 16\.0 points and more; about 97 cases would detect a difference of 11\.1/)
 })
 
