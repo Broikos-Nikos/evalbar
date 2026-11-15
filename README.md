@@ -8,6 +8,8 @@ A command line evaluation tool in TypeScript, with no runtime dependencies. You 
 
 That is `evalbar compare` on two runs of [semcache](https://github.com/Broikos-Nikos/semcache)'s own cache, drawn from its output by `node tools/picture.ts`.
 
+**The page is live: [broikos-nikos.github.io/evalbar](https://broikos-nikos.github.io/evalbar/).** It runs the command's own code in your browser: `evalbar report` and `evalbar compare` on numbers you type, the Greek grader, and the importer's scrubber on a log line.
+
 ## Five minutes
 
 ```sh
@@ -18,7 +20,7 @@ npx evalbar run examples/semantic-cache                    # a semantic cache un
 npx evalbar run your-cases.jsonl --base-url http://localhost:8080/v1 --model your-model --bar 0.9
 ```
 
-Timed by `bash tools/five-minutes.sh` on a fresh clone: 15.4 seconds from `git clone` to the second number, with npm's cache warm.
+Timed by `bash tools/five-minutes.sh https://github.com/Broikos-Nikos/evalbar` on a fresh clone from GitHub: 10.6 seconds from `git clone` to the second number, with npm's cache warm.
 
 `npx evalbar` finds the command inside the clone. To use it from anywhere, install it once from the clone with `npm install -g .`, then type `evalbar`. A `--command` runs through your shell, which on Windows is cmd.exe, so give it Windows paths.
 
