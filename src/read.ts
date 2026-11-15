@@ -15,8 +15,9 @@
  * `--encoding` reads a legacy file on purpose.
  */
 import { readFileSync } from 'node:fs'
+import { UserError } from './errors.ts'
 
-export class ReadError extends Error {}
+export class ReadError extends UserError {}
 
 /** The byte offset of the first sequence that is not well-formed UTF-8, or -1. Overlongs, surrogates and code points past U+10FFFF included. */
 export function firstBadUtf8(b: Uint8Array): number {

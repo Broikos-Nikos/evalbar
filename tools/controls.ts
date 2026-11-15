@@ -153,6 +153,41 @@ const CONTROLS: Control[] = [
     run: tests('test/greek.test.ts'),
     expect: [/✖ the Greek question mark is a semicolon/],
   },
+  {
+    gate: 'test/run.test.ts',
+    why: 'an infrastructure error written as a failed case, the conflation 07-evaluation/01 calls the central failure',
+    breakIt: (dir) => mutate(dir, 'src/run.ts', 'appendFileSync(errorsPath, `${JSON.stringify(row)}\\n`)', "appendFileSync(resultsPath, JSON.stringify({ ...row, pass: false, status: 'graded' }) + '\\n')"),
+    run: tests('test/run.test.ts'),
+    expect: [/✖ a 429 that does not clear is an error/, /✖ a stalled endpoint times out per case and lands in errors/],
+  },
+  {
+    gate: 'test/run.test.ts',
+    why: 'an answer cut off by the token limit graded as wrong',
+    breakIt: (dir) => mutate(dir, 'src/run.ts', "const truncated = reply.finish === 'length'", 'const truncated = reply.finish === null && false'),
+    run: tests('test/run.test.ts'),
+    expect: [/✖ an answer cut off by the token limit is counted, not graded/],
+  },
+  {
+    gate: 'test/run.test.ts',
+    why: 'a missing usage block recorded as zero tokens',
+    breakIt: (dir) => mutate(dir, 'src/providers/openai.ts', '        : null\n    return {', '        : { input: 0, output: 0, cachedInput: 0 }\n    return {'),
+    run: tests('test/run.test.ts'),
+    expect: [/✖ no usage block is recorded as unknown, not as zero/],
+  },
+  {
+    gate: 'test/run.test.ts',
+    why: 'no canary: the first case runs alongside the others',
+    breakIt: (dir) => mutate(dir, 'src/run.ts', 'const first = queue.shift()', 'const first = queue.length < 0 ? queue.shift() : undefined'),
+    run: tests('test/run.test.ts'),
+    expect: [/✖ a bad key stops the run after the first case/],
+  },
+  {
+    gate: 'test/run.test.ts',
+    why: 'a first case that cannot reach the system treated as one bad case, which is how tick 4 found the runner',
+    breakIt: (dir) => mutate(dir, 'src/run.ts', "if (e && !aborted && (e.kind === 'network'", "if (e && aborted === 'never' && (e.kind === 'network'"),
+    run: tests('test/run.test.ts'),
+    expect: [/✖ a command that cannot start stops the run at the first case/],
+  },
 ]
 
 /** A clone of HEAD with the working tree's files, tracked and untracked, laid over it. */

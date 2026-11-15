@@ -19,5 +19,5 @@ test('--version prints the version package.json holds', async () => {
 test('help lists no command that does not exist', async () => {
   const { out } = await run('--help')
   const listed = [...out.matchAll(/^ {2}evalbar (\S+)/gm)].map((m) => m[1])
-  assert.deepEqual(listed, ['--version', '--help'])
+  assert.deepEqual(listed, ['run', '--version', '--help'])
 })
