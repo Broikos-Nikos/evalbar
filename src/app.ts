@@ -7,7 +7,7 @@
  * being written is a claim the tool cannot back, and this one is read by
  * strangers deciding in a minute whether it works.
  */
-import { readFileSync } from 'node:fs'
+import { existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { join, resolve } from 'node:path'
 import { parseArgs } from 'node:util'
 import { loadCases } from './cases.ts'
@@ -16,7 +16,8 @@ import { gradeExact } from './graders/exact.ts'
 import { commandProvider } from './providers/command.ts'
 import { openaiProvider } from './providers/openai.ts'
 import { ProviderError, type Provider } from './providers/types.ts'
-import { runSuite, sha256, type Grader, type Prices, type RunConfig } from './run.ts'
+import { buildReport, compareExit, exitCode, pairRuns, renderComparison, renderReport } from './report.ts'
+import { readRows, runSuite, sha256, type ErrorRow, type Grader, type Prices, type Row, type RunConfig } from './run.ts'
 import { resolveSuite } from './suite.ts'
 
 export type Io = { out: (s: string) => void; err: (s: string) => void }
@@ -27,6 +28,8 @@ const HELP = `evalbar ${VERSION}
 
 Usage
   evalbar run <suite> [options]     every case through a model or your command, graded
+  evalbar report <run>              the report again, recomputed from the run's rows
+  evalbar compare <run A> <run B> [--margin <rate>]   two runs on the same cases, paired
   evalbar --version
   evalbar --help
 
@@ -36,7 +39,7 @@ run, the system under test (one of)
   --base-url <url> --model <name>   any OpenAI-compatible endpoint, cloud or local
   --api-key-env <NAME>              the environment variable holding its key
   --system <text>                   a system prompt for every case
-  --temperature <n>  --max-tokens <n>
+  --temperature <n>  --seed <n>  --max-tokens <n>
   --command "<cmd>"                 your own program: one JSON line in, one out
 
 run, the rest
@@ -45,6 +48,9 @@ run, the rest
   --price-in <usd> --price-out <usd> [--price-cached <usd>]   per million tokens
   --out <dir>                       where results go (default .evalbar/runs/<time>)
   --concurrency <n>  --timeout <seconds>  --retries <n>  --encoding <name>
+
+Exit codes: 0 pass (or no bar), 1 fail, 3 cannot tell, 2 the run could not be made.
+compare: 0 B better (or, with --margin, not worse by it), 1 B worse, 3 cannot tell.
 `
 
 class UsageError extends UserError {}
@@ -66,6 +72,7 @@ async function run(argv: string[], io: Io): Promise<number> {
       'api-key-env': { type: 'string' },
       system: { type: 'string' },
       temperature: { type: 'string' },
+      seed: { type: 'string' },
       'max-tokens': { type: 'string' },
       command: { type: 'string' },
       grader: { type: 'string' },
@@ -99,6 +106,9 @@ async function run(argv: string[], io: Io): Promise<number> {
   if ((priceIn === undefined) !== (priceOut === undefined)) throw new UsageError('--price-in and --price-out go together')
   const prices: Prices | null =
     priceIn !== undefined && priceOut !== undefined ? { input: priceIn, output: priceOut, cachedInput: num(values['price-cached'], '--price-cached', 0) } : (cfg.prices ?? null)
+  const temperature = num(values.temperature, '--temperature', 0, 2) ?? p.temperature
+  const seed = num(values.seed, '--seed', 0)
+  if (command && (values.temperature !== undefined || seed !== undefined)) throw new UsageError('--temperature and --seed go to an endpoint; your own command sets its own')
 
   const graderName = values.grader ?? (typeof cfg.grader === 'string' ? cfg.grader : 'exact')
   if (graderName !== 'exact') throw new UsageError(`unknown grader "${graderName}": this version has exact`)
@@ -112,7 +122,8 @@ async function run(argv: string[], io: Io): Promise<number> {
         model: model!,
         apiKeyEnv: values['api-key-env'] ?? p.apiKeyEnv,
         system: values.system ?? p.system,
-        temperature: num(values.temperature, '--temperature', 0, 2) ?? p.temperature,
+        temperature,
+        seed,
         maxTokens: num(values['max-tokens'], '--max-tokens', 1) ?? p.maxTokens,
         timeoutMs,
         retries,
@@ -130,6 +141,9 @@ async function run(argv: string[], io: Io): Promise<number> {
     requestedModel: model ?? null,
     grader: grader.name,
     bar,
+    // a command decides its own sampling; nothing evalbar sends makes it draw
+    temperature: command ? 0 : (temperature ?? null),
+    seed: seed ?? null,
     prices,
     graderPrices: null,
     startedAt: new Date().toISOString(),
@@ -141,24 +155,55 @@ async function run(argv: string[], io: Io): Promise<number> {
   } finally {
     await provider.close()
   }
-  const graded = outcome.results.filter((r) => r.status === 'graded')
-  const passed = graded.filter((r) => r.pass).length
-  const truncated = outcome.results.length - graded.length
-  io.out(
-    `${passed} of ${graded.length} graded cases passed; ${truncated} cut off by the token limit; ${outcome.errors.length} errors kept out of the rate` +
-      `${outcome.skipped ? `; ${outcome.skipped} already done before this run` : ''}\nresults: ${join(outDir, 'results.jsonl')}\n`,
-  )
+  if (outcome.skipped) io.err(`  ${outcome.skipped} cases were already done in this folder and were not run again\n`)
+  const code = report(outDir, io, suite.name)
   if (outcome.aborted) {
     io.err(`evalbar: stopped after ${outcome.aborted}\n`)
     return 2
   }
-  return 0
+  return code
+}
+
+/** A run folder's rows. The report is rebuilt from them every time, and report.json is never read back. */
+function loadRun(dir: string): { config: RunConfig; rows: Row[]; errors: ErrorRow[] } {
+  const runPath = join(dir, 'run.json')
+  if (!existsSync(runPath)) throw new UsageError(`${dir}: not a run folder (no run.json)`)
+  return {
+    config: JSON.parse(readFileSync(runPath, 'utf8')) as RunConfig,
+    rows: readRows<Row>(join(dir, 'results.jsonl')),
+    errors: readRows<ErrorRow>(join(dir, 'errors.jsonl')),
+  }
+}
+
+function report(dir: string, io: Io, name?: string): number {
+  const run = loadRun(dir)
+  const r = buildReport(run.config, run.rows, run.errors, name ?? run.config.suite)
+  const text = renderReport(r)
+  writeFileSync(join(dir, 'report.txt'), text)
+  writeFileSync(join(dir, 'report.json'), `${JSON.stringify(r, null, 2)}\n`)
+  io.out(text)
+  return exitCode(r)
+}
+
+function compareRuns(argv: string[], io: Io): number {
+  const { values, positionals } = parseArgs({ args: argv, allowPositionals: true, options: { margin: { type: 'string' } } })
+  if (positionals.length !== 2) throw new UsageError('compare wants two run folders: the first is A, the second B')
+  const margin = num(values.margin, '--margin', 0, 1) ?? null
+  const [a, b] = positionals.map((d) => loadRun(resolve(d)))
+  const p = pairRuns(a, b, margin)
+  io.out(renderComparison(p, positionals[0], positionals[1]))
+  return compareExit(p)
 }
 
 export async function main(argv: string[], io: Io): Promise<number> {
   const [cmd, ...rest] = argv
   try {
     if (cmd === 'run') return await run(rest, io)
+    if (cmd === 'report') {
+      if (rest.length !== 1) throw new UsageError('report wants one run folder')
+      return report(resolve(rest[0]), io)
+    }
+    if (cmd === 'compare') return compareRuns(rest, io)
     if (cmd === '--version') {
       io.out(`${VERSION}\n`)
       return 0
@@ -169,9 +214,10 @@ export async function main(argv: string[], io: Io): Promise<number> {
     }
     throw new UsageError(`unknown command "${cmd}"`)
   } catch (e) {
-    if (e instanceof UserError || e instanceof ProviderError || (e as { code?: string }).code?.startsWith('ERR_PARSE_ARGS')) {
+    const parse = (e as { code?: string }).code?.startsWith('ERR_PARSE_ARGS')
+    if (e instanceof UserError || e instanceof ProviderError || parse) {
       io.err(`evalbar: ${(e as Error).message}\n`)
-      if (e instanceof UsageError || (e as { code?: string }).code?.startsWith('ERR_PARSE_ARGS')) io.err('evalbar --help lists the options\n')
+      if (e instanceof UsageError || parse) io.err('evalbar --help lists the options\n')
       return 2
     }
     throw e

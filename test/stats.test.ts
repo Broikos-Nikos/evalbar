@@ -8,7 +8,7 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { test } from 'node:test'
-import { againstBar, casesToDecide, compare, mcnemarMidP, pairedDetectable, pairedNeeded, tango, wilson } from '../src/stats.ts'
+import { againstBar, barTestP, betaInc, binomTestP, casesToDecide, compare, exactInterval, holm, mcnemarMidP, normalUpper, pairedDetectable, pairedNeeded, tango, wilson } from '../src/stats.ts'
 
 type Ref = {
   wilson: { k: number; n: number; lo: number; hi: number }[]
@@ -56,6 +56,7 @@ test('two published figures come out as published', () => {
 })
 
 test('20 of 20 does not clear a bar of 0.85: the interval Wald would make has no width', () => {
+  // Wald: 1 plus or minus 0, a pass; exact: 0.832 to 1
   const v = againstBar(20, 20, 0.85)
   assert.equal(v.verdict, 'cannot tell')
   assert.ok(v.lo < 0.85 && v.hi === 1)
@@ -71,7 +72,7 @@ test('the three verdicts, each where it belongs', () => {
 })
 
 test('the bar sits exactly on an end of the interval: the end counts as clearing it', () => {
-  const { lo } = wilson(90, 100)
+  const { lo } = exactInterval(90, 100)
   assert.equal(againstBar(90, 100, lo).verdict, 'pass')
 })
 
@@ -84,7 +85,7 @@ test('the cases needed are the smallest that decide', () => {
   for (const [rate, bar] of [[0.95, 0.9], [0.85, 0.9], [0.5, 0.6], [0.999, 0.99]]) {
     const m = casesToDecide(rate, bar)!
     const decides = (n: number) => {
-      const w = wilson(rate * n, n)
+      const w = exactInterval(rate * n, n)
       return rate > bar ? w.lo >= bar : w.hi < bar
     }
     assert.ok(decides(m), `${m} cases should decide ${rate} against ${bar}`)
@@ -114,4 +115,58 @@ test('three wrong answers against none in 2,000 is refused', () => {
   const c = compare(3, 0, 2000)
   assert.equal(c.verdict, 'refused')
   near(c.midP, 0.125, 1e-12, 'midp(3, 0)')
+})
+
+type More = {
+  binom: { k: number; n: number; p0: number; exact: number; score: number }[]
+  normal_upper: { z: number; upper: number }[]
+}
+const more = ref as unknown as More
+
+test('the normal tail equals scipy to 1e-7 on 8 points', () => {
+  for (const r of more.normal_upper) near(normalUpper(r.z), r.upper, 1e-7, `normalUpper(${r.z})`)
+})
+
+test('the exact binomial test and the score test equal scipy on 8 cases', () => {
+  for (const r of more.binom) {
+    near(binomTestP(r.k, r.n, r.p0), r.exact, 1e-9, `binomTestP(${r.k}, ${r.n}, ${r.p0})`)
+    near(barTestP(r.k, r.n, r.p0), r.score, 1e-6, `barTestP(${r.k}, ${r.n}, ${r.p0})`)
+  }
+})
+
+test('15 of 20 against 0.9: the score test says 0.025, the exact test 0.086', () => {
+  // the case behind the switch to exact tests for tags: two expected failures, and the normal tail is too thin
+  assert.equal(barTestP(15, 20, 0.9).toFixed(3), '0.025')
+  assert.equal(binomTestP(15, 20, 0.9).toFixed(3), '0.086')
+})
+
+test("Holm: the smallest p against alpha over k, stopping at the first that fails", () => {
+  assert.deepEqual(holm([0.01, 0.04, 0.03, 0.005], 0.05), [true, false, false, true])
+  assert.deepEqual(holm([0.04]), [true])
+  assert.deepEqual(holm([0.04, 0.04]), [false, false])
+  assert.deepEqual(holm([0.001, 0.02, 0.04]), [true, true, true])
+})
+
+type Exact = { exact: { k: number; n: number; lo: number; hi: number }[]; betainc: { x: number; a: number; b: number; value: number }[] }
+const ex = ref as unknown as Exact
+
+test('the incomplete beta equals scipy on 5 cases', () => {
+  for (const r of ex.betainc) near(betaInc(r.x, r.a, r.b), r.value, 1e-10, `betaInc(${r.x}, ${r.a}, ${r.b})`)
+})
+
+test('exact intervals equal statsmodels on 11 cases, the ends included', () => {
+  for (const r of ex.exact) {
+    const w = exactInterval(r.k, r.n)
+    near(w.lo, r.lo, 1e-9, `exact(${r.k}, ${r.n}).lo`)
+    near(w.hi, r.hi, 1e-9, `exact(${r.k}, ${r.n}).hi`)
+  }
+})
+
+test('one tag alone gets the verdict the whole suite gets', () => {
+  // the exact interval and the exact test are duals; with Wilson on one line and exact tests on the other they were not
+  for (const [k, n, bar] of [[17, 20, 0.95], [15, 20, 0.9], [99, 100, 0.9], [190, 200, 0.9], [58, 60, 0.85]]) {
+    const v = againstBar(k, n, bar).verdict
+    const rejected = holm([binomTestP(k, n, bar)])[0]
+    assert.equal(rejected ? (k / n > bar ? 'pass' : 'fail') : 'cannot tell', v, `${k} of ${n} against ${bar}`)
+  }
 })

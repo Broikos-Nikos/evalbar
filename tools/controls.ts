@@ -75,13 +75,27 @@ const CONTROLS: Control[] = [
   },
   {
     gate: 'test/stats.test.ts',
-    why: "Wald's interval in place of Wilson's",
+    why: "Wald's arithmetic inside wilson(), which the planning figure and the measurement still use",
     breakIt: (dir) => {
       mutate(dir, 'src/stats.ts', 'const centre = (p + z2 / (2 * n)) / (1 + z2 / n)', 'const centre = p + 0 * z2')
       mutate(dir, 'src/stats.ts', 'const half = (z / (1 + z2 / n)) * Math.sqrt((p * (1 - p)) / n + z2 / (4 * n * n))', 'const half = z * Math.sqrt((p * (1 - p)) / n)')
     },
     run: tests('test/stats.test.ts'),
-    expect: [/✖ Wilson intervals equal statsmodels/, /✖ 20 of 20 does not clear a bar of 0\.85/],
+    expect: [/✖ Wilson intervals equal statsmodels/],
+  },
+  {
+    gate: 'test/stats.test.ts',
+    why: "Wald's interval under the bar verdict, which calls 20 of 20 a certainty",
+    breakIt: (dir) =>
+      mutate(
+        dir,
+        'src/stats.ts',
+        '  const { lo, hi } = exactInterval(k, n)\n  const base = { k, n, rate: k / n, lo, hi, bar }',
+        '  const half = Z95 * Math.sqrt(((k / n) * (1 - k / n)) / n)\n  const lo = k / n - half\n  const hi = k / n + half\n  const base = { k, n, rate: k / n, lo, hi, bar }',
+      ),
+    run: tests('test/stats.test.ts'),
+    // the one-tag test does not catch Wald, its five cases being decided alike by both: only Wilson's interval differs there
+    expect: [/✖ 20 of 20 does not clear a bar of 0\.85/],
   },
   {
     gate: 'test/stats.test.ts',
@@ -187,6 +201,47 @@ const CONTROLS: Control[] = [
     breakIt: (dir) => mutate(dir, 'src/run.ts', "if (e && !aborted && (e.kind === 'network'", "if (e && aborted === 'never' && (e.kind === 'network'"),
     run: tests('test/run.test.ts'),
     expect: [/✖ a command that cannot start stops the run at the first case/],
+  },
+  {
+    gate: 'test/report.test.ts',
+    why: 'the report read back from report.json instead of rebuilt from the rows',
+    breakIt: (dir) =>
+      mutate(
+        dir,
+        'src/app.ts',
+        'const r = buildReport(run.config, run.rows, run.errors, name ?? run.config.suite)',
+        "const fresh = buildReport(run.config, run.rows, run.errors, name ?? run.config.suite)\n  const old = existsSync(join(dir, 'report.json')) ? JSON.parse(readFileSync(join(dir, 'report.json'), 'utf8')) : {}\n  const r = { ...fresh, passed: old.passed ?? fresh.passed, graded: old.graded ?? fresh.graded, rate: old.rate?.n ? { ...fresh.rate, ...old.rate, rate: old.rate.k / old.rate.n } : fresh.rate }",
+      ),
+    run: tests('test/report.test.ts'),
+    expect: [/✖ the report is rebuilt from the rows, whatever report.json says/],
+  },
+  {
+    gate: 'test/report.test.ts',
+    why: 'per-tag verdicts taken one by one, with no adjustment for the number of tags',
+    breakIt: (dir) => mutate(dir, 'src/report.ts', 'const decided = holm(ps)', 'const decided = ps.map((x) => x <= 0.05)'),
+    run: tests('test/report.test.ts'),
+    expect: [/✖ twenty tags at 16 of 20 against 0\.95: each alone fails, together Holm cannot tell/],
+  },
+  {
+    gate: 'test/report.test.ts',
+    why: 'the cases kept out of the rate never weighed against the verdict',
+    breakIt: (dir) => mutate(dir, 'src/report.ts', 'const sensitivity =\n    verdict && out', 'const sensitivity =\n    verdict && out < 0'),
+    run: tests('test/report.test.ts'),
+    expect: [/✖ cases kept out of the rate that could turn the verdict over are named/],
+  },
+  {
+    gate: 'test/stats.test.ts',
+    why: "Wilson's interval back under the verdict, the one tick 5 measured missing its level",
+    breakIt: (dir) => mutate(dir, 'src/stats.ts', '  const { lo, hi } = exactInterval(k, n)\n  const base = { k, n, rate: k / n, lo, hi, bar }', '  const { lo, hi } = wilson(k, n)\n  const base = { k, n, rate: k / n, lo, hi, bar }'),
+    run: tests('test/stats.test.ts'),
+    expect: [/✖ one tag alone gets the verdict the whole suite gets/],
+  },
+  {
+    gate: 'check:measure',
+    why: 'one number in the committed measurement changed by hand',
+    breakIt: (dir) => mutate(dir, 'measurements/tag-verdicts.json', '"wilson": 0.0432', '"wilson": 0.0250'),
+    run: gate('tools/check-measure.ts'),
+    expect: [/measurements\/tag-verdicts\.json is not what tools\/measure\/tag-verdicts\.ts prints today/, /committed "wilson": 0\.025/],
   },
 ]
 

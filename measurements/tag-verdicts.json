@@ -1,0 +1,427 @@
+{
+ "made_by": "node tools/measure/tag-verdicts.ts",
+ "bar": 0.9,
+ "single": [
+  {
+   "n": 20,
+   "falseFailAtTheBar": {
+    "wilson": 0.0432,
+    "exact": 0.0113
+   },
+   "falsePassTwoPointsUnder": {
+    "wilson": 0,
+    "exact": 0
+   }
+  },
+  {
+   "n": 50,
+   "falseFailAtTheBar": {
+    "wilson": 0.0245,
+    "exact": 0.0245
+   },
+   "falsePassTwoPointsUnder": {
+    "wilson": 0.0017,
+    "exact": 0.0017
+   }
+  },
+  {
+   "n": 100,
+   "falseFailAtTheBar": {
+    "wilson": 0.0399,
+    "exact": 0.0206
+   },
+   "falsePassTwoPointsUnder": {
+    "wilson": 0.0053,
+    "exact": 0.0053
+   }
+  },
+  {
+   "n": 200,
+   "falseFailAtTheBar": {
+    "wilson": 0.0271,
+    "exact": 0.0163
+   },
+   "falsePassTwoPointsUnder": {
+    "wilson": 0.0015,
+    "exact": 0.0015
+   }
+  },
+  {
+   "n": 1000,
+   "falseFailAtTheBar": {
+    "wilson": 0.0278,
+    "exact": 0.022
+   },
+   "falsePassTwoPointsUnder": {
+    "wilson": 0,
+    "exact": 0
+   }
+  }
+ ],
+ "table": {
+  "seed": 20261115,
+  "trials": 4000,
+  "results": [
+   {
+    "tags": 5,
+    "perTag": 20,
+    "truth": "every tag at the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.058,
+     "holmScore": 0.058,
+     "holmExact": 0.012
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.0592,
+     "holmScore": 0.0592,
+     "holmExact": 0.012
+    },
+    "rightVerdictsPerRun": {
+     "alone": 0,
+     "holmScore": 0,
+     "holmExact": 0
+    }
+   },
+   {
+    "tags": 5,
+    "perTag": 50,
+    "truth": "every tag at the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.1145,
+     "holmScore": 0.044,
+     "holmExact": 0.013
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.1177,
+     "holmScore": 0.0447,
+     "holmExact": 0.0132
+    },
+    "rightVerdictsPerRun": {
+     "alone": 0.0262,
+     "holmScore": 0,
+     "holmExact": 0.0003
+    }
+   },
+   {
+    "tags": 5,
+    "perTag": 200,
+    "truth": "every tag at the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.0843,
+     "holmScore": 0.0555,
+     "holmExact": 0.022
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.0865,
+     "holmScore": 0.0568,
+     "holmExact": 0.0227
+    },
+    "rightVerdictsPerRun": {
+     "alone": 0.075,
+     "holmScore": 0.0147,
+     "holmExact": 0.0147
+    }
+   },
+   {
+    "tags": 10,
+    "perTag": 20,
+    "truth": "every tag at the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.1165,
+     "holmScore": 0.1165,
+     "holmExact": 0.0227
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.1225,
+     "holmScore": 0.1225,
+     "holmExact": 0.0227
+    },
+    "rightVerdictsPerRun": {
+     "alone": 0,
+     "holmScore": 0,
+     "holmExact": 0
+    }
+   },
+   {
+    "tags": 10,
+    "perTag": 50,
+    "truth": "every tag at the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.2182,
+     "holmScore": 0.0858,
+     "holmExact": 0.0085
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.239,
+     "holmScore": 0.089,
+     "holmExact": 0.0085
+    },
+    "rightVerdictsPerRun": {
+     "alone": 0.0493,
+     "holmScore": 0,
+     "holmExact": 0
+    }
+   },
+   {
+    "tags": 10,
+    "perTag": 200,
+    "truth": "every tag at the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.1442,
+     "holmScore": 0.0423,
+     "holmExact": 0.0115
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.1552,
+     "holmScore": 0.0425,
+     "holmExact": 0.0115
+    },
+    "rightVerdictsPerRun": {
+     "alone": 0.171,
+     "holmScore": 0.0158,
+     "holmExact": 0.0158
+    }
+   },
+   {
+    "tags": 20,
+    "perTag": 20,
+    "truth": "every tag at the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.208,
+     "holmScore": 0.0413,
+     "holmExact": 0.0075
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.2345,
+     "holmScore": 0.0423,
+     "holmExact": 0.0075
+    },
+    "rightVerdictsPerRun": {
+     "alone": 0,
+     "holmScore": 0,
+     "holmExact": 0
+    }
+   },
+   {
+    "tags": 20,
+    "perTag": 50,
+    "truth": "every tag at the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.403,
+     "holmScore": 0.062,
+     "holmExact": 0.0215
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.504,
+     "holmScore": 0.0645,
+     "holmExact": 0.0217
+    },
+    "rightVerdictsPerRun": {
+     "alone": 0.105,
+     "holmScore": 0,
+     "holmExact": 0
+    }
+   },
+   {
+    "tags": 20,
+    "perTag": 200,
+    "truth": "every tag at the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.294,
+     "holmScore": 0.0615,
+     "holmExact": 0.017
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.3468,
+     "holmScore": 0.064,
+     "holmExact": 0.017
+    },
+    "rightVerdictsPerRun": {
+     "alone": 0.3337,
+     "holmScore": 0.0067,
+     "holmExact": 0.0067
+    }
+   },
+   {
+    "tags": 5,
+    "perTag": 20,
+    "truth": "true rates within 5 points of the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.009,
+     "holmScore": 0.009,
+     "holmExact": 0.0015
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.009,
+     "holmScore": 0.009,
+     "holmExact": 0.0015
+    },
+    "rightVerdictsPerRun": {
+     "alone": 0.0815,
+     "holmScore": 0.0815,
+     "holmExact": 0.022
+    }
+   },
+   {
+    "tags": 5,
+    "perTag": 50,
+    "truth": "true rates within 5 points of the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.0165,
+     "holmScore": 0.0053,
+     "holmExact": 0.0018
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.0173,
+     "holmScore": 0.0053,
+     "holmExact": 0.0018
+    },
+    "rightVerdictsPerRun": {
+     "alone": 0.3058,
+     "holmScore": 0.1268,
+     "holmExact": 0.0698
+    }
+   },
+   {
+    "tags": 5,
+    "perTag": 200,
+    "truth": "true rates within 5 points of the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.0123,
+     "holmScore": 0.0053,
+     "holmExact": 0.0027
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.0125,
+     "holmScore": 0.0053,
+     "holmExact": 0.003
+    },
+    "rightVerdictsPerRun": {
+     "alone": 1.1167,
+     "holmScore": 0.698,
+     "holmExact": 0.568
+    }
+   },
+   {
+    "tags": 10,
+    "perTag": 20,
+    "truth": "true rates within 5 points of the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.0187,
+     "holmScore": 0.0187,
+     "holmExact": 0.0045
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.0187,
+     "holmScore": 0.0187,
+     "holmExact": 0.0045
+    },
+    "rightVerdictsPerRun": {
+     "alone": 0.1762,
+     "holmScore": 0.1762,
+     "holmExact": 0.0452
+    }
+   },
+   {
+    "tags": 10,
+    "perTag": 50,
+    "truth": "true rates within 5 points of the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.043,
+     "holmScore": 0.0135,
+     "holmExact": 0.0015
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.0432,
+     "holmScore": 0.0135,
+     "holmExact": 0.0015
+    },
+    "rightVerdictsPerRun": {
+     "alone": 0.6368,
+     "holmScore": 0.2592,
+     "holmExact": 0.051
+    }
+   },
+   {
+    "tags": 10,
+    "perTag": 200,
+    "truth": "true rates within 5 points of the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.0257,
+     "holmScore": 0.005,
+     "holmExact": 0.002
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.026,
+     "holmScore": 0.005,
+     "holmExact": 0.002
+    },
+    "rightVerdictsPerRun": {
+     "alone": 2.2437,
+     "holmScore": 1.0012,
+     "holmExact": 0.741
+    }
+   },
+   {
+    "tags": 20,
+    "perTag": 20,
+    "truth": "true rates within 5 points of the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.041,
+     "holmScore": 0.0053,
+     "holmExact": 0.001
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.0423,
+     "holmScore": 0.0055,
+     "holmExact": 0.001
+    },
+    "rightVerdictsPerRun": {
+     "alone": 0.3533,
+     "holmScore": 0.1055,
+     "holmExact": 0.0238
+    }
+   },
+   {
+    "tags": 20,
+    "perTag": 50,
+    "truth": "true rates within 5 points of the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.0793,
+     "holmScore": 0.007,
+     "holmExact": 0.0025
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.0823,
+     "holmScore": 0.007,
+     "holmExact": 0.0025
+    },
+    "rightVerdictsPerRun": {
+     "alone": 1.261,
+     "holmScore": 0.2382,
+     "holmExact": 0.1042
+    }
+   },
+   {
+    "tags": 20,
+    "perTag": 200,
+    "truth": "true rates within 5 points of the bar",
+    "runsWithAFalseVerdict": {
+     "alone": 0.0503,
+     "holmScore": 0.0027,
+     "holmExact": 0.0003
+    },
+    "falseVerdictsPerRun": {
+     "alone": 0.0517,
+     "holmScore": 0.0027,
+     "holmExact": 0.0003
+    },
+    "rightVerdictsPerRun": {
+     "alone": 4.4965,
+     "holmScore": 1.327,
+     "holmExact": 0.962
+    }
+   }
+  ]
+ }
+}

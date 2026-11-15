@@ -29,6 +29,7 @@ export type OpenAiOptions = {
   timeoutMs: number
   retries: number
   temperature?: number
+  seed?: number
   maxTokens?: number
   /** prepended to every case that has no system message of its own */
   system?: string
@@ -60,6 +61,7 @@ export function openaiProvider(o: OpenAiOptions): Provider {
     const body: Record<string, unknown> = { model: o.model, messages }
     if (o.temperature !== undefined) body.temperature = o.temperature
     if (o.maxTokens !== undefined) body.max_tokens = o.maxTokens
+    if (o.seed !== undefined) body.seed = o.seed
     const started = performance.now()
     let res: Response
     try {

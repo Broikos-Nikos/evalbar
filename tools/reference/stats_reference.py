@@ -6,7 +6,8 @@ Reference values for evalbar's statistics, computed by other people's code.
 Not needed to run evalbar. It exists so that test/stats.test.ts compares the
 TypeScript against implementations it shares no code with:
 
-- Wilson intervals from statsmodels' proportion_confint.
+- Wilson and exact (Clopper-Pearson) intervals from statsmodels' proportion_confint,
+  and the incomplete beta from scipy.special.
 - McNemar's exact conditional p from statsmodels; the mid-p from scipy's
   binomial distribution, as Fagerland, Lydersen and Laake (2013) define it.
 - Tango's score interval for a paired difference (Tango 1998), with the
@@ -20,7 +21,7 @@ import sys
 
 import scipy
 import statsmodels
-from scipy import optimize, stats
+from scipy import optimize, special, stats
 from statsmodels.stats.contingency_tables import mcnemar
 from statsmodels.stats.proportion import proportion_confint
 
@@ -32,6 +33,11 @@ def wilson(k, n):
     return {"k": k, "n": n, "lo": lo, "hi": hi}
 
 
+def exact(k, n):
+    lo, hi = proportion_confint(k, n, alpha=0.05, method="beta")
+    return {"k": k, "n": n, "lo": float(lo), "hi": float(hi)}
+
+
 def mcnemar_ref(b, c):
     m = b + c
     if m == 0:
@@ -41,6 +47,13 @@ def mcnemar_ref(b, c):
     midp = min(1.0, 2 * (stats.binom.cdf(k, m, 0.5) - 0.5 * stats.binom.pmf(k, m, 0.5)))
     asym = stats.chi2.sf((b - c) ** 2 / m, 1)
     return {"b": b, "c": c, "exact": float(exact), "midp": float(midp), "asymptotic": float(asym)}
+
+
+def binom_ref(k, n, p0):
+    """Twice the smaller tail, the doubling rule; scipy's binomtest uses another two-sided rule, so the tails are taken from its cdf."""
+    exact = min(1.0, 2 * min(stats.binom.cdf(k, n, p0), stats.binom.sf(k - 1, n, p0)))
+    z = (k / n - p0) / math.sqrt(p0 * (1 - p0) / n)
+    return {"k": k, "n": n, "p0": p0, "exact": float(exact), "score": float(min(1.0, 2 * stats.norm.sf(abs(z))))}
 
 
 def constrained_p21(x12, x21, n, d):
@@ -81,6 +94,10 @@ out = {
     "statsmodels": statsmodels.__version__,
     "wilson": [wilson(k, n) for k, n in [(0, 10), (1, 10), (5, 10), (10, 10), (95, 100), (99, 100), (20, 20), (0, 2000), (3, 2000), (57, 60), (1000, 1200)]],
     "mcnemar": [mcnemar_ref(b, c) for b, c in [(1, 7), (1, 6), (0, 0), (0, 5), (3, 0), (10, 25), (40, 60), (500, 560)]],
+    "exact": [exact(k, n) for k, n in [(0, 10), (1, 10), (5, 10), (10, 10), (95, 100), (99, 100), (20, 20), (0, 2000), (3, 2000), (17, 20), (1000, 1200)]],
+    "betainc": [{"x": x, "a": a, "b": b, "value": float(special.betainc(a, b, x))} for x, a, b in [(0.3, 2.0, 5.0), (0.9, 17.0, 4.0), (0.5, 0.5, 0.5), (0.99, 950.0, 51.0), (0.1, 3.7, 12.2)]],
+    "binom": [binom_ref(k, n, p0) for k, n, p0 in [(15, 20, 0.9), (16, 20, 0.9), (17, 20, 0.95), (190, 200, 0.9), (1, 10, 0.1), (10, 10, 0.5), (45, 50, 0.8), (3, 2000, 0.001)]],
+    "normal_upper": [{"z": z, "upper": float(stats.norm.sf(z))} for z in (0.0, 0.5, 1.0, 1.959964, 2.5, 3.5, -1.0, -2.5)],
     "tango": [tango(x12, x21, n) for x12, x21, n in [(6, 1, 45), (1, 7, 21), (0, 0, 50), (5, 0, 40), (0, 5, 40), (30, 10, 200), (10, 10, 100), (3, 0, 2000)]],
 }
 json.dump(out, sys.stdout, indent=1)

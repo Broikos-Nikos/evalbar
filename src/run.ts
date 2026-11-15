@@ -55,6 +55,9 @@ export type RunConfig = {
   requestedModel: string | null
   grader: string
   bar: number | null
+  /** as requested; null when left to the endpoint, whose default is usually 1 */
+  temperature: number | null
+  seed: number | null
   prices: Prices | null
   graderPrices: Prices | null
   startedAt: string

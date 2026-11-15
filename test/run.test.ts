@@ -48,6 +48,8 @@ const config = (provider: string): RunConfig => ({
   requestedModel: null,
   grader: 'exact',
   bar: null,
+  temperature: null,
+  seed: null,
   prices: null,
   graderPrices: null,
   startedAt: '',

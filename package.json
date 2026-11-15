@@ -23,10 +23,11 @@
     "build": "tsc -p tsconfig.build.json && npm run check",
     "typecheck": "tsc --noEmit",
     "test": "node --test \"test/**/*.test.ts\"",
-    "check": "npm run typecheck && npm test && npm run check:source && npm run check:licence && npm run check:vendor",
+    "check": "npm run typecheck && npm test && npm run check:source && npm run check:licence && npm run check:vendor && npm run check:measure",
     "check:source": "node tools/check-source.ts",
     "check:licence": "node tools/check-licence.ts",
     "check:vendor": "node tools/check-vendor.ts",
+    "check:measure": "node tools/check-measure.ts",
     "controls": "node tools/controls.ts"
   },
   "devDependencies": {
