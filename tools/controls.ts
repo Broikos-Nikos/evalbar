@@ -108,6 +108,51 @@ const CONTROLS: Control[] = [
     run: tests('test/stats.test.ts'),
     expect: [/✖ two published figures come out as published/],
   },
+  {
+    gate: 'test/greek.test.ts',
+    why: 'the capitals rule taken out of the comparison',
+    breakIt: (dir) => mutate(dir, 'src/text.ts', 'if (i % 2 === 1 && (inCapitals(pa[i]) || inCapitals(pb[i]))', 'if (i < 0 && (inCapitals(pa[i]) || inCapitals(pb[i]))'),
+    run: tests('test/greek.test.ts'),
+    expect: [/✖ capitals drop the tonos/, /✖ one sigma, two letters/],
+  },
+  {
+    gate: 'test/greek.test.ts',
+    why: 'every accent stripped everywhere, the fix that passes wrong answers',
+    breakIt: (dir) => mutate(dir, 'src/text.ts', 'const x = fold(pa[i])\n    const y = fold(pb[i])', 'const x = stripMarks(fold(pa[i]))\n    const y = stripMarks(fold(pb[i]))'),
+    run: tests('test/greek.test.ts'),
+    expect: [/✖ accents count where they could be written/],
+  },
+  {
+    gate: 'test/greek.test.ts',
+    why: 'folding without the final sigma',
+    breakIt: (dir) => mutate(dir, 'src/text.ts', ".replace(/ς/g, 'σ')", ''),
+    run: tests('test/greek.test.ts'),
+    expect: [/✖ one sigma, two letters/],
+  },
+  {
+    gate: 'test/greek.test.ts',
+    why: "Node's forgiving UTF-8 read, which turns a windows-1253 file into replacement characters",
+    breakIt: (dir) => {
+      mutate(dir, 'src/read.ts', 'const bad = firstBadUtf8(body)', 'const bad = -1 + 0 * firstBadUtf8(body)')
+      mutate(dir, 'src/read.ts', "if (bad === -1) return new TextDecoder('utf-8', { fatal: true }).decode(body)", "if (bad === -1) return new TextDecoder('utf-8').decode(body)")
+    },
+    run: tests('test/greek.test.ts'),
+    expect: [/✖ a file in windows-1253 is refused with its line and byte/],
+  },
+  {
+    gate: 'test/greek.test.ts',
+    why: "JavaScript's ASCII word boundary in place of one that sees Greek letters",
+    breakIt: (dir) => mutate(dir, 'src/text.ts', '`(?<![\\\\p{L}\\\\p{M}\\\\p{N}_])${escaped}(?![\\\\p{L}\\\\p{M}\\\\p{N}_])`', '`\\\\b${escaped}\\\\b`'),
+    run: tests('test/greek.test.ts'),
+    expect: [/✖ a word boundary that sees Greek letters/],
+  },
+  {
+    gate: 'test/greek.test.ts',
+    why: 'the exact grader unwrapping before NFC, the defect tick 3 measured and the tests had missed',
+    breakIt: (dir) => mutate(dir, 'src/graders/exact.ts', 'const text = nfc(s)', 'const text = s + nfc("")'),
+    run: tests('test/greek.test.ts'),
+    expect: [/✖ the Greek question mark is a semicolon/],
+  },
 ]
 
 /** A clone of HEAD with the working tree's files, tracked and untracked, laid over it. */
