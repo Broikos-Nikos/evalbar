@@ -13,23 +13,12 @@ import { dirname, join } from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { gradeExact } from '../../src/graders/exact.ts'
 import { decode, ReadError } from '../../src/read.ts'
-import { fold, stripMarks } from '../../src/text.ts'
+import { lowerCase, PAIRS, stripEveryAccent } from './greek-pairs.ts'
 
 const cp = (...c: number[]) => String.fromCodePoint(...c)
-const PAIRS: { output: string; expected: string; right: boolean; why: string }[] = [
-  { output: 'ΑΘΗΝΑ', expected: 'Αθήνα', right: true, why: 'capitals carry no tonos' },
-  { output: 'ΜΑΪΟΣ', expected: 'Μάιος', right: true, why: 'capitals add a dialytika where the tonos went' },
-  { output: 'πότε', expected: 'ποτέ', right: false, why: 'when is not never' },
-  { output: 'ΠΟΤΕ', expected: 'ποτέ', right: true, why: 'in capitals the two cannot be told apart' },
-  { output: 'οδοσ', expected: 'οδος', right: true, why: 'one sigma, two letters' },
-  { output: 'ΟΔΟΣ', expected: 'οδός', right: true, why: 'capitals, and the final sigma' },
-  { output: 'Αθήνα'.normalize('NFD'), expected: 'Αθήνα', right: true, why: 'decomposed text from a Mac or a PDF' },
-  { output: `Τι ώρα είναι${cp(0x37e)}`, expected: 'Τι ώρα είναι;', right: true, why: 'the Greek question mark is a semicolon' },
-  { output: 'STRASSE', expected: 'Straße', right: true, why: 'German folds the sharp s' },
-]
 const ways: Record<string, (a: string, b: string) => boolean> = {
-  lowerCase: (a, b) => a.trim().toLowerCase() === b.trim().toLowerCase(),
-  stripEveryAccent: (a, b) => stripMarks(fold(a)) === stripMarks(fold(b)),
+  lowerCase,
+  stripEveryAccent,
   evalbar: (a, b) => gradeExact(a, b).pass,
 }
 const wrong = Object.fromEntries(Object.entries(ways).map(([name, f]) => [name, PAIRS.filter((p) => f(p.output, p.expected) !== p.right).length]))

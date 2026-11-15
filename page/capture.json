@@ -1,0 +1,10 @@
+{
+ "headline": "3 wrong answers against 0 in 2,000 requests. evalbar says this sample cannot tell, and that about 5,231 would.",
+ "command": "$ evalbar compare similarity-0.92 digits-guard-0.58",
+ "answer": [
+  "evalbar compare  A similarity-0.92  against  B digits-guard-0.58",
+  "2,000 cases graded in both: B passed 0 that A failed, and failed 3 that A passed",
+  "difference minus 0.15 points, 95% interval minus 0.44 to plus 0.04; McNemar mid-p 0.125",
+  "REFUSED: the interval includes no difference, so this sample cannot tell. At this rate of disagreement (0.15% of cases) it detects 0.24 points and more; about 5,231 cases would detect a difference of 0.15"
+ ]
+}

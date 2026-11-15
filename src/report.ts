@@ -21,7 +21,7 @@
  *    bound the sample supports; a run without prices or without usage says it
  *    is not priced rather than costing $0.00.
  */
-import { family, trusts, type CalibrationRecord } from './calibration.ts'
+import { family, trusts, type CalibrationRecord } from './trust.ts'
 import { UserError } from './errors.ts'
 import { againstBar, binomTestP, clusteredRate, compare, compareClustered, exactInterval, holm, type BarVerdict, type ClusterCount, type Clustered, type Comparison, type PairCount } from './stats.ts'
 import type { ErrorRow, Prices, Row, RunConfig } from './run.ts'

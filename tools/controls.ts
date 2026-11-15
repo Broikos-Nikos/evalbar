@@ -297,14 +297,14 @@ const CONTROLS: Control[] = [
   {
     gate: 'test/judge.test.ts',
     why: 'a judge trusted without looking at any record',
-    breakIt: (dir) => mutate(dir, 'src/calibration.ts', "  if (!record) return { trusted: false, why: 'no calibration record was given (evalbar calibrate makes one)' }", "  if (!record) return { trusted: true, why: 'taken on trust' }"),
+    breakIt: (dir) => mutate(dir, 'src/trust.ts', "  if (!record) return { trusted: false, why: 'no calibration record was given (evalbar calibrate makes one)' }", "  if (!record) return { trusted: true, why: 'taken on trust' }"),
     run: tests('test/judge.test.ts'),
     expect: [/✖ without a calibration record a judge grades and decides nothing/],
   },
   {
     gate: 'test/judge.test.ts',
     why: "a judge grading its own family taken at its word, decision B10 removed",
-    breakIt: (dir) => mutate(dir, 'src/calibration.ts', "if (judgeFamily !== 'unknown' && judgeFamily === candidateFamily", "if (judgeFamily === 'never' && judgeFamily === candidateFamily"),
+    breakIt: (dir) => mutate(dir, 'src/trust.ts', "if (judgeFamily !== 'unknown' && judgeFamily === candidateFamily", "if (judgeFamily === 'never' && judgeFamily === candidateFamily"),
     run: tests('test/judge.test.ts'),
     expect: [/✖ a judge grading its own family needs a record made on that family's outputs/],
   },

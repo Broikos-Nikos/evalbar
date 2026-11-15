@@ -58,7 +58,7 @@ evalbar is the command line the four projects below do not have. Their code is c
 | [semcache](https://github.com/Broikos-Nikos/semcache) | a guard that lets a cache cut 79.5% of the bill, until the questions name a product | the cache, its guards, its streams, as the first example |
 | [sqlguard](https://github.com/Broikos-Nikos/sqlguard) | 0 of 613 generated queries past it break the policy, against 136 past its first version | the seeded shop, its fingerprint and the plan reader, as the second example's grader |
 
-New here: the runner and its two kinds of system under test, the exact interval and the verdict against a bar, the paired comparison on recorded disagreements, clusters, Holm across tags, the cost of a passed case, the judge and its calibration, the Greek handling, the importer's Greek identifiers, funnel, holdout and seal.
+New here: the runner and its two kinds of system under test, the exact interval and the verdict against a bar, the paired comparison on recorded disagreements, clusters, Holm across tags, the cost of a passed case, the judge and its calibration, the Greek handling, the importer's Greek identifiers, funnel, holdout and seal, and a live page that runs the command's own code in a browser.
 
 ## How it decides
 
@@ -103,6 +103,8 @@ evalbar --help
 npm run check       # typecheck, the tests, and the gates: source, licence, vendor, calibration, measurements, claims
 npm run controls    # every gate's broken state, made on a throwaway copy, and each gate required to fail on it
 ```
+
+The live page is built from `page/`, a package of its own, so that installing the command never installs a browser. There, `npm install`, `npm run build` and `npm run verify` build it and hold it to evalbar run in Node at a desktop and a phone width, and `npm run controls` breaks it four ways and requires a gate to fail each time.
 
 Needs Node 24. Tested on 24.18.0.
 

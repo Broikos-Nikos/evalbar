@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>evalbar: an LLM evaluation that says when its sample cannot tell</title>
+    <meta name="description" content="A command line evaluation for LLM systems. Given semcache's 3 wrong answers against 0 in 2,000 requests, it says the sample cannot tell, and that about 5,231 would. This page runs its own code in your browser." />
+    <meta property="og:title" content="evalbar: an LLM evaluation that says when its sample cannot tell" />
+    <meta property="og:description" content="Given 3 wrong answers against 0 in 2,000 requests, evalbar says the sample cannot tell, and that about 5,231 would." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://broikos-nikos.github.io/evalbar/" />
+    <meta property="og:image" content="https://broikos-nikos.github.io/evalbar/card.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#080604" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23080604'/%3E%3Cpath d='M2 8 H14 M2 5 V11 M14 5 V11' stroke='%23ff6a00' stroke-width='2' fill='none'/%3E%3C/svg%3E" />
+  </head>
+  <body>
+    <header class="masthead">
+      <p class="mono kicker">evalbar</p>
+      <h1 id="headline"></h1>
+      <p class="lead">A command line evaluation for LLM systems. Point it at your own cases and it says pass, fail, or that the sample cannot tell, with the interval and the cost of a passed case. Everything on this page runs evalbar's own code in your browser.</p>
+      <p class="mono prompt" id="hero-cmd"></p>
+      <pre class="term" id="hero-out"></pre>
+    </header>
+    <main>
+      <section class="panel" aria-labelledby="ask-h">
+        <h2 id="ask-h" class="mono label">Ask it about your own numbers</h2>
+        <div class="chips" id="mode" role="group" aria-label="What to ask">
+          <button type="button" class="chip" data-mode="run" aria-pressed="true">One run against a bar</button>
+          <button type="button" class="chip" data-mode="compare" aria-pressed="false">Two runs on the same cases</button>
+        </div>
+        <div id="run-form">
+          <div class="chips presets" id="run-presets" role="group" aria-label="Example runs"></div>
+          <div class="fields">
+            <label class="mono label">cases graded<input id="run-n" inputmode="numeric" autocomplete="off" /></label>
+            <label class="mono label">passed<input id="run-k" inputmode="numeric" autocomplete="off" /></label>
+            <label class="mono label">bar<input id="run-bar" inputmode="decimal" autocomplete="off" /></label>
+          </div>
+        </div>
+        <div id="compare-form" hidden>
+          <div class="chips presets" id="compare-presets" role="group" aria-label="Example comparisons"></div>
+          <div class="fields">
+            <label class="mono label">cases graded in both<input id="cmp-n" inputmode="numeric" autocomplete="off" /></label>
+            <label class="mono label">B failed, A passed<input id="cmp-lost" inputmode="numeric" autocomplete="off" /></label>
+            <label class="mono label">B passed, A failed<input id="cmp-won" inputmode="numeric" autocomplete="off" /></label>
+          </div>
+        </div>
+        <p class="mono prompt" id="ask-cmd"></p>
+        <pre class="term" id="ask-out" aria-live="polite"></pre>
+        <p class="note">The exact (Clopper-Pearson) interval for one run; McNemar's mid-p and Tango's interval for two, paired case by case. PASS only when the whole interval clears the bar, and a difference only when its interval leaves zero.</p>
+      </section>
+
+      <section aria-labelledby="real-h">
+        <h2 id="real-h" class="mono label">What it said about real systems</h2>
+        <div class="results" id="real"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="greek-h">
+        <h2 id="greek-h" class="mono label">Greek, graded right</h2>
+        <p class="note top" id="greek-note"></p>
+        <div class="chips presets" id="greek-presets" role="group" aria-label="The nine pairs"></div>
+        <div class="fields two">
+          <label class="mono label">the answer<input id="gr-out" lang="el" autocomplete="off" spellcheck="false" /></label>
+          <label class="mono label">the expected answer<input id="gr-exp" lang="el" autocomplete="off" spellcheck="false" /></label>
+        </div>
+        <div class="verdicts" id="gr-verdicts" aria-live="polite"></div>
+      </section>
+
+      <section class="panel" aria-labelledby="scrub-h">
+        <h2 id="scrub-h" class="mono label">A log line, scrubbed before it becomes a test</h2>
+        <div class="chips presets" id="scrub-presets" role="group" aria-label="Example lines"></div>
+        <label class="mono label" for="scrub-in">a line from a log</label>
+        <textarea id="scrub-in" rows="4" spellcheck="false"></textarea>
+        <pre class="term" id="scrub-out" aria-live="polite"></pre>
+        <p class="note">Greek tax numbers, AMKA and IBAN are taken only when their check digits hold. Names are the weak part: a capitalised pair is taken as a name, so a name typed in lower case gets through and a product with a capital letter does not.</p>
+      </section>
+
+      <section aria-labelledby="use-h">
+        <h2 id="use-h" class="mono label">Run it on your own cases</h2>
+        <pre class="term">git clone https://github.com/Broikos-Nikos/evalbar &amp;&amp; cd evalbar
+npm ci
+npx evalbar run your-cases.jsonl --base-url http://localhost:8080/v1 --model your-model --bar 0.9</pre>
+        <p class="note">A case is one JSON line: <code>{"input": "...", "expected": "...", "tags": ["el"]}</code>. Any OpenAI-compatible endpoint, cloud or local, or a program of your own. Exit codes are 0 for PASS, 1 for FAIL and 3 for CANNOT TELL, so a CI step can stop on the first two. Node 24, no runtime dependencies.</p>
+      </section>
+
+      <section aria-labelledby="fail-h">
+        <h2 id="fail-h" class="mono label">What this does not show</h2>
+        <div class="failures" id="failures"></div>
+      </section>
+    </main>
+    <footer class="foot mono">MIT licence. Every figure about a real system is read from a committed file that a command in the repository writes. Source: <a href="https://github.com/Broikos-Nikos/evalbar">github.com/Broikos-Nikos/evalbar</a></footer>
+    <script type="module" src="./main.ts"></script>
+  </body>
+</html>

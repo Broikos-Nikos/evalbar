@@ -1,0 +1,24 @@
+{
+  "name": "evalbar-page",
+  "version": "0.1.0",
+  "private": true,
+  "description": "evalbar's live page: the command's own functions, run in a browser",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "typecheck": "node ../node_modules/typescript/bin/tsc -p tsconfig.json",
+    "build": "npm run typecheck && vite build",
+    "verify": "node tools/verify.ts",
+    "check:page": "node tools/check-page.ts",
+    "check:capture": "node tools/check-capture.ts",
+    "capture": "node tools/capture.ts",
+    "controls": "node tools/controls.ts"
+  },
+  "devDependencies": {
+    "playwright": "1.61.1",
+    "vite": "8.3.0"
+  },
+  "engines": {
+    "node": ">=24"
+  }
+}
