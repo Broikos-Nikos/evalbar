@@ -1,0 +1,14 @@
+{
+  "about": "Files copied byte for byte from the author's sibling repositories, at a named commit. npm run check:vendor holds each to its sha256, and to the commit itself where that repository is checked out beside this one.",
+  "files": [
+    {
+      "project": "evalkit",
+      "repository": "https://github.com/Broikos-Nikos/evalkit",
+      "commit": "62b8e1bcb193c6d9165ba20caa0860d6d8bb1562",
+      "from": "src/lib/power.mjs",
+      "to": "src/vendor/evalkit/power.mjs",
+      "sha256": "c04801b9df94f5f531f0472acd252201c70d95e0fc6333f72f276c7f54bda58c",
+      "uses": "Z95, Z80 and nNeededPaired, the paired sample size by discordant rate"
+    }
+  ]
+}
