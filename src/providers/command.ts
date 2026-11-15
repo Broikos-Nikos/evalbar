@@ -65,9 +65,10 @@ export function commandProvider(o: CommandOptions): Provider {
       if (waiting) {
         const w = waiting
         waiting = null
-        // the line that names the error, not the last three: Node ends a crash with its own version number
+        // the line that opens with an error's class and says what it was: not the last three lines, which for
+        // Node end in its version banner, and not Node's own frame that merely mentions an exception (tick 7)
         const said = stderr.split(/\r?\n/).map((l) => l.trim()).filter(Boolean)
-        const tail = said.find((l) => /error|exception|traceback/i.test(l)) ?? said.at(-1) ?? ''
+        const tail = said.find((l) => /^[\w.]*(Error|Exception)\b[^:]*:/.test(l)) ?? said.at(-1) ?? ''
         w.reject(new ProviderError('process', `the command exited (${signal ?? `code ${code}`}) before answering${tail ? `: ${tail}` : ''}`))
       }
     })

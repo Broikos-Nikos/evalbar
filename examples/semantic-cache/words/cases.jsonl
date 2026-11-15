@@ -1,0 +1,1000 @@
+{"id":"r1","input":"HEY WHAT DOES THE BLUE KETTLE COST PLEASE","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r2","input":"HI, CAN YOU DELIVER TO SPAIN ASAP","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r3","input":"good morning, do you ship to spain","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r4","input":"hey do you ship to spain thanks","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r5","input":"urgent: how long does delivery to cyprus take","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r6","input":"do you ship to spain ?","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r7","input":"please do you have the oak desk available please","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r8","input":"hi, how much is the oak desk","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r9","input":"hello, price of the wool scarf?","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r10","input":"what does the blue kettle cost","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r11","input":"do you ship to cyprus thanks","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r12","input":"HELLO, WHAT DOES THE BLUE KETTLE COST ?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r13","input":"HOW MUCH IS THE OAK DESK PLEASE","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r14","input":"what does the oak desk cost","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r15","input":"hey what does shipping to spain cost thank you!","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r16","input":"URGENT: DO YOU SHIP TO CYPRUS ASAP","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r17","input":"hi, can you deliver to spain","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r18","input":"good morning, can you deliver to spain please","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r19","input":"hello, price of the blue kettle?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r20","input":"hi, what does shipping to austria cost ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r21","input":"hello, how much is the pine desk ?","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r22","input":"urgent: how much is the red kettle","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r23","input":"hi, how long does delivery to austria take","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r24","input":"do you have the red kettle available","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r25","input":"PLEASE HOW MUCH IS THE STEEL BOTTLE THANK YOU!","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r26","input":"CAN YOU DELIVER TO SPAIN","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r27","input":"hello, is the steel bottle in stock","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r28","input":"please can you deliver to austria ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r29","input":"hey when will the wool scarf be back in stock asap","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r30","input":"how much is the oak desk thanks","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r31","input":"what does the red kettle cost ?","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r32","input":"hello, what does shipping to cyprus cost","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r33","input":"hey what does the red kettle cost please","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r34","input":"good morning, do you have the red kettle available ?","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r35","input":"hey how long does delivery to cyprus take","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r36","input":"good morning, do you ship to cyprus thank you!","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r37","input":"what does shipping to germany cost","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r38","input":"hey do you have the oak desk available asap","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r39","input":"when will the red kettle be back in stock asap","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r40","input":"how long does delivery to cyprus take thank you!","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r41","input":"hey can you deliver to austria asap","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r42","input":"good morning, price of the steel bottle? please","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r43","input":"hello, do you ship to austria ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r44","input":"good morning, price of the wool scarf?","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r45","input":"can you deliver to spain","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r46","input":"do you ship to cyprus please","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r47","input":"how much is the wool scarf ?","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r48","input":"please what does the red kettle cost","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r49","input":"what does the pine desk cost thank you!","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r50","input":"what does shipping to cyprus cost","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r51","input":"please what does shipping to austria cost thank you!","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r52","input":"please can you deliver to portugal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r53","input":"urgent: is the red kettle sold out thanks","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r54","input":"DO YOU HAVE THE OAK DESK AVAILABLE ASAP","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r55","input":"hello, what does shipping to spain cost","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r56","input":"hi, what does shipping to austria cost","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r57","input":"please do you have the pine desk available ?","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r58","input":"hello, how long does delivery to austria take ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r59","input":"hello, price of the blue kettle?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r60","input":"can you deliver to italy please","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r61","input":"hey can you deliver to spain please","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r62","input":"hello, do you ship to germany ?","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r63","input":"HELLO, DO YOU SHIP TO PORTUGAL","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r64","input":"WHAT DOES THE BLUE KETTLE COST ?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r65","input":"how long does delivery to cyprus take","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r66","input":"hi, can you deliver to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r67","input":"URGENT: DO YOU SHIP TO SPAIN THANKS","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r68","input":"do you have the red kettle available ?","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r69","input":"HELLO, IS THE OAK DESK SOLD OUT THANKS","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r70","input":"HEY DO YOU SHIP TO PORTUGAL THANKS","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r71","input":"good morning, do you ship to portugal ?","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r72","input":"PLEASE WHAT DOES SHIPPING TO CYPRUS COST PLEASE","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r73","input":"can you deliver to spain","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r74","input":"when will the red kettle be back in stock","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r75","input":"hi, do you have the pine desk available","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r76","input":"hello, how long does delivery to spain take thanks","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r77","input":"hello, how much is the steel bottle","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r78","input":"hello, is the pine desk sold out please","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r79","input":"price of the red kettle?","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r80","input":"please how long does delivery to cyprus take","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r81","input":"hi, do you ship to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r82","input":"HOW LONG DOES DELIVERY TO GERMANY TAKE THANK YOU!","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r83","input":"how much is the pine desk","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r84","input":"PLEASE HOW LONG DOES DELIVERY TO PORTUGAL TAKE","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r85","input":"price of the steel bottle?","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r86","input":"price of the blue kettle?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r87","input":"when will the oak desk be back in stock thanks","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r88","input":"can you deliver to spain thank you!","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r89","input":"how much is the pine desk thanks","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r90","input":"PLEASE HOW LONG DOES DELIVERY TO SPAIN TAKE THANKS","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r91","input":"what does shipping to austria cost thanks","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r92","input":"hello, how much is the oak desk ?","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r93","input":"good morning, what does shipping to cyprus cost","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r94","input":"how long does delivery to germany take ?","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r95","input":"hi, price of the oak desk? please","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r96","input":"price of the glass bottle? asap","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r97","input":"hi, how long does delivery to spain take","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r98","input":"WHAT DOES THE GLASS BOTTLE COST ?","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r99","input":"urgent: can you deliver to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r100","input":"please is the blue kettle sold out thank you!","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r101","input":"good morning, can you deliver to austria ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r102","input":"CAN YOU DELIVER TO CYPRUS","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r103","input":"what does the wool scarf cost thank you!","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r104","input":"please how long does delivery to portugal take please","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r105","input":"hello, how long does delivery to austria take thanks","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r106","input":"HI, CAN YOU DELIVER TO AUSTRIA THANK YOU!","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r107","input":"please do you ship to cyprus please","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r108","input":"what does shipping to austria cost ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r109","input":"IS THE PINE DESK IN STOCK ?","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r110","input":"is the oak desk in stock ?","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r111","input":"good morning, what does shipping to cyprus cost please","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r112","input":"hi, do you ship to italy thanks","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r113","input":"how much is the silk scarf thank you!","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r114","input":"HOW MUCH IS THE SILK SCARF PLEASE","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r115","input":"hi, can you deliver to austria thank you!","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r116","input":"hey do you ship to portugal please","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r117","input":"hello, price of the pine desk?","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r118","input":"hey do you have the silk scarf available asap","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r119","input":"hi, when will the blue kettle be back in stock","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r120","input":"hey how long does delivery to germany take","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r121","input":"is the pine desk sold out asap","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r122","input":"hi, when will the oak desk be back in stock ?","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r123","input":"please how long does delivery to germany take","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r124","input":"please is the pine desk sold out","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r125","input":"good morning, can you deliver to portugal asap","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r126","input":"hello, how long does delivery to spain take","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r127","input":"hi, what does shipping to austria cost please","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r128","input":"can you deliver to italy thank you!","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r129","input":"what does shipping to austria cost thanks","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r130","input":"how long does delivery to austria take thanks","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r131","input":"hello, can you deliver to spain please","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r132","input":"please what does shipping to portugal cost please","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r133","input":"hey what does the pine desk cost please","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r134","input":"please do you ship to cyprus asap","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r135","input":"hi, do you ship to portugal ?","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r136","input":"hey what does the wool scarf cost please","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r137","input":"is the oak desk sold out asap","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r138","input":"how long does delivery to italy take thanks","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r139","input":"hi, when will the steel bottle be back in stock asap","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r140","input":"please is the wool scarf in stock","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r141","input":"can you deliver to germany","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r142","input":"hi, how long does delivery to italy take","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r143","input":"please what does shipping to germany cost asap","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r144","input":"hey can you deliver to spain","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r145","input":"HOW LONG DOES DELIVERY TO GERMANY TAKE","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r146","input":"good morning, do you ship to austria please","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r147","input":"what does the glass bottle cost","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r148","input":"hi, what does shipping to portugal cost","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r149","input":"what does the blue kettle cost ?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r150","input":"how long does delivery to austria take thanks","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r151","input":"urgent: how much is the oak desk","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r152","input":"urgent: can you deliver to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r153","input":"can you deliver to spain","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r154","input":"urgent: how much is the oak desk thanks","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r155","input":"please how long does delivery to italy take","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r156","input":"do you ship to cyprus thank you!","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r157","input":"hello, what does shipping to portugal cost thank you!","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r158","input":"HI, CAN YOU DELIVER TO AUSTRIA ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r159","input":"urgent: can you deliver to germany thanks","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r160","input":"hello, do you have the pine desk available","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r161","input":"can you deliver to iatly asap","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r162","input":"HOW LONG DOES DELIVERY TO AUSTRIA TAKE ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r163","input":"DO YOU SHIP TO AUSTRIA","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r164","input":"hi, how long does delivery to cyprus take thanks","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r165","input":"do you have the oak desk available","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r166","input":"what does the pine desk cost","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r167","input":"hi, what does shipping to austria cost","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r168","input":"price of the blue kettle?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r169","input":"hey is the steel bottle sold out","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r170","input":"please can you deliver to germany","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r171","input":"hello, what does the blue kettle cost ?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r172","input":"hey can you deliver to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r173","input":"URGENT: WHAT DOES THE WOOL SCARF COST","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r174","input":"is the glass bottle in stock please","expected":"the answer to stock_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r175","input":"good morning, how long does delivery to cyprus take thanks","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r176","input":"how much is the silk scarf thanks","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r177","input":"urgent: is the steel bottle in stock","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r178","input":"hey price of the blue kettle? thanks","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r179","input":"hi, how much is the silk scarf","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r180","input":"what does shipping to italy cost thanks","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r181","input":"please do you ship to italy","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r182","input":"urgent: do you ship to germany ?","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r183","input":"CAN YOU DELIVER TO PORTUGAL PLESAE","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r184","input":"good morning, what does the glass bottle cost","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r185","input":"hi, what does shipping to austria cost thanks","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r186","input":"WHAT DOES SHIPPING TO SPAIN COST PLEASE","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r187","input":"can you deliver to italy","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r188","input":"hey how much is the steel bottle please","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r189","input":"is the oak desk sold out please","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r190","input":"hey do you have the blue kettle available ?","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r191","input":"can you deliver to germany please","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r192","input":"please price of the silk scarf?","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r193","input":"how much is the oak desk thanks","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r194","input":"GOOD MORNING, IS THE GLASS BOTTLE IN STOCK ?","expected":"the answer to stock_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r195","input":"please how long does delivery to austria take thanks","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r196","input":"do you have the glass bottle available asap","expected":"the answer to stock_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r197","input":"how long does delivery to austria take thanks","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r198","input":"how long does delivery to gremany take thank you!","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r199","input":"hi, can you deliver to austria thanks","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r200","input":"when will the glass bottle be back in stock ?","expected":"the answer to stock_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r201","input":"can you deliver to germany","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r202","input":"can you deliver to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r203","input":"HELLO, HOW MUCH IS THE OAK DESK","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r204","input":"is the blue kettle sold out","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r205","input":"do you ship to germany thank you!","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r206","input":"how long does delivery to austria take please","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r207","input":"good morning, do you ship to italy","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r208","input":"good morning, can you deliver to germany asap","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r209","input":"what does the wool scarf cost ?","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r210","input":"hey price of the silk scarf? ?","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r211","input":"when will the oak desk be back in stock","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r212","input":"do you have the wool scarf available thnak you!","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r213","input":"urgent: what does the wool scarf cost please","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r214","input":"urgent: do you ship to italy ?","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r215","input":"good morning, how much is the red kettle","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r216","input":"how long does delivery to germany take","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r217","input":"do you ship to austria please","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r218","input":"URGENT: CAN YOU DELIVER TO AUSTRIA","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r219","input":"what does the silk scarf cost","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r220","input":"hello, how long does delivery to portugal take","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r221","input":"good morning, do you have the silk scarf available asap","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r222","input":"can you deliver to austria ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r223","input":"hey is the pine desk in stock thanks","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r224","input":"please how long does delivery to austria take please","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r225","input":"hey what does the blue kettle cost","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r226","input":"HOW MUCH IS THE STEEL BOTTLE","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r227","input":"IS THE PINE DESK IN STOCK THANK YOU!","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r228","input":"can you deliver to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r229","input":"please can you deliver to germany","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r230","input":"what does shipping to spain cost","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r231","input":"what does shipping to cyprus cost","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r232","input":"GOOD MORNING, IS THE GLASS BOTTLE IN STOCK ?","expected":"the answer to stock_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r233","input":"good morning, what does the steel bottle cost thank you!","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r234","input":"helol, can you deliver to germany","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r235","input":"hello, is the red kettle in stock ?","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r236","input":"please can you deliver to germany","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r237","input":"hi, do you ship to italy","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r238","input":"can you deliver to germany","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r239","input":"pelase what does the pine desk cost asap","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r240","input":"hey price of the blue kettle?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r241","input":"can you deliver to spain thank you!","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r242","input":"what does shipping to cyprus cost","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r243","input":"can you deliver to italy","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r244","input":"urgent: how long does delivery to austria take","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r245","input":"price of the glass bottle? asap","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r246","input":"what does shipping to germany cost ?","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r247","input":"HELLO, DO YOU SHIP TO ITALY THANK YOU!","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r248","input":"urgent: how long does delivery to cyprus take","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r249","input":"please do you ship to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r250","input":"good morning, what does shipping to germany cost","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r251","input":"what does shipping to germany cost","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r252","input":"urgent: how long does delivery to cyprus take asap","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r253","input":"hello, what does shipping to austria cost please","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r254","input":"good morning, what does shipping to germany cost thank you!","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r255","input":"urgent: how much is the red kettle ?","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r256","input":"do you ship to portugal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r257","input":"hi, how long does delivery to germany take","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r258","input":"do you ship to austria please","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r259","input":"WHAT DOES SHIPPING TO AUSTRIA COST","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r260","input":"is the pine desk sold out","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r261","input":"PLEASE DO YOU SHIP TO AUSTRIA","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r262","input":"urgent: how long does delivery to italy take","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r263","input":"hey what does the pine desk cost","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r264","input":"PLEASE IS THE OAK DESK SOLD OUT THANK YOU!","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r265","input":"good morning, is the pine desk sold out thank you!","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r266","input":"please do you ship to cyprus please","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r267","input":"can you deliver to cyprus please","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r268","input":"please can you deliver to italy thank you!","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r269","input":"hello, what does the silk scarf cost asap","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r270","input":"hi, is the steel bottle in stock","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r271","input":"good morning, do you ship to portugal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r272","input":"please how much is the steel bottle thank you!","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r273","input":"hi, what does the wool scarf cost asap","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r274","input":"urgent: what does shipping to austria cost thanks","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r275","input":"please how much is the wool scarf asap","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r276","input":"can you deliver to germany thank you!","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r277","input":"urgent: how long does delviery to austria take asap","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r278","input":"hi, price of the red kettle? please","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r279","input":"hey is the silk scarf sold out asap","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r280","input":"how long does delivery to cyprus take thank you!","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r281","input":"good morning, can you deliver to italy","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r282","input":"please how much is the oak desk thanks","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r283","input":"hey can you deliver to italy plaese","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r284","input":"can you deliver to germany","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r285","input":"HELLO, HOW LONG DOES DELIVERY TO GERMANY TAKE PLEASE","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r286","input":"hey how long does delivery to italy take ?","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r287","input":"how much is the silk scarf ?","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r288","input":"hey is the blue kettle in stock thanks","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r289","input":"hello, what does shipping to spain cost ?","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r290","input":"how much is the silk scarf","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r291","input":"hey can you deliver to italy thank you!","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r292","input":"can you deliver to italy ?","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r293","input":"please how long does delivery to italy take","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r294","input":"what does shipping to italy cost ?","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r295","input":"urgent: is the steel bottle in stock","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r296","input":"do you ship to austria thank you!","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r297","input":"can you deliver to austria please","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r298","input":"what does shipping to italy cost","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r299","input":"do you ship to spain thanks","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r300","input":"can you dleiver to austria ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r301","input":"how much is the steel bottle","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r302","input":"what does shipping to germany cost thank you!","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r303","input":"do you ship to portugal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r304","input":"hey what does shipping to germany cost","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r305","input":"hi, can you deliver to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r306","input":"do you ship to germany ?","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r307","input":"hello, what does shipping to cyprus cost ?","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r308","input":"how much is the steel bottle","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r309","input":"how much is the pine desk please","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r310","input":"HELLO, WHAT DOES SHIPPING TO ITALY COST ?","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r311","input":"hi, do you have the blue kettle available","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r312","input":"how long does delivery to austria take ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r313","input":"hi, how long does delivery to italy take","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r314","input":"hello, price of the pine desk?","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r315","input":"hey is the silk scarf in stock","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r316","input":"how long does delivery to spain take asap","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r317","input":"is the steel bottle in stock","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r318","input":"good morning, what does the glass bottle cost","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r319","input":"hello, what does shipping to spain cost thanks","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r320","input":"HOW LONG DOES DELIVERY TO CYPRUS TAKE","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r321","input":"do you ship to spain asap","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r322","input":"URGENT: PRICE OF THE SILK SCARF?","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r323","input":"urgent: is the wool scarf in stock","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r324","input":"good morning, pirce of the silk scarf? please","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r325","input":"hi, what does the pine desk cost asap","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r326","input":"hi, what does the steel bottle cost","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r327","input":"what does shipping to portugal cost thank you!","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r328","input":"hey can you deliver to austria thank you!","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r329","input":"urgent: what does the oak desk cost please","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r330","input":"how long does delivery to spain take","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r331","input":"hey price of the red kettle? ?","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r332","input":"hi, do you ship to austria thank you!","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r333","input":"urgent: when will the steel bottle be back in stock","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r334","input":"good morning, do you ship to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r335","input":"hi, do you have the red kettle available ?","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r336","input":"how long does delivery to austria take asap","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r337","input":"is the blue kettle in stock ?","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r338","input":"HI, HOW MUCH IS THE STEEL BOTTLE","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r339","input":"please do you have the blue kettle available","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r340","input":"good mornnig, how much is the steel bottle ?","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r341","input":"hello, what does the silk scarf cost","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r342","input":"please price of the blue kettle? asap","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r343","input":"hey how long does delivery to portugal take asap","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r344","input":"WHAT DOES SHIPPING TO PORTUGAL COST ASAP","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r345","input":"hello, price of the glass bottle? asap","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r346","input":"GOOD MORNING, DO YOU HAVE THE PINE DESK AVAILABLE ASAP","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r347","input":"hey what does shipping to cyprus cost asap","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r348","input":"HOW LONG DOES DELIVERY TO GERMANY TAKE ?","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r349","input":"hello, do you ship to spain ?","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r350","input":"price of the blue kettle? thank you!","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r351","input":"what does the red kettle cost please","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r352","input":"please do you ship to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r353","input":"hey is the red kettle in stock pelase","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r354","input":"hello, do you have the silk scarf available","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r355","input":"do you have the red kettle available please","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r356","input":"can you deliver to germany","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r357","input":"HI, HOW LONG DOES DELIVERY TO AUSTRIA TAKE","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r358","input":"do you ship to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r359","input":"price of the red kettle?","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r360","input":"hi, what does shipping to italy cost","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r361","input":"hey what does shipping to austria cost thanks","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r362","input":"please when will the blue kettle be back in stock please","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r363","input":"hi, how long does delivery to austria take","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r364","input":"do you ship to cyprus thanks","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r365","input":"is the blue kettle sold out ?","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r366","input":"what does shipping to spain cost asap","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r367","input":"hi, can you deliver to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r368","input":"hello, price of the glass bottle?","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r369","input":"hey what does the red kettle cost","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r370","input":"HOW LONG DOES DELIVERY TO CYPRUS TAKE","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r371","input":"please do you ship to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r372","input":"hey can you deliver to cyprus thanks","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r373","input":"hello, how long does delivery to italy take asap","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r374","input":"hi, do you ship to portugal ?","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r375","input":"PLEASE DO YOU SHIP TO AUSTRIA","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r376","input":"urgent: price of the blue kettle?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r377","input":"please how long does delivery to spain take thank you!","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r378","input":"can you deliver to spain","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r379","input":"what does the red kettle cost","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r380","input":"good morning, can you deliver to austria asap","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r381","input":"hey is the red kettle in stock ?","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r382","input":"can you deliver to spian ?","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r383","input":"is the steel bottle sold out thanks","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r384","input":"hello, can you deliver to portugal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r385","input":"hello, what does the silk scarf cost","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r386","input":"when will the glass bottle be back in stock ?","expected":"the answer to stock_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r387","input":"hello, can you deliver to austria ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r388","input":"urgent: can you deliver to spain","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r389","input":"do you ship to austria asap","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r390","input":"can you deliver to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r391","input":"can you deliver to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r392","input":"urgent: is the steel bottle sold out","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r393","input":"please what does the red kettle cost","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r394","input":"hi, is the red kettle in stock","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r395","input":"do you ship to germany asap","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r396","input":"hello, can you deliver to italy ?","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r397","input":"PLEASE HOW LONG DOES DELIVERY TO ITALY TAKE THANKS","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r398","input":"CAN YOU DELIVER TO GERMANY THANKS","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r399","input":"urgent: when will the silk scarf be back in stock please","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r400","input":"HELLO, HOW LONG DOES DELIVERY TO CYPRUS TAKE","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r401","input":"hi, how long does delivery to cyprus take thanks","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r402","input":"can you deliver to spain please","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r403","input":"hi, do you ship to cyprus asap","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r404","input":"good morning, price of the silk scarf? thanks","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r405","input":"urgent: price of the blue kettle?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r406","input":"please when will the blue kettle be back in stock","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r407","input":"good morning, price of the wool scarf?","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r408","input":"hey price of the pine desk? ?","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r409","input":"hey what does shipping to cyprus cost thanks","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r410","input":"please do you have the steel bottle available thank you!","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r411","input":"how long does delivery to cyprus take ?","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r412","input":"price of the oak desk?","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r413","input":"do you have the pine desk available asap","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r414","input":"can you delievr to italy thanks","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r415","input":"hey what does shipping to spain cost","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r416","input":"HEY PRICE OF THE OAK DESK?","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r417","input":"price of the blue kettle? thanks","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r418","input":"good morning, do you have the wool scarf available","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r419","input":"urgent: how much is the blue kettle","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r420","input":"hello, can you deliver to spain thanks","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r421","input":"do you ship to italy","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r422","input":"hello, do you have the blue kettle available","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r423","input":"can you deliver to gremany thanks","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r424","input":"HELLO, HOW LONG DOES DELIVERY TO CYPRUS TAKE PELASE","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r425","input":"hey is the blue kettle in stock","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r426","input":"please can you deliver to cypurs thank you!","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r427","input":"price of the pine desk?","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r428","input":"do you ship to italy","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r429","input":"HELLO, WHAT DOES SHIPPING TO CYPRUS COST THANKS","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r430","input":"PLEASE WHAT DOES SHIPPING TO CYPRUS COST ASAP","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r431","input":"can you deliver to portugal thank you!","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r432","input":"hello, do you ship to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r433","input":"hello, what does the blue kettle cost please","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r434","input":"what does shipping to austria cost thanks","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r435","input":"hi, do you ship to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r436","input":"hey price of the wool scarf? asap","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r437","input":"GOOD MORNING, PRICE OF THE WOOL SCARF? THANK YOU!","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r438","input":"hi, how long does delivery to italy take","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r439","input":"can you deliver to geramny","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r440","input":"hello, can you deliver to spain ?","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r441","input":"hey when will the wool scarf be back in stock thank you!","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r442","input":"can you deliver to spain please","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r443","input":"do you have the glass bottle available thanks","expected":"the answer to stock_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r444","input":"please how much is the oak desk thank you!","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r445","input":"CAN YOU DELIVER TO GERMANY ASAP","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r446","input":"how much is the wool scarf please","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r447","input":"can you deliver to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r448","input":"how much is the silk scarf thanks","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r449","input":"hi, do you ship to italy","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r450","input":"PRICE OF THE RED KETTLE?","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r451","input":"do you ship to cyprus thank you!","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r452","input":"urgent: how long does delivery to spain take asap","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r453","input":"how long does delivery to germany take asap","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r454","input":"hello, can you deliver to austria thanks","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r455","input":"what does shipping to italy cost","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r456","input":"hi, what does shipping to austria cost","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r457","input":"good morning, how much is the oak desk asap","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r458","input":"hi, do you have the wool scarf available","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r459","input":"please how much is the silk scarf asap","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r460","input":"when will the oak desk be back in stock asap","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r461","input":"hey can you deliver to germany","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r462","input":"PLEASE WHAT DOES SHIPPING TO SPAIN COST ASAP","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r463","input":"what does the wool scarf cost thanks","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r464","input":"do you ship to portugal please","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r465","input":"how long does delivery to germany take asap","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r466","input":"price of the steel bottle? thank you!","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r467","input":"please do you ship to austria asap","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r468","input":"hi, what does the oak desk cost","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r469","input":"good morning, is the oak desk in stock ?","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r470","input":"good morning, do you ship to germany ?","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r471","input":"hello, price of the pine desk?","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r472","input":"good morning, do you ship to austria asap","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r473","input":"urgent: do you ship to italy please","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r474","input":"is the wool scarf sold out thank you!","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r475","input":"urgent: do you ship to italy","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r476","input":"price of the pine desk? thank you!","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r477","input":"hey is the steel bottle sold out thanks","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r478","input":"how much is the silk scarf please","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r479","input":"do you ship to portugal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r480","input":"URGENT: WHAT DOES THE STEEL BOTTLE COST PLEASE","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r481","input":"hi, what does the glass bottle cost","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r482","input":"urgent: how much is the wool scarf please","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r483","input":"good morning, do you ship to italy please","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r484","input":"how much is the silk scarf thanks","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r485","input":"hey can you deliver to italy asap","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r486","input":"urgent: how long does delivery to austria take ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r487","input":"hi, what does the steel bottle cost","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r488","input":"what does shipping to italy cost thank you!","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r489","input":"hey when will the oak desk be back in stock thanks","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r490","input":"can you deliver to austria asap","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r491","input":"HOW MUCH IS THE BLUE KETTLE PLEASE","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r492","input":"hello, how much is the glass bottle","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r493","input":"price of the wool scarf? thanks","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r494","input":"PRICE OF THE STEEL BOTTLE?","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r495","input":"good morning, price of the wool scarf? thank you!","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r496","input":"hello, when will the red kettle be back in stock please","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r497","input":"urgent: price of the red kettle? thank you!","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r498","input":"do you have the steel bottle available thanks","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r499","input":"URGENT: HOW LONG DOES DELIVERY TO ITALY TAKE","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r500","input":"how much is the silk scarf ?","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r501","input":"urgent: price of the silk scarf? please","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r502","input":"URGENT: WHAT DOES THE SILK SCRAF COST PLEASE","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r503","input":"hey what does shipping to italy cost thanks","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r504","input":"hi, do you ship to portugal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r505","input":"urgent: what does shipping to germany cost thanks","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r506","input":"hi, is the silk scarf in stock asap","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r507","input":"can you deliver to porutgal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r508","input":"hello, is the wool scarf in stock","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r509","input":"HOW LONG DOES DELIVERY TO AUSTRIA TAKE","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r510","input":"HOW MUCH IS THE GLASS BOTTLE THANK YOU!","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r511","input":"can you deliver to germany","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r512","input":"hey do you ship to cyprus please","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r513","input":"hi, do you ship to portugal thank you!","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r514","input":"good morning, can you deliver to austria asap","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r515","input":"what does shipping to italy cost thank you!","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r516","input":"urgent: how long does delivery to austria take please","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r517","input":"can you deliver to austria asap","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r518","input":"good morning, do you ship to portugal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r519","input":"hey what does the wool scarf cost please","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r520","input":"hey can you deliver to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r521","input":"hi, do you ship to italy please","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r522","input":"good morning, what does the pine desk cost please","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r523","input":"hi, when will the oak desk be back in stock please","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r524","input":"urgent: do you have the blue kettle available please","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r525","input":"hey how long does delivery to germany take ?","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r526","input":"hello, what does the pine desk cost ?","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r527","input":"hey is the silk scarf in stock please","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r528","input":"how much is the red kettle ?","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r529","input":"hello, how long does delivery to germany take thanks","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r530","input":"hi, when will the steel bottle be back in stock","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r531","input":"hey what does the silk scarf cost","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r532","input":"good morning, do you have the pine desk available please","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r533","input":"good morning, do you ship to cyprus thanks","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r534","input":"what does the pine desk cost thnaks","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r535","input":"please price of the wool scarf? ?","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r536","input":"what does shipping to germany cost","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r537","input":"please how much is the pine desk thanks","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r538","input":"please is the steel bottle sold out thanks","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r539","input":"please when will the wool scraf be back in stock asap","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r540","input":"price of the pine deks?","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r541","input":"DO YOU SHIP TO ITALY","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r542","input":"urgent: do you ship to portugal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r543","input":"HOW LONG DOES DELIVERY TO PORTUGAL TAKE","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r544","input":"is the oak desk in stock please","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r545","input":"urgent: can you deliver to austria ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r546","input":"do you ship to cyprus thanks","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r547","input":"urgent: how long does delivery to portugal take","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r548","input":"price of the glsas bottle? ?","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r549","input":"urgent: what does shipping to austria cost thank you!","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r550","input":"good morning, can you deliver to italy thanks","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r551","input":"hi, price of the oak desk? please","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r552","input":"please how much is the silk scarf please","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r553","input":"good morning, price of the oak desk? ?","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r554","input":"urgent: price of the pine desk? please","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r555","input":"good morning, is the pine desk sold out please","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r556","input":"good morning, is the steel bottle in stock","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r557","input":"hello, can you deliver to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r558","input":"urgent: how much is the oak desk","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r559","input":"price of the pine desk? asap","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r560","input":"please what does the blue kettle cost","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r561","input":"hey do you have the pine desk available thanks","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r562","input":"hello, price of the silk scarf? please","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r563","input":"can you deliver to geramny ?","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r564","input":"when will the oak desk be back in stock","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r565","input":"do you have the oak desk available","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r566","input":"what does shipping to portugal cost please","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r567","input":"good morning, how long does delivery to cyprus take thanks","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r568","input":"hello, what does the wool scarf cost thanks","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r569","input":"price of the oak desk?","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r570","input":"how much is the blue kettle please","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r571","input":"hey what does shipping to portugal cost","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r572","input":"urgent: what does the glass bottle cost","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r573","input":"good morning, what does shipping to italy cost ?","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r574","input":"can you dleiver to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r575","input":"can you deliver to cyprus please","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r576","input":"hey do you ship to portugal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r577","input":"urgent: what does shipping to cyprus cost","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r578","input":"hello, can you deliver to portugal asap","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r579","input":"is the blue kettle sold out thank you!","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r580","input":"can you deliver to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r581","input":"what does shipping to italy cost asap","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r582","input":"good morning, how long does delivery to italy take please","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r583","input":"do you have the blue kettle available","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r584","input":"good morning, when will the silk scarf be back in stock please","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r585","input":"hi, how long does delivery to italy take","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r586","input":"what does shipping to portugal cost ?","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r587","input":"please when will the steel bottle be back in stock","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r588","input":"do you ship to germany","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r589","input":"HOW LONG DOES DELIVERY TO ITALY TAKE PLEASE","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r590","input":"please what does shipping to spain cost please","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r591","input":"please how much is the blue kettle","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r592","input":"how long does delivery to spain take","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r593","input":"hi, how long does delivery to portugal take thanks","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r594","input":"what does the oak desk cost thank you!","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r595","input":"hi, can you deliver to germany please","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r596","input":"good morning, can you deliver to italy asap","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r597","input":"PLEASE DO YOU SHIP TO AUSTRIA ASAP","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r598","input":"hi, how long does delivery to portugal take asap","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r599","input":"hello, what does shipping to portugal cost asap","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r600","input":"when will the wool scarf be back in stock thanks","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r601","input":"hey can you deliver to portugal thanks","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r602","input":"what does shipping to germany cost ?","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r603","input":"what does the wool scarf cost thanks","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r604","input":"can you deliver to autsria ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r605","input":"urgent: can you deliver to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r606","input":"hey do you ship to portugal asap","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r607","input":"what does the pine desk cost thank you!","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r608","input":"do you have the wool scarf available thanks","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r609","input":"do you ship to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r610","input":"hello, price of the wool scarf?","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r611","input":"PLEASE PRICE OF THE SILK SCARF? ?","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r612","input":"urgent: is the pine desk in stock","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r613","input":"please do you ship to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r614","input":"HELLO, CAN YOU DELIVER TO ITALY THANKS","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r615","input":"hello, is the blue kettle in stock","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r616","input":"urgent: what does the blue kettle cost ?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r617","input":"how much is the oak desk asap","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r618","input":"HELLO, IS THE PINE DESK SOLD OUT THANK YOU!","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r619","input":"good morning, how much is the oak desk thank you!","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r620","input":"hey how long does delivery to germany take","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r621","input":"hey can you deliver to italy asap","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r622","input":"do you ship to portugal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r623","input":"please can you dleiver to portugal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r624","input":"good morning, price of the wool scarf?","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r625","input":"hi, can you deliver to spain","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r626","input":"please how long does delivery to spain take","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r627","input":"do you have the silk scarf available","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r628","input":"do you have the steel bottle available asap","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r629","input":"what does shipping to portugal cost ?","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r630","input":"price of the oak desk?","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r631","input":"how long does delivery to spain take","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r632","input":"how much is the blue kettle","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r633","input":"hello, what does shipping to italy cost please","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r634","input":"do you ship to cyprus please","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r635","input":"is the steel bottle sold out thanks","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r636","input":"when will the pine desk be back in stock asap","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r637","input":"urgent: what does the pine desk cost please","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r638","input":"urgent: is the wool scarf sold out thank you!","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r639","input":"GOOD MORNING, HOW LONG DOES DELIVERY TO CYPRUS TAKE PLEASE","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r640","input":"good morning, what does the blue kettle cost","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r641","input":"is the silk scarf in stock","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r642","input":"how long does delivery to austria take","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r643","input":"good morning, do you ship to italy thanks","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r644","input":"good morning, when will the blue kettle be back in stock thank you!","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r645","input":"IS THE WOOL SCARF SOLD OUT ASAP","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r646","input":"how long does delivery to cyprus take ?","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r647","input":"can you deliver to spain asap","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r648","input":"can you deliver to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r649","input":"good morning, is the wool scarf sold out thanks","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r650","input":"hi, can you deliver to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r651","input":"please how much is the pine desk asap","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r652","input":"do you ship to cyprus thank you!","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r653","input":"please when will the silk scarf be back in stock ?","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r654","input":"hey can you deliver to austria asap","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r655","input":"good morning, what does shipping to spain cost","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r656","input":"please how much is the silk scarf","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r657","input":"hey do you ship to germany please","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r658","input":"hi, when will the pine desk be back in stock asap","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r659","input":"urgent: what does shipping to cyprus cost thanks","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r660","input":"hey how long does delivery to germany take asap","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r661","input":"do you have the steel bottle available","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r662","input":"DO YOU SHIP TO PORTUGAL","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r663","input":"PLEASE PRICE OF THE SILK SCARF?","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r664","input":"when will the glass bottle be back in stock","expected":"the answer to stock_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r665","input":"please is the oak desk in stock asap","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r666","input":"when will the oak desk be back in stock please","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r667","input":"please how much is the wool scarf","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r668","input":"what does the glass bottle cost","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r669","input":"good morning, do you ship to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r670","input":"what does shipping to italy cost thank you!","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r671","input":"what does shipping to spain cost","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r672","input":"hi, what does shipping to germany cost","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r673","input":"how much is the silk scarf thank you!","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r674","input":"PLEASE DO YOU HAVE THE WOOL SCARF AVAILABLE THANK YOU!","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r675","input":"please when will the pine desk be back in stock thank you!","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r676","input":"WHAT DOES SHIPPING TO PORTUGAL COST THANKS","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r677","input":"hi, what does shipping to germany cost thanks","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r678","input":"hi, is the blue kettle in stock","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r679","input":"urgent: how long does delivery to austria take asap","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r680","input":"how much is the silk scarf","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r681","input":"urgent: can you deliver to austria ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r682","input":"hey what does the oak desk cost please","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r683","input":"price of the wool scarf? ?","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r684","input":"HOW MUCH IS THE WOOL SCARF","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r685","input":"urgent: is the glass bottle sold out","expected":"the answer to stock_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r686","input":"good morning, what does shipping to portugal cost thanks","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r687","input":"hey is the blue kettle sold out","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r688","input":"ugrent: do you ship to spain thank you!","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r689","input":"what does shipping to germany cost","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r690","input":"what does the steel bottle cost","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r691","input":"urgent: how much is the pine desk","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r692","input":"do you have the silk scarf available","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r693","input":"please how long does delivery to italy take asap","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r694","input":"hey how long does delivery to germany take","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r695","input":"please can you deliver to germany ?","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r696","input":"GOOD MORNING, HOW LONG DOES DELIVERY TO ITALY TAKE","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r697","input":"good morning, how long does delivery to portugal take thanks","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r698","input":"HOW LONG DOES DELIVERY TO SPAIN TAKE THANK YOU!","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r699","input":"hey when will the wool scarf be back in stock","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r700","input":"is the wool scarf in stock thank you!","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r701","input":"do you have the glass bottle available","expected":"the answer to stock_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r702","input":"WHAT DOES THE SILK SCARF COST ASAP","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r703","input":"is the pine desk sold out please","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r704","input":"good morning, how long does delivery to austria take","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r705","input":"hello, do you ship to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r706","input":"PLEASE PRICE OF THE PINE DESK? ASAP","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r707","input":"do you ship to portugal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r708","input":"please what does shipping to germany cost","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r709","input":"what does shipping to germany cost","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r710","input":"hi, what does shipping to germany cost","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r711","input":"hello, can you deliver to austria thank you!","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r712","input":"hello, do you have the blue kettle available please","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r713","input":"when will the pine desk be back in stock ?","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r714","input":"hi, do you ship to italy please","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r715","input":"please do you have the steel bottle available","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r716","input":"hey what does the glass bottle cost","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r717","input":"hello, what does shipping to portugal cost","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r718","input":"is the oak desk sold out asap","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r719","input":"can you deliver to italy ?","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r720","input":"urgent: price of the blue kettle?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r721","input":"please is the pine desk sold out ?","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r722","input":"urgent: price of the pine desk? asap","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r723","input":"good morning, price of the steel bottle?","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r724","input":"hi, what does the glass bottle cost thanks","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r725","input":"HEY HOW LONG DOES DELIVERY TO AUSTRIA TAKE","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r726","input":"what does shipping to germany cost ?","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r727","input":"please how much is the red kettle","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r728","input":"hello, is the pine desk sold out ?","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r729","input":"PRICE OF THE WOOL SCARF? THANK YOU!","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r730","input":"hello, how much is the wool scarf ?","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r731","input":"urgent: do you ship to portugal ?","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r732","input":"can you deliver to spain","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r733","input":"price of the blue kettle?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r734","input":"hello, what does shipping to austria cost ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r735","input":"good morning, can you deliver to germany thanks","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r736","input":"hi, can you delievr to spain","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r737","input":"hi, how long does delivery to austria take","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r738","input":"how much is the red kettle","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r739","input":"DO YOU HAVE THE PINE DESK AVAILABLE THANK YOU!","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r740","input":"what does the oak desk cost thank you!","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r741","input":"is the glass bottle in stock","expected":"the answer to stock_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r742","input":"please how long does delivery to austria take","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r743","input":"please what does the oak desk cost asap","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r744","input":"do you ship to germany","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r745","input":"what does shipping to cyprus cost","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r746","input":"please how much is the blue kettle asap","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r747","input":"what does the red kettle cost","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r748","input":"do you have the steel bottle available","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r749","input":"hi, how much is the pine desk","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r750","input":"good morning, is the wool scarf in stock thanks","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r751","input":"what does the steel bottle cost","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r752","input":"HELLO, CAN YOU DELIVER TO AUSTRIA THANKS","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r753","input":"hello, how long does delivery to spain take thank you!","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r754","input":"what does the wool scarf cost","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r755","input":"hello, price of the pine desk? thanks","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r756","input":"hello, is the red kettle sold out","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r757","input":"hi, when will the pine desk be back in stock thanks","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r758","input":"do you ship to spain thank you!","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r759","input":"how long does delivery to portugal take","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r760","input":"good morning, can you deliver to spain thank you!","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r761","input":"ugrent: how long does delivery to germany take thanks","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r762","input":"hi, what does shipping to cyprus cost","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r763","input":"how long does delivery to portugal take","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r764","input":"hello, what does the oak desk cost","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r765","input":"good morning, what does the oak desk cost thank you!","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r766","input":"how much is the steel bottle","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r767","input":"how much is the blue kettle asap","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r768","input":"can you deliver to italy","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r769","input":"do you ship to cyprus ?","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r770","input":"please do you ship to cyprus please","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r771","input":"hi, how long does delivery to italy take thank you!","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r772","input":"do you ship to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r773","input":"good morning, price of the glass bottle?","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r774","input":"urgent: what does shipping to cyprus cost","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r775","input":"hey how much is the blue kettle ?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r776","input":"what does shipping to portugal cost","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r777","input":"do you ship to germany asap","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r778","input":"how much is the red kettle","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r779","input":"please what does the red kettle cost asap","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r780","input":"price of the pine desk? thanks","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r781","input":"good morning, price of the wool scarf?","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r782","input":"what does the glass bottle cost thanks","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r783","input":"GOOD MORNING, WHAT DOES SHIPPING TO CYPRUS COST","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r784","input":"DO YOU SHIP TO ITALY","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r785","input":"HEY DO YOU SHIP TO CYPRUS THANKS","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r786","input":"what does the blue kettle cost","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r787","input":"how much is the oak desk","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r788","input":"hi, how much is the pine desk asap","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r789","input":"do you have the glass bottle available please","expected":"the answer to stock_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r790","input":"do you have the blue kettle available","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r791","input":"hey can you deliver to cyprus please","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r792","input":"good morning, is the wool scarf sold out thanks","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r793","input":"do you ship to portugal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r794","input":"urgent: can you deliver to austria ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r795","input":"urgent: what does the blue kettle cost","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r796","input":"what does shipping to austria cost thanks","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r797","input":"hey how much is the oak desk asap","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r798","input":"good morning, what does shipping to italy cost thank you!","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r799","input":"when will the red kettle be back in stock","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r800","input":"hey price of the red kettle? thanks","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r801","input":"how long does delivery to italy take","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r802","input":"what does shipping to portugal cost","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r803","input":"do you have the pine desk available","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r804","input":"please how long does delivery to cyprus take","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r805","input":"what does shipping to germany cost","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r806","input":"can you deliver to cyprus thank you!","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r807","input":"HOW MUCH IS THE RED KETTLE","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r808","input":"do you have the red kettle available ?","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r809","input":"hi, price of the red kettle?","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r810","input":"how long does delivery to cyprus take thanks","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r811","input":"urgent: do you ship to austria asap","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r812","input":"how long does delivery to austria take","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r813","input":"is the steel bottle sold out ?","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r814","input":"good morning, price of the silk scarf? thanks","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r815","input":"do you have the silk scarf available","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r816","input":"price of the oak desk?","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r817","input":"can you deliver to cyprus ?","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r818","input":"hi, what does shipping to portugal cost thanks","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r819","input":"hey what does the red kettle cost please","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r820","input":"please do you have the blue kettle available","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r821","input":"what does shipping to austria cost","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r822","input":"what does shipping to austria cost plesae","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r823","input":"please when will the wool scarf be back in stock thank you!","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r824","input":"urgent: price of the steel bottle? ?","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r825","input":"please is the red kettle in stock","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r826","input":"please what does the red kettle cost ?","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r827","input":"hey how much is the silk scarf","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r828","input":"urgent: price of the oak desk?","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r829","input":"what does the wool scarf cost","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r830","input":"good morning, can you deliver to spain","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r831","input":"please is the blue kettle in stock","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r832","input":"good morning, how long does delivery to austria take thanks","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r833","input":"can you deliver to spain","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r834","input":"what does the red kettle cost","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r835","input":"hi, when will the red kettle be back in stock","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r836","input":"hey do you ship to italy","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r837","input":"good morning, is the silk scarf sold out thanks","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r838","input":"hey how long does delivery to germany take thank you!","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r839","input":"please how much is the pine desk","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r840","input":"hi, do you ship to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r841","input":"hello, how long does delivery to cyprus take asap","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r842","input":"urgent: can you deliver to germany thanks","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r843","input":"do you ship to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r844","input":"hey what does shipping to austria cost asap","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r845","input":"hey is the pine desk sold out","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r846","input":"WHAT DOES THE OAK DESK COST","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r847","input":"urgent: do you ship to italy thanks","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r848","input":"good morning, how much is the blue kettle","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r849","input":"urgent: can you deliver to portugal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r850","input":"how long does delivery to germany take ?","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r851","input":"good morning, what does the pine desk cost thank you!","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r852","input":"hi, how much is the red kettle asap","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r853","input":"what does shipping to cyprus cost thank you!","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r854","input":"hey can you deliver to germany","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r855","input":"good morning, how much is the blue kettle ?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r856","input":"do you ship to italy","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r857","input":"is the steel bottle sold out ?","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r858","input":"urgent: what does the wool scarf cost ?","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r859","input":"when will the blue kettle be back in stock please","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r860","input":"urgent: how long does delivery to italy take","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r861","input":"HI, DO YOU SHIP TO CYPRUS ASAP","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r862","input":"WHAT DOES SHIPPING TO AUSTRIA COST","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r863","input":"do you have the wool scarf available thank you!","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r864","input":"how long does delivery to germany take","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r865","input":"please price of the oak desk? ?","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r866","input":"hello, do you have the steel bottle available asap","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r867","input":"hi, how long does delivery to cyprus take","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r868","input":"what does shipping to austria cost","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r869","input":"how long does delivery to italy take thanks","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r870","input":"when will the blue kettle be back in stock thanks","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r871","input":"please is the silk scarf in stock","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r872","input":"urgent: how much is the steel bottle please","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r873","input":"do you have the silk scarf available","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r874","input":"how long does delivery to austria take","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r875","input":"urgent: do you have the red kettle available ?","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r876","input":"do you ship to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r877","input":"what does shipping to portugal cost thank you!","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r878","input":"please is the silk scarf sold out ?","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r879","input":"please can you deliver to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r880","input":"can you deliver to spain ?","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r881","input":"what does the silk scarf cost","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r882","input":"urgent: what does shipping to italy cost thank you!","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r883","input":"can you deliver to germany thank you!","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r884","input":"is the oak desk in stock asap","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r885","input":"hello, how long does delivery to germany take","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r886","input":"HELLO, CAN YOU DELIVER TO GERMANY THANK YOU!","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r887","input":"urgent: what does shipping to spain cost","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r888","input":"do you have the pine desk available","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r889","input":"good morning, what does shipping to italy cost","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r890","input":"how long does delivery to italy take ?","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r891","input":"WHEN WILL THE OAK DESK BE BACK IN STOCK ASAP","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r892","input":"hi, how long does delivery to germany take","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r893","input":"what does the oak desk cost ?","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r894","input":"hi, can you deilver to portugal","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r895","input":"please what does shipping to germany cost thank you!","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r896","input":"CAN YOU DELIVER TO GERMANY THANKS","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r897","input":"hlelo, price of the silk scarf? asap","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r898","input":"HI, CAN YOU DELIVER TO CYPRUS","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r899","input":"urgent: price of the wool scarf?","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r900","input":"price of the silk scarf? thanks","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r901","input":"do you ship to germany please","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r902","input":"HEY HOW MUCH IS THE GLASS BOTTLE","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r903","input":"DO YOU HAVE THE BLUE KETTLE AVAILABLE THANK YOU!","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r904","input":"GOOD MORNING, WHAT DOES THE STEEL BOTTLE COST PLEASE","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r905","input":"hey price of the blue kettle? ?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r906","input":"hello, can you deliver to germany asap","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r907","input":"hello, when will the silk scarf be back in stock","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r908","input":"what does shipping to germany cost asap","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r909","input":"good morning, is the blue kettle sold out","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r910","input":"please do you have the wool scarf available asap","expected":"the answer to stock_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r911","input":"HOW LONG DOES DELIVERY TO PORTUGAL TAKE","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r912","input":"hi, can you deliver to austria please","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r913","input":"hello, how long does delivery to cyprus take please","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r914","input":"how much is the blue kettle","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r915","input":"how long does delivery to austria take thanks","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r916","input":"plesae can you deliver to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r917","input":"do you ship to austria","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r918","input":"hello, how much is the red kettle thanks","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r919","input":"urgent: what does the glass bottle cost thank you!","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r920","input":"urgent: how much is the glass bottle","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r921","input":"please what does the silk scarf cost","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r922","input":"urgent: is the red kettle in stock asap","expected":"the answer to stock_product for red kettle","tags":["names a product or a country"]}
+{"id":"r923","input":"good morning, do you ship to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r924","input":"please what does shipping to portugal cost","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r925","input":"hi, when will the blue kettle be back in stock ?","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r926","input":"pelase can you deliver to germany","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r927","input":"how much is the glass bottle please","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r928","input":"is the glass bottle in stock ?","expected":"the answer to stock_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r929","input":"how long does delivery to italy take asap","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r930","input":"do you ship to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r931","input":"please can you deliver to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r932","input":"can you deliver to italy ?","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r933","input":"price of the oak desk? asap","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r934","input":"urgent: what does shipping to italy cost","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r935","input":"GOOD MORNING, PRICE OF THE BLUE KETTLE?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r936","input":"price of the pine desk? thanks","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r937","input":"urgent: is the pine desk sold out ?","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r938","input":"good morning, what does the blue kettle cost thanks","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r939","input":"when will the steel bottle be back in stock","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r940","input":"DO YOU SHIP TO PORTUGAL THANK YOU!","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r941","input":"do you ship to germany","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r942","input":"is the steel bottle in stock ?","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r943","input":"please how much is the blue kettle please","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r944","input":"hello, do you ship to cyprus asap","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r945","input":"hi, can you deliver to portugal thank you!","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r946","input":"HEY CAN YOU DELIVER TO AUSTRIA THANK YOU!","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r947","input":"hi, how much is the red kettle","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r948","input":"urgent: price of the glass bottle? please","expected":"the answer to price_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r949","input":"hello, can you deliver to austria ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r950","input":"HI, HOW LONG DOES DELIVERY TO AUSTRIA TAKE","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r951","input":"hello, is the blue kettle in stock ?","expected":"the answer to stock_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r952","input":"hi, what does shipping to germany cost thank you!","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r953","input":"PLEASE WHAT DOES SHIPPING TO CYPRUS COST","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r954","input":"hey is the glass bottle sold out please","expected":"the answer to stock_product for glass bottle","tags":["names a product or a country"]}
+{"id":"r955","input":"hello, how much is the red kettle","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r956","input":"can you deliver to italy thank you!","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r957","input":"do you ship to portugal please","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r958","input":"hello, is the pine desk sold out thanks","expected":"the answer to stock_product for pine desk","tags":["names a product or a country"]}
+{"id":"r959","input":"how long does delivery to cyprus take","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r960","input":"hello, do you ship to germany ?","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r961","input":"hi, what does shipping to spain cost ?","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r962","input":"hi, what does the steel bottle cost thanks","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r963","input":"hi, when will the steel bottle be back in stock","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r964","input":"urgent: do you ship to spain ?","expected":"the answer to ship_country for spain","tags":["names a product or a country"]}
+{"id":"r965","input":"what does shipping to austria cost asap","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r966","input":"hi, can you deliver to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r967","input":"please price of the pine desk? thank you!","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r968","input":"hi, is the oak desk sold out","expected":"the answer to stock_product for oak desk","tags":["names a product or a country"]}
+{"id":"r969","input":"how much is the wool scarf please","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r970","input":"hello, do you have the silk scarf available ?","expected":"the answer to stock_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r971","input":"HI, CAN YOU DELIVER TO PORTUGAL PLEASE","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r972","input":"hello, is the steel bottle sold out thanks","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r973","input":"hi, price of the pine desk? ?","expected":"the answer to price_product for pine desk","tags":["names a product or a country"]}
+{"id":"r974","input":"HI, HOW MUCH IS THE RED KETTLE","expected":"the answer to price_product for red kettle","tags":["names a product or a country"]}
+{"id":"r975","input":"HI, PRICE OF THE BLUE KETTLE?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r976","input":"please do you ship to cyprus asap","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r977","input":"HEY CAN YOU DELIVER TO AUSTRIA ?","expected":"the answer to ship_country for austria","tags":["names a product or a country"]}
+{"id":"r978","input":"what does the silk scarf cost","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r979","input":"what does the oak desk cost ?","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r980","input":"hey what does shipping to portugal cost ?","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r981","input":"please what does shipping to cyprus cost","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r982","input":"price of the steel bottle?","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r983","input":"urgent: do you ship to cyprus","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r984","input":"URGENT: DO YOU SHIP TO PORTUGAL","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r985","input":"how long does delivery to germany take thank you!","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r986","input":"urgent: what does shipping to cyprus cost thnak you!","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}
+{"id":"r987","input":"how long does delivery to portugal take ?","expected":"the answer to ship_country for portugal","tags":["names a product or a country"]}
+{"id":"r988","input":"hi, price of the silk scarf? please","expected":"the answer to price_product for silk scarf","tags":["names a product or a country"]}
+{"id":"r989","input":"what does shipping to germany cost","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r990","input":"can you deliver to italy asap","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r991","input":"how much is the steel bottle please","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r992","input":"good morning, price of the blue kettle?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r993","input":"PLEASE IS THE STEEL BOTTLE IN STOCK","expected":"the answer to stock_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r994","input":"how much is the wool scarf","expected":"the answer to price_product for wool scarf","tags":["names a product or a country"]}
+{"id":"r995","input":"what does the oak desk cost","expected":"the answer to price_product for oak desk","tags":["names a product or a country"]}
+{"id":"r996","input":"GOOD MORNING, WHAT DOES SHIPPING TO GERMANY COST","expected":"the answer to ship_country for germany","tags":["names a product or a country"]}
+{"id":"r997","input":"hey price of the blue kettle?","expected":"the answer to price_product for blue kettle","tags":["names a product or a country"]}
+{"id":"r998","input":"how much is the steel bottle please","expected":"the answer to price_product for steel bottle","tags":["names a product or a country"]}
+{"id":"r999","input":"hey what does shipping to italy cost asap","expected":"the answer to ship_country for italy","tags":["names a product or a country"]}
+{"id":"r1000","input":"hey do you ship to cyprus thanks","expected":"the answer to ship_country for cyprus","tags":["names a product or a country"]}

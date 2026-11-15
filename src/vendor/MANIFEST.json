@@ -9,6 +9,60 @@
       "to": "src/vendor/evalkit/power.mjs",
       "sha256": "c04801b9df94f5f531f0472acd252201c70d95e0fc6333f72f276c7f54bda58c",
       "uses": "Z95, Z80 and nNeededPaired, the paired sample size by discordant rate"
+    },
+    {
+      "project": "semcache",
+      "repository": "https://github.com/Broikos-Nikos/semcache",
+      "commit": "a5ed7297779261f2f579e57044db848e69d98280",
+      "from": "src/lib/cache.ts",
+      "to": "examples/semantic-cache/vendor/semcache/lib/cache.ts",
+      "sha256": "554fd620195bf74bef2a118ca57e9d1c5dd8538b9fbd2528767c7f53cb8d6f03",
+      "uses": "SemanticCache, the cache and its guard rule"
+    },
+    {
+      "project": "semcache",
+      "repository": "https://github.com/Broikos-Nikos/semcache",
+      "commit": "a5ed7297779261f2f579e57044db848e69d98280",
+      "from": "src/lib/embed.ts",
+      "to": "examples/semantic-cache/vendor/semcache/lib/embed.ts",
+      "sha256": "552d5743d5720f0aedf327e9246163b501dbab6b7e0149ff09df7defb765bd97",
+      "uses": "the hashed character and word n-gram embedder"
+    },
+    {
+      "project": "semcache",
+      "repository": "https://github.com/Broikos-Nikos/semcache",
+      "commit": "a5ed7297779261f2f579e57044db848e69d98280",
+      "from": "src/lib/entities.ts",
+      "to": "examples/semantic-cache/vendor/semcache/lib/entities.ts",
+      "sha256": "ece8d26203466f1983e2c9079e2d57425f9c15898f897d85e55b461d2be26e84",
+      "uses": "the two guards: digits, and digits and the shop's names"
+    },
+    {
+      "project": "semcache",
+      "repository": "https://github.com/Broikos-Nikos/semcache",
+      "commit": "a5ed7297779261f2f579e57044db848e69d98280",
+      "from": "tools/intents.ts",
+      "to": "examples/semantic-cache/vendor/semcache/intents.ts",
+      "sha256": "b1441147d90a5fb44572b65792e518a83623b4b428f7645e128fabaff3e7ecef",
+      "uses": "the token counts of each intent, and the shop's names"
+    },
+    {
+      "project": "semcache",
+      "repository": "https://github.com/Broikos-Nikos/semcache",
+      "commit": "a5ed7297779261f2f579e57044db848e69d98280",
+      "from": "data/test.json",
+      "to": "examples/semantic-cache/vendor/semcache/data/test.json",
+      "sha256": "d8ab12be15c9b6a6c6d37216477070fd8410cb8332a7e28acc6fcd8b2b865a36",
+      "uses": "the 2,000 request test stream"
+    },
+    {
+      "project": "semcache",
+      "repository": "https://github.com/Broikos-Nikos/semcache",
+      "commit": "a5ed7297779261f2f579e57044db848e69d98280",
+      "from": "data/words.json",
+      "to": "examples/semantic-cache/vendor/semcache/data/words.json",
+      "sha256": "4d11cc390662930f8f6e4bc5c44c9a19f7f7249c12f1ad811a336683a436a3a1",
+      "uses": "the 1,000 request stream that names products and countries"
     }
   ]
 }

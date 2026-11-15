@@ -265,6 +265,20 @@ const CONTROLS: Control[] = [
     expect: [/✖ families that flip together: Tango calls B better, the clustered test refuses/],
   },
   {
+    gate: 'check:vendor',
+    why: 'a file dropped into an example vendor folder without a manifest entry',
+    breakIt: (dir) => writeFileSync(join(dir, 'examples/semantic-cache/vendor/semcache/lib/extra.ts'), 'export const x = 1\n'),
+    run: gate('tools/check-vendor.ts'),
+    expect: [/examples\/semantic-cache\/vendor\/semcache\/lib\/extra\.ts is in a vendor folder and not in the manifest/],
+  },
+  {
+    gate: 'check:measure',
+    why: "the cache example's digits guard switched off, the code the headline measures",
+    breakIt: (dir) => mutate(dir, 'examples/semantic-cache/system.ts', 'const guards = { none: null, digits, names: digitsAndNames(CATALOG) } as const', 'const guards = { none: null, digits: null, names: digitsAndNames(CATALOG) } as const'),
+    run: gate('tools/check-measure.ts'),
+    expect: [/measurements\/semantic-cache\.json is not what tools\/measure\/semantic-cache\.ts prints today/],
+  },
+  {
     gate: 'check:measure',
     why: 'one number in the committed measurement changed by hand',
     breakIt: (dir) => mutate(dir, 'measurements/tag-verdicts.json', '"wilson": 0.0432', '"wilson": 0.0250'),

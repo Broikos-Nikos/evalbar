@@ -23,6 +23,7 @@ const root = resolve(values.root ?? resolve(dirname(fileURLToPath(import.meta.ur
 const MEASUREMENTS = [
   { script: 'tools/measure/tag-verdicts.ts', output: 'measurements/tag-verdicts.json' },
   { script: 'tools/measure/clusters.ts', output: 'measurements/clusters.json' },
+  { script: 'tools/measure/semantic-cache.ts', output: 'measurements/semantic-cache.json' },
 ]
 
 const fails: string[] = []

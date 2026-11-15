@@ -8,7 +8,7 @@
  * that still carries the original's name and the original's measured claims,
  * which is worse than a rewrite, because a reader trusts it. So:
  *
- * 1. Every file under src/vendor is listed in MANIFEST.json.
+ * 1. Every file under src/vendor and examples/<name>/vendor is listed in MANIFEST.json.
  * 2. Every listed file has the sha256 the manifest records.
  * 3. Where the sibling repository is checked out beside this one, the file is
  *    byte for byte `git show <commit>:<path>` there, so the manifest's hash was
@@ -32,9 +32,14 @@ const walk = (dir: string): string[] =>
 
 const fails: string[] = []
 const listed = new Set(manifest.files.map((f) => f.to))
-for (const file of walk(join(root, 'src/vendor'))) {
+// vendored code lives under src/vendor, and an example's own under examples/<name>/vendor
+const vendorRoots = [
+  join(root, 'src/vendor'),
+  ...(existsSync(join(root, 'examples')) ? readdirSync(join(root, 'examples')).map((e) => join(root, 'examples', e, 'vendor')).filter((p) => existsSync(p)) : []),
+]
+for (const file of vendorRoots.flatMap(walk)) {
   const rel = relative(root, file).split('\\').join('/')
-  if (rel !== 'src/vendor/MANIFEST.json' && !listed.has(rel)) fails.push(`${rel} is under src/vendor and not in the manifest`)
+  if (rel !== 'src/vendor/MANIFEST.json' && !listed.has(rel)) fails.push(`${rel} is in a vendor folder and not in the manifest`)
 }
 
 let compared = 0

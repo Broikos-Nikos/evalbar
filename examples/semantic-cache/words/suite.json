@@ -1,0 +1,6 @@
+{
+  "description": "semcache's word stream: 1,000 requests that name a product or a country, through the same cache, guard and threshold.",
+  "provider": { "command": "node --experimental-transform-types --disable-warning=ExperimentalWarning ../system.ts --stream vendor/semcache/data/words.json --threshold 0.58 --guard digits" },
+  "bar": 0.999,
+  "prices": { "input": 3, "output": 15 }
+}

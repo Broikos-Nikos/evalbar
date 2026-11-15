@@ -174,6 +174,13 @@ test('a command that cannot start stops the run at the first case', async () => 
   assert.equal(r.rows.length, 0)
 })
 
+test("a command that dies on a syntax error is reported by the error, not by Node's own frame", async () => {
+  // tick 7: TypeScript Node cannot strip prints "triggerUncaughtException(" first, and that line was picked
+  const cmd = script('params.ts', 'class Box { constructor(readonly size: number) {} }\nconsole.log(new Box(1).size)\n')
+  const r = await go(commandProvider({ command: cmd, timeoutMs: 5000 }))
+  assert.match(r.aborted ?? '', /before answering: SyntaxError \[ERR_UNSUPPORTED_TYPESCRIPT_SYNTAX\]/)
+})
+
 test('a command that crashes on one case loses that case to errors and answers the next', async () => {
   const cmd = script(
     'crash.mjs',

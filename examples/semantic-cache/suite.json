@@ -1,0 +1,6 @@
+{
+  "description": "semcache's test stream: 2,000 support requests in order, through its semantic cache with the digits guard at the threshold it chose on another stream. A case passes when the cache serves the answer the request should get.",
+  "provider": { "command": "node --experimental-transform-types --disable-warning=ExperimentalWarning system.ts --stream vendor/semcache/data/test.json --threshold 0.58 --guard digits" },
+  "bar": 0.999,
+  "prices": { "input": 3, "output": 15 }
+}

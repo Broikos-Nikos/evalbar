@@ -1,0 +1,223 @@
+{
+ "made_by": "node tools/measure/semantic-cache.ts",
+ "bar": 0.999,
+ "prices": {
+  "input": 3,
+  "output": 15
+ },
+ "semcacheCommit": "a5ed729",
+ "results": [
+  {
+   "stream": "test",
+   "cache": "no cache",
+   "requests": 2000,
+   "rightAnswers": 2000,
+   "wrongAnswers": 0,
+   "hits": 0,
+   "interval": {
+    "lo": 0.9982,
+    "hi": 1
+   },
+   "verdict": "cannot tell",
+   "casesToDecide": 3688,
+   "cost": {
+    "total": 9.35802,
+    "perCase": 0.004679,
+    "perPassedCase": 0.004679
+   },
+   "billCut": 0
+  },
+  {
+   "stream": "test",
+   "cache": "similarity only, 0.92",
+   "requests": 2000,
+   "rightAnswers": 2000,
+   "wrongAnswers": 0,
+   "hits": 1011,
+   "interval": {
+    "lo": 0.9982,
+    "hi": 1
+   },
+   "verdict": "cannot tell",
+   "casesToDecide": 3688,
+   "cost": {
+    "total": 4.50987,
+    "perCase": 0.002255,
+    "perPassedCase": 0.002255
+   },
+   "billCut": 0.5181
+  },
+  {
+   "stream": "test",
+   "cache": "similarity only, 0.80",
+   "requests": 2000,
+   "rightAnswers": 1840,
+   "wrongAnswers": 160,
+   "hits": 1493,
+   "interval": {
+    "lo": 0.9072,
+    "hi": 0.9315
+   },
+   "verdict": "fail",
+   "casesToDecide": null,
+   "cost": {
+    "total": 2.31261,
+    "perCase": 0.001156,
+    "perPassedCase": 0.001257
+   },
+   "billCut": 0.7529
+  },
+  {
+   "stream": "test",
+   "cache": "guard on digits, 0.58",
+   "requests": 2000,
+   "rightAnswers": 1997,
+   "wrongAnswers": 3,
+   "hits": 1572,
+   "interval": {
+    "lo": 0.9956,
+    "hi": 0.9997
+   },
+   "verdict": "cannot tell",
+   "casesToDecide": 18922,
+   "cost": {
+    "total": 1.91865,
+    "perCase": 0.000959,
+    "perPassedCase": 0.000961
+   },
+   "billCut": 0.795
+  },
+  {
+   "stream": "test",
+   "cache": "guard on digits and names, 0.58",
+   "requests": 2000,
+   "rightAnswers": 1997,
+   "wrongAnswers": 3,
+   "hits": 1571,
+   "interval": {
+    "lo": 0.9956,
+    "hi": 0.9997
+   },
+   "verdict": "cannot tell",
+   "casesToDecide": 18922,
+   "cost": {
+    "total": 1.92375,
+    "perCase": 0.000962,
+    "perPassedCase": 0.000963
+   },
+   "billCut": 0.7944
+  },
+  {
+   "stream": "words",
+   "cache": "no cache",
+   "requests": 1000,
+   "rightAnswers": 1000,
+   "wrongAnswers": 0,
+   "hits": 0,
+   "interval": {
+    "lo": 0.9963,
+    "hi": 1
+   },
+   "verdict": "cannot tell",
+   "casesToDecide": 3688,
+   "cost": {
+    "total": 3.58227,
+    "perCase": 0.003582,
+    "perPassedCase": 0.003582
+   },
+   "billCut": 0
+  },
+  {
+   "stream": "words",
+   "cache": "similarity only, 0.92",
+   "requests": 1000,
+   "rightAnswers": 1000,
+   "wrongAnswers": 0,
+   "hits": 486,
+   "interval": {
+    "lo": 0.9963,
+    "hi": 1
+   },
+   "verdict": "cannot tell",
+   "casesToDecide": 3688,
+   "cost": {
+    "total": 1.81116,
+    "perCase": 0.001811,
+    "perPassedCase": 0.001811
+   },
+   "billCut": 0.4944
+  },
+  {
+   "stream": "words",
+   "cache": "guard on digits, 0.58",
+   "requests": 1000,
+   "rightAnswers": 547,
+   "wrongAnswers": 453,
+   "hits": 947,
+   "interval": {
+    "lo": 0.5155,
+    "hi": 0.5782
+   },
+   "verdict": "fail",
+   "casesToDecide": null,
+   "cost": {
+    "total": 0.18294,
+    "perCase": 0.000183,
+    "perPassedCase": 0.000334
+   },
+   "billCut": 0.9489
+  },
+  {
+   "stream": "words",
+   "cache": "guard on digits and names, 0.58",
+   "requests": 1000,
+   "rightAnswers": 985,
+   "wrongAnswers": 15,
+   "hits": 915,
+   "interval": {
+    "lo": 0.9754,
+    "hi": 0.9916
+   },
+   "verdict": "fail",
+   "casesToDecide": null,
+   "cost": {
+    "total": 0.29349,
+    "perCase": 0.000293,
+    "perPassedCase": 0.000298
+   },
+   "billCut": 0.9181
+  }
+ ],
+ "comparisons": [
+  {
+   "stream": "test",
+   "a": "similarity only, 0.92",
+   "b": "guard on digits, 0.58",
+   "won": 0,
+   "lost": 3,
+   "n": 2000,
+   "interval": {
+    "lo": -0.0044,
+    "hi": 0.0004
+   },
+   "midP": 0.125,
+   "verdict": "refused",
+   "casesNeeded": 5231
+  },
+  {
+   "stream": "words",
+   "a": "guard on digits, 0.58",
+   "b": "guard on digits and names, 0.58",
+   "won": 442,
+   "lost": 4,
+   "n": 1000,
+   "interval": {
+    "lo": 0.4069,
+    "hi": 0.4693
+   },
+   "midP": 0,
+   "verdict": "better",
+   "casesNeeded": 16
+  }
+ ]
+}
