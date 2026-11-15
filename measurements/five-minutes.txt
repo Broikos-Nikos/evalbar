@@ -1,0 +1,6 @@
+a fresh clone of 8ea42fd, 2026-11-15 16:51, node v24.18.0, npm 11.16.0
+git clone                                                     0.9 s  exit 0
+npm ci (installs two dev packages, builds the command)        5.0 s  exit 0
+npx evalbar report <the recorded SQL run>                     4.1 s  exit 1
+npx evalbar run examples/semantic-cache                       4.6 s  exit 3
+from the clone to the second number                          15.4 s

@@ -18,17 +18,17 @@
   "short": 128,
   "pasted": 60,
   "needsContext": 75,
-  "exactDuplicate": 1066,
-  "nearDuplicate": 20,
-  "kept": 431,
+  "exactDuplicate": 1069,
+  "nearDuplicate": 31,
+  "kept": 417,
   "picked": null,
-  "dev": 360,
-  "test": 71,
-  "clusters": 341,
+  "dev": 348,
+  "test": 69,
+  "clusters": 332,
   "removed": {
    "<EMAIL>": 47,
+   "<NAME>": 96,
    "<ORDER>": 375,
-   "<NAME>": 51,
    "<CARD>": 42,
    "<PHONE>": 74,
    "<AFM>": 24,
@@ -39,9 +39,9 @@
  },
  "byKind": {
   "request": {
-   "kept": 429,
-   "exact duplicate": 1047,
-   "near duplicate": 20,
+   "kept": 415,
+   "exact duplicate": 1050,
+   "near duplicate": 31,
    "needs context": 4
   },
   "short": {
@@ -63,8 +63,8 @@
    "survived": 0
   },
   "name": {
-   "inKept": 64,
-   "survived": 45
+   "inKept": 52,
+   "survived": 0
   },
   "card": {
    "inKept": 28,
@@ -99,9 +99,14 @@
    "survived": 0
   }
  },
+ "keptWithANameTagAndNoNamePlanted": 0,
+ "namesWithoutRecogniser": {
+  "inKept": 64,
+  "survived": 45
+ },
  "holdout": {
-  "dev": 360,
-  "test": 71,
+  "dev": 348,
+  "test": 69,
   "casesInATestSessionAlsoInDev": 0
  },
  "floors": [

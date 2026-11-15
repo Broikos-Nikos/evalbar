@@ -45,13 +45,15 @@ try {
 }
 
 const lines = ['$ evalbar compare similarity-0.92 digits-guard-0.58', ...shown.trimEnd().split('\n')]
-// the long refusal sentence, wrapped at a word so it fits the frame
+// wrapped at 58 characters, so that on a phone the picture is scaled to two thirds and not to two fifths:
+// at 96 a line, a 390 wide screen drew the text 6 pixels high (looked at with bh, tick 11)
+const WRAP = 58
 const wrapped = lines.flatMap((l) => {
-  if (l.length <= 96) return [l]
+  if (l.length <= WRAP) return [l]
   const out: string[] = []
   let rest = l
-  while (rest.length > 96) {
-    const cut = rest.lastIndexOf(' ', 96)
+  while (rest.length > WRAP) {
+    const cut = rest.lastIndexOf(' ', WRAP)
     out.push(rest.slice(0, cut))
     rest = `  ${rest.slice(cut + 1)}`
   }
@@ -59,7 +61,7 @@ const wrapped = lines.flatMap((l) => {
 })
 const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
 const LINE = 24
-const width = 920
+const width = 56 + Math.ceil(WRAP * 8.8)
 const height = 40 + wrapped.length * LINE + 24
 let verdict = false
 const text = wrapped

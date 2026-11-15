@@ -18,6 +18,10 @@ npx evalbar run examples/semantic-cache                    # a semantic cache un
 npx evalbar run your-cases.jsonl --base-url http://localhost:8080/v1 --model your-model --bar 0.9
 ```
 
+Timed by `bash tools/five-minutes.sh` on a fresh clone: 15.4 seconds from `git clone` to the second number, with npm's cache warm.
+
+`npx evalbar` finds the command inside the clone. To use it from anywhere, install it once from the clone with `npm install -g .`, then type `evalbar`. A `--command` runs through your shell, which on Windows is cmd.exe, so give it Windows paths.
+
 A case is one JSON line: `{"input": "...", "expected": "...", "tags": ["el"], "cluster": "session-17"}`. Exit codes are 0 for PASS, 1 for FAIL and 3 for CANNOT TELL, so a CI step can stop on the first two and decide about the third.
 
 ## What it said about real systems
@@ -28,7 +32,7 @@ A case is one JSON line: `{"input": "...", "expected": "...", "tags": ["el"], "c
 
 **A judge, before it is trusted.** The same small model was asked whether each of 250 answers complied with its request: Llama 2's answers to XSTest's safe prompts, which the paper's two annotators labelled. It agreed with them at Cohen's kappa 0.102, interval 0.018 to 0.185, where the annotators agree with each other at 0.958. Its raw agreement, 0.498, reads better than it is: a judge that always said pass would score 0.402. It also passed an answer to a different question. evalbar does not trust it, and a run it grades gets no PASS or FAIL.
 
-**A production log.** The importer read a synthetic support log of 1,780 rows built on [logs-to-evals](https://github.com/Broikos-Nikos/logs-to-evals)'s generator, with noise planted around it: it caught all 100 short lines, all 60 pastes and all but 2 of 120 lines that lean on a conversation, dropped 1,066 exact and 20 near duplicates, and kept 431 cases in 341 clusters, 71 held out in a sealed file with no session split across the line. It removed every planted email, card number, phone, AFM, AMKA, Greek IBAN, identity card and name after an introduction.
+**A production log.** The importer read a synthetic support log of 1,780 rows built on [logs-to-evals](https://github.com/Broikos-Nikos/logs-to-evals)'s generator, with noise planted around it: it caught all 100 short lines, all 60 pastes and all but 2 of 120 lines that lean on a conversation, dropped 1,069 exact and 31 near duplicates, and kept 417 cases in 332 clusters, 69 held out in a sealed file with no session split across the line. It removed every planted email, card number, phone, AFM, AMKA, Greek IBAN and identity card. Names are the hard part: logs-to-evals's rules, which catch a name only after "my name is", let 45 of 64 through, so the importer adds a crude recogniser for capitalised word pairs, after which 0 of 52 survive. That figure is kind to it, as "What it does not do" says.
 
 ## What it measured about itself
 
@@ -72,7 +76,7 @@ New here: the runner and its two kinds of system under test, the exact interval 
 
 **No trusted judge is shown working.** The one model this machine could serve fails its calibration, so the path where a calibrated judge decides a verdict is exercised by the tests, with a scripted judge, and not by a real one. A real one is a run of `evalbar calibrate` against a model with a key.
 
-**Names without an introduction survive the scrubber.** 45 of the 64 English names planted in kept requests remained, the failure logs-to-evals published for the same rules. A name has no shape a pattern can hold.
+**The name recogniser is a capital letter.** It takes two or three capitalised words in a row, so on the synthetic log, where every planted name is written that way and nothing else is capitalised, it catches all of them and scrubs nothing it should not. A real log will differ both ways: a name typed in lower case survives, and "the Blue Kettle" is scrubbed as a name. Without it, logs-to-evals's rules let 45 of 64 names through, the failure logs-to-evals published. A name has no shape a pattern can hold, and a model that recognises names is the fix this does not ship.
 
 **The importer's floor was chosen on the log it is measured on.** The 12 character default drops no real request on the synthetic support log, whose short lines the same author wrote. A real log may differ; `--min-chars` changes it.
 

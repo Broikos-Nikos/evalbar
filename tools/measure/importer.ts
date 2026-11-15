@@ -51,6 +51,21 @@ for (const t of truth) {
   }
 }
 
+// and the other side of a name recogniser: kept requests that lost words to <NAME> with no name planted in them
+const namePlanted = new Set(truth.filter((t) => t.planted.some((p) => p.kind === 'name' || p.kind === 'gr-name')).map((t) => t.row))
+const nameTagged = [...cases].filter(([row, text]) => text.includes('<NAME>') && !namePlanted.has(row)).length
+// the same log without the name recogniser, for what logs-to-evals's rules alone let through
+const plain = importLog(log, { ...OPTIONS, names: 'off' })
+const plainCases = new Map([...plain.dev, ...plain.test].map((c) => [Number(c.id.replace('log-', '')), c.input]))
+const namesWithoutRecogniser = { inKept: 0, survived: 0 }
+for (const t of truth) {
+  const text = plainCases.get(t.row)
+  if (text === undefined) continue
+  for (const p of t.planted.filter((x) => x.kind === 'name')) {
+    namesWithoutRecogniser.inKept++
+    if (text.includes(p.value)) namesWithoutRecogniser.survived++
+  }
+}
 const devClusters = new Set(dev.map((c) => c.cluster))
 const straddling = test.filter((c) => devClusters.has(c.cluster)).length
 
@@ -63,7 +78,7 @@ const floors = [0, 12, 20].map((minChars) => {
 })
 
 const rowsByKind = Object.fromEntries(['request', 'short', 'pasted', 'context'].map((k) => [k, truth.filter((t) => t.what === k).length]))
-const out = { made_by: 'node tools/measure/importer.ts', log: 'examples/importer/log.jsonl', options: OPTIONS, rows: rowsByKind, funnel, byKind, scrub, holdout: { dev: dev.length, test: test.length, casesInATestSessionAlsoInDev: straddling }, floors }
+const out = { made_by: 'node tools/measure/importer.ts', log: 'examples/importer/log.jsonl', options: OPTIONS, rows: rowsByKind, funnel, byKind, scrub, keptWithANameTagAndNoNamePlanted: nameTagged, namesWithoutRecogniser, holdout: { dev: dev.length, test: test.length, casesInATestSessionAlsoInDev: straddling }, floors }
 const path = process.env.EVALBAR_MEASURE_OUT ?? join(here, '..', '..', 'measurements', 'importer.json')
 mkdirSync(dirname(path), { recursive: true })
 writeFileSync(path, `${JSON.stringify(out, null, 1)}\n`)
@@ -72,6 +87,8 @@ if (!process.env.EVALBAR_MEASURE_OUT) {
   for (const [k, v] of Object.entries(byKind)) console.log(`  ${k.padEnd(8)} ${Object.entries(v).map(([f, n]) => `${f} ${n}`).join(', ')}`)
   console.log('identifiers planted in kept requests, and how many survived:')
   for (const [k, v] of Object.entries(scrub)) console.log(`  ${k.padEnd(9)} ${v.survived} of ${v.inKept} survived`)
+  console.log(`names without the recogniser: ${namesWithoutRecogniser.survived} of ${namesWithoutRecogniser.inKept} survived`)
+  console.log(`kept requests with a <NAME> tag and no name planted: ${nameTagged} of ${cases.size}`)
   console.log(`holdout: ${dev.length} dev, ${test.length} test, ${straddling} test cases from a session that is also in dev`)
   for (const f of floors) console.log(`floor ${String(f.minChars).padStart(2)}: ${f.requestsDroppedAsShort} real requests dropped as short; ${f.shortLinesCaught} of 100 short lines caught, ${f.shortLinesKept} kept`)
 }

@@ -36,6 +36,12 @@ test('Greek identifiers go before the generic rules can eat their digits', () =>
   assert.equal(r.text, 'Επιστροφή στον <IBAN>, ΑΜΚΑ <AMKA>, κινητό <PHONE>, ΑΔΤ <ID>. Με λένε <NAME>.')
 })
 
+test('a capitalised pair is taken as a name, including the ones that are not, and --names off leaves it', () => {
+  assert.equal(scrubLine('Maria Papadopoulou here, where is my order').text, '<NAME> here, where is my order')
+  assert.equal(scrubLine('I bought the Blue Kettle yesterday').text, 'I bought the <NAME> yesterday')
+  assert.equal(scrubLine('Maria Papadopoulou here', { names: 'off' }).text, 'Maria Papadopoulou here')
+})
+
 test('a paste is not a request, and a request is not a paste', () => {
   assert.equal(looksPasted('Traceback (most recent call last):\n  File "a.py", line 3\nValueError: no'), true)
   assert.equal(looksPasted('```\n{"a": 1}\n```'), true)
@@ -99,16 +105,19 @@ test('the held-out file is sealed: refused without --sealed, counted with it, re
   const script = join(root, 'echo.mjs')
   writeFileSync(script, "import { createInterface } from 'node:readline'\nfor await (const l of createInterface({ input: process.stdin })) process.stdout.write(JSON.stringify({ output: 'x' }) + '\\n')\n")
   const cmd = `"${process.execPath}" "${script}"`
+  // an imported suite has no expected answers by design, so it is graded by a program
+  const grader = join(root, 'any.mjs')
+  writeFileSync(grader, 'export const grade = () => ({ pass: true, reason: "any" })')
   const test1 = join(out, 'test.jsonl')
-  const casual = await cli('run', test1, '--command', cmd, '--out', join(root, 'r1'))
+  const casual = await cli('run', test1, '--command', cmd, '--grader', `program:${grader}`, '--out', join(root, 'r1'))
   assert.equal(casual.code, 2)
   assert.match(casual.err, /is a sealed held-out file: score it with --sealed, which spends one of its 1 decisions \(0 spent\)/)
-  const sealed = await cli('run', test1, '--command', cmd, '--sealed', '--out', join(root, 'r2'))
+  const sealed = await cli('run', test1, '--command', cmd, '--grader', `program:${grader}`, '--sealed', '--out', join(root, 'r2'))
   assert.notEqual(sealed.code, 2)
   assert.equal(JSON.parse(readFileSync(join(out, 'test.seal.json'), 'utf8')).runs.length, 1)
-  const again = await cli('run', test1, '--command', cmd, '--sealed', '--out', join(root, 'r3'))
+  const again = await cli('run', test1, '--command', cmd, '--grader', `program:${grader}`, '--sealed', '--out', join(root, 'r3'))
   assert.match(again.err, /has spent its 1 sealed runs/)
   writeFileSync(test1, `${readFileSync(test1, 'utf8')}{"id":"x","input":"one more"}\n`)
-  const edited = await cli('run', test1, '--command', cmd, '--sealed', '--out', join(root, 'r4'))
+  const edited = await cli('run', test1, '--command', cmd, '--grader', `program:${grader}`, '--sealed', '--out', join(root, 'r4'))
   assert.match(edited.err, /has changed since it was sealed/)
 })

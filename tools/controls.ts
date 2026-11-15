@@ -327,6 +327,13 @@ const CONTROLS: Control[] = [
   },
   {
     gate: 'test/importer.test.ts',
+    why: 'the name recogniser left out, which let 45 of 64 planted names through',
+    breakIt: (dir) => mutate(dir, 'src/importer/scrub.ts', "  if (o.names !== 'off')", "  if (o.names === 'never')"),
+    run: tests('test/importer.test.ts'),
+    expect: [/✖ a capitalised pair is taken as a name/],
+  },
+  {
+    gate: 'test/importer.test.ts',
     why: 'a holdout by time that sends each row by its own time, splitting sessions',
     breakIt: (dir) => mutate(dir, 'src/importer/import.ts', '    if (!it.cluster) return own', '    if (it.cluster !== "never") return own'),
     run: tests('test/importer.test.ts'),
@@ -352,6 +359,20 @@ const CONTROLS: Control[] = [
     breakIt: (dir) => mutate(dir, 'examples/semantic-cache/system.ts', 'const guards = { none: null, digits, names: digitsAndNames(CATALOG) } as const', 'const guards = { none: null, digits: null, names: digitsAndNames(CATALOG) } as const'),
     run: gate('tools/check-measure.ts'),
     expect: [/measurements\/semantic-cache\.json is not what tools\/measure\/semantic-cache\.ts prints today/],
+  },
+  {
+    gate: 'test/app.test.ts',
+    why: 'a suite with no expected answers run under the exact grader, every case failing for the suite\'s fault',
+    breakIt: (dir) => mutate(dir, 'src/app.ts', "  if (grader.name === 'exact') {\n    const usable", "  if (grader.name === 'never') {\n    const usable"),
+    run: tests('test/app.test.ts'),
+    expect: [/✖ the exact grader with nothing to compare against is refused before anything runs/],
+  },
+  {
+    gate: 'test/app.test.ts',
+    why: 'a flag the parser accepts that the help never mentions, as --record was until the audit of tick 12 listed it',
+    breakIt: (dir) => mutate(dir, 'src/app.ts', '  --record <file>                   calibrate only: where the record goes (.evalbar/calibrations/)\n', ''),
+    run: tests('test/app.test.ts'),
+    expect: [/✖ help lists every flag the parser accepts, and no other/],
   },
   {
     gate: 'check:calibration',
@@ -400,8 +421,14 @@ function copy(): string {
   return dir
 }
 
+// --only <text>: the controls whose gate or description holds the text, so the controls a change
+// touches can be run on a loaded machine without running all of them
+const only = process.argv.indexOf('--only') >= 0 ? process.argv[process.argv.indexOf('--only') + 1] : null
+const chosen = only ? CONTROLS.filter((c) => c.gate.includes(only) || c.why.includes(only)) : CONTROLS
+if (only && !chosen.length) throw new Error(`no control matches "${only}"`)
+
 let bad = 0
-for (const c of CONTROLS) {
+for (const c of chosen) {
   const dir = copy()
   try {
     c.breakIt(dir)
@@ -423,4 +450,4 @@ for (const c of CONTROLS) {
   }
 }
 if (bad) process.exit(1)
-console.log(`controls ok: ${CONTROLS.length} of ${CONTROLS.length} controls make their gate fail`)
+console.log(`controls ok: ${chosen.length} of ${chosen.length} controls make their gate fail${only ? ` (those matching "${only}", of ${CONTROLS.length})` : ''}`)

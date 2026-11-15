@@ -72,6 +72,7 @@ import
   --min-chars <n>  --near <similarity>  --pick <n>   the length floor (12), duplicates (0.9), a budget
   --holdout-after <date> | --holdout-source <name>   held out to a sealed test.jsonl
   --budget <n>                      sealed runs allowed on it (3); run it with --sealed
+  --names capitalised | off         scrub capitalised word pairs as names (the default), or not
 
 Exit codes: 0 pass (or no bar), 1 fail, 3 cannot tell, 2 the run could not be made.
 compare: 0 B better (or, with --margin, not worse by it), 1 B worse, 3 cannot tell.
@@ -159,6 +160,16 @@ async function run(argv: string[], io: Io): Promise<number> {
   }
 
   const cases = loadCases(suite.casesPath, values.encoding ?? cfg.encoding)
+  // the exact grader with nothing to compare against fails every case, and the report would read as a bad model:
+  // the audit's first ten minutes did exactly that (tick 12), so it is refused here, before anything is spent
+  if (grader.name === 'exact') {
+    const usable = (x: unknown) => typeof x === 'string' || typeof x === 'number'
+    const missing = cases.filter((c) => !(usable(c.expected) || (Array.isArray(c.expected) && c.expected.some(usable))))
+    if (missing.length)
+      throw new UsageError(
+        `the exact grader compares each answer with "expected", and ${missing.length} of ${cases.length} cases have none (the first on line ${missing[0].line}); add it, or grade with --grader judge or --grader program:<file>`,
+      )
+  }
   const provider: Provider = command
     ? commandProvider({ command, cwd: suite.dir, timeoutMs })
     : openaiProvider({
@@ -330,10 +341,12 @@ async function importCommand(argv: string[], io: Io): Promise<number> {
       'holdout-source': { type: 'string' },
       budget: { type: 'string' },
       encoding: { type: 'string' },
+      names: { type: 'string' },
     },
   })
   if (positionals.length !== 1 || !values.out) throw new UsageError('import wants a log file and --out <folder>')
   if (values['holdout-after'] && values['holdout-source']) throw new UsageError('hold out by time or by source, not both')
+  if (values.names !== undefined && values.names !== 'capitalised' && values.names !== 'off') throw new UsageError('--names is capitalised (the default) or off')
   const rows = parseJsonl(readText(positionals[0], values.encoding), positionals[0]).map((l) => l.value as Record<string, unknown>)
   const { dev, test, funnel } = importLog(rows, {
     inputField: values['input-field'],
@@ -348,6 +361,7 @@ async function importCommand(argv: string[], io: Io): Promise<number> {
     pick: num(values.pick, '--pick', 1),
     holdoutAfter: values['holdout-after'],
     holdoutSource: values['holdout-source'],
+    names: values.names as 'capitalised' | 'off' | undefined,
   })
   const out = resolve(values.out)
   mkdirSync(out, { recursive: true })

@@ -91,7 +91,7 @@ const RULES: Rule[] = [
   { tag: '<NAME>', re: /([Μμ]ε λένε|[Οο]νομάζομαι|[Λλ]έγομαι)\s+(\p{L}+(?:\s+\p{Lu}\p{L}+)?)/gu, group: 2 },
 ]
 
-export function scrubLine(text: string): { text: string; removed: Removed } {
+export function scrubLine(text: string, o: { names?: 'capitalised' | 'off' } = {}): { text: string; removed: Removed } {
   const removed: Removed = {}
   let t = text.normalize('NFC')
   for (const rule of RULES) {
@@ -108,8 +108,19 @@ export function scrubLine(text: string): { text: string; removed: Removed } {
   t = vendoredScrub(t)
   const after = countTags(t)
   for (const [tag, n] of Object.entries(after)) if (n > (before[tag] ?? 0)) removed[tag] = (removed[tag] ?? 0) + n - (before[tag] ?? 0)
+  // last, a name recogniser of the crudest kind: two or three capitalised words in a row. The rules above
+  // catch a name only after "my name is", and 45 of 64 planted names survived them (tick 10); the knowledge
+  // base's position is that a pattern stack without a name recogniser leaks names first (08/01 section 3).
+  // It errs towards scrubbing: "Blue Kettle" goes too, and the measurement counts how often that happens.
+  if (o.names !== 'off')
+    t = t.replace(NAME_PAIR, () => {
+    removed['<NAME>'] = (removed['<NAME>'] ?? 0) + 1
+    return '<NAME>'
+  })
   return { text: t, removed }
 }
+
+const NAME_PAIR = /\p{Lu}\p{Ll}+(?:[ \t]+\p{Lu}\p{Ll}+){1,2}/gu
 
 function countTags(t: string): Removed {
   const out: Removed = {}

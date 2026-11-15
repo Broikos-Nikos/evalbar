@@ -50,6 +50,8 @@ export type ImportOptions = {
   pick?: number
   holdoutAfter?: string
   holdoutSource?: string
+  /** the capitalised-pair name recogniser, on unless turned off */
+  names?: 'capitalised' | 'off'
 }
 
 export type ImportedCase = {
@@ -145,7 +147,7 @@ export function importLog(rows: Row[], o: ImportOptions): { dev: ImportedCase[];
       fates[i] = 'no request'
       return
     }
-    const clean = scrubLine(input)
+    const clean = scrubLine(input, { names: o.names })
     for (const [k, n] of Object.entries(clean.removed)) f.removed[k] = (f.removed[k] ?? 0) + n
     const text = clean.text.trim()
     if ([...text].length < o.minChars) {
@@ -167,7 +169,7 @@ export function importLog(rows: Row[], o: ImportOptions): { dev: ImportedCase[];
     const source = str(field(row, o.sourceField, FIELDS.source))
     const cluster = str(field(row, o.clusterField, FIELDS.cluster)) ?? source ?? null
     const id = str(field(row, o.idField, FIELDS.id)) ?? String(i + 1)
-    const loggedOutput = output === undefined ? undefined : scrubLine(output).text
+    const loggedOutput = output === undefined ? undefined : scrubLine(output, { names: o.names }).text
     items.push({ id: `log-${id}`, input: text, tags: source ? [source] : [], cluster, logged_output: loggedOutput, time, source, order: i, signal: Boolean(field(row, o.signalField, FIELDS.signal)) })
   })
 
