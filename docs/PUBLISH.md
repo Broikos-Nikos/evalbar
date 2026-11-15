@@ -36,9 +36,9 @@ llm  evals  llm-evaluation  llm-as-a-judge  statistics  confidence-intervals  cl
 1. Create the repository with the description and topics above.
 2. Push `main` with its whole history, every commit authored `Nikos Broikos
    <broikos.nikolaos@gmail.com>`, none co-authored (`check:source` holds both).
-3. Run `bash tools/five-minutes.sh` against a clone of the pushed repository, from GitHub this
-   time, and commit its output.
-4. The README's clone command already names `Broikos-Nikos/evalbar`; check it resolves.
+3. Run `bash tools/five-minutes.sh https://github.com/Broikos-Nikos/evalbar`, which times a clone
+   from GitHub, the one the README's first command makes, and commit its output. If the time moves,
+   the README's sentence moves with it: `check:claims` fails until it does.
 
 ## Not before the owner's word
 
