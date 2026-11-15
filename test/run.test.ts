@@ -21,9 +21,9 @@ import { readRows, runSuite, type ErrorRow, type Grader, type Row, type RunConfi
 import { fakeOpenAi, type Fake } from './fake-openai.ts'
 
 const CASES: Case[] = [
-  { id: 'a', input: 'capital of Greece', expected: 'Αθήνα', tags: ['el'], line: 1, extra: {} },
-  { id: 'b', input: 'capital of Italy', expected: 'Rome', tags: ['en'], line: 2, extra: {} },
-  { id: 'c', input: 'capital of Cyprus', expected: 'Λευκωσία', tags: ['el'], line: 3, extra: {} },
+  { id: 'a', input: 'capital of Greece', expected: 'Αθήνα', tags: ['el'], cluster: null, line: 1, extra: {} },
+  { id: 'b', input: 'capital of Italy', expected: 'Rome', tags: ['en'], cluster: null, line: 2, extra: {} },
+  { id: 'c', input: 'capital of Cyprus', expected: 'Λευκωσία', tags: ['el'], cluster: null, line: 3, extra: {} },
 ]
 const ANSWERS = { 'capital of Greece': 'Αθήνα', 'capital of Italy': 'Rome', 'capital of Cyprus': 'Λευκωσία' }
 const exact: Grader = { name: 'exact', grade: (c, out) => gradeExact(out, c.expected) }
@@ -142,7 +142,7 @@ test('a run folder of another suite is refused, not mixed', async () => {
 
 test('the endpoint is sent the input and never the expected answer', async () => {
   const start = fake.bodies.length
-  await go(http('oracle'), join(root, 'leak'), [{ id: 'z', input: 'what is 2+2', expected: 'SECRET-4', tags: ['t'], line: 1, extra: { hidden: 'SECRET-X' } }])
+  await go(http('oracle'), join(root, 'leak'), [{ id: 'z', input: 'what is 2+2', expected: 'SECRET-4', tags: ['t'], cluster: null, line: 1, extra: { hidden: 'SECRET-X' } }])
   const sent = fake.bodies.slice(start).join('')
   assert.ok(sent.includes('what is 2+2') && !sent.includes('SECRET'))
 })

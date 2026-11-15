@@ -297,15 +297,12 @@ export function holm(ps: number[], alpha = 0.05): boolean[] {
  * so the promise holds.
  */
 export function binomTestP(k: number, n: number, p0: number): number {
-  if (p0 <= 0) return k === 0 ? 1 : 0
-  if (p0 >= 1) return k === n ? 1 : 0
-  const lp = Math.log(p0)
-  const lq = Math.log(1 - p0)
-  const pmf = (i: number) => Math.exp(logChoose(n, i) + i * lp + (n - i) * lq)
-  let below = 0
-  for (let i = 0; i <= k; i++) below += pmf(i)
-  let above = 0
-  for (let i = k; i <= n; i++) above += pmf(i)
+  if (p0 <= 0) return k <= 0 ? 1 : 0
+  if (p0 >= 1) return k >= n ? 1 : 0
+  // the binomial tails through the incomplete beta, P(X <= k) = I_(1-p0)(n-k, k+1) and P(X >= k) = I_p0(k, n-k+1),
+  // which also take the fractional count a clustered tag is read at (B9)
+  const below = k >= n ? 1 : betaInc(1 - p0, n - k, k + 1)
+  const above = k <= 0 ? 1 : betaInc(p0, k, n - k + 1)
   return Math.min(1, 2 * Math.min(below, above))
 }
 
@@ -368,6 +365,9 @@ export function betaInc(x: number, a: number, b: number): number {
  */
 export function exactInterval(k: number, n: number, alpha = 0.05): Interval {
   if (!(n > 0)) throw new RangeError(`exactInterval: n must be positive, got ${n}`)
+  // a count scaled to an effective sample size can overshoot its end by a few ulps
+  if (k > n && k - n < 1e-9 * n) k = n
+  if (k < 0 && k > -1e-9 * n) k = 0
   if (k < 0 || k > n) throw new RangeError(`exactInterval: k must be within 0 and ${n}, got ${k}`)
   const solve = (f: (p: number) => number, target: number) => {
     let lo = 0
@@ -384,5 +384,138 @@ export function exactInterval(k: number, n: number, alpha = 0.05): Interval {
     lo: k <= 0 ? 0 : solve((p) => betaInc(p, k, n - k + 1), alpha / 2),
     // P(X <= k | p) = 1 - I_p(k + 1, n - k) falls with p; the high end is where it falls to alpha / 2
     hi: k >= n ? 1 : solve((p) => betaInc(p, k + 1, n - k), 1 - alpha / 2),
+  }
+}
+
+/** Student's t distribution function, through the incomplete beta. */
+export function tCdf(t: number, df: number): number {
+  const tail = 0.5 * betaInc(df / (df + t * t), df / 2, 0.5)
+  return t >= 0 ? 1 - tail : tail
+}
+
+const tMemo = new Map<string, number>()
+
+/** The p quantile of Student's t on df degrees of freedom, by bisection, remembered: a report asks for the same few. */
+export function tQuantile(p: number, df: number): number {
+  const key = `${p}|${df}`
+  const known = tMemo.get(key)
+  if (known !== undefined) return known
+  const q = tQuantileOnce(p, df)
+  tMemo.set(key, q)
+  return q
+}
+
+function tQuantileOnce(p: number, df: number): number {
+  let lo = -1e3
+  let hi = 1e3
+  for (let i = 0; i < 200 && hi - lo > 1e-12; i++) {
+    const mid = (lo + hi) / 2
+    if (tCdf(mid, df) < p) lo = mid
+    else hi = mid
+  }
+  return (lo + hi) / 2
+}
+
+/** One cluster's counts: cases graded, and of them passed. */
+export type ClusterCount = { k: number; n: number }
+
+export type Clustered = {
+  k: number
+  n: number
+  clusters: number
+  /** the variance of the rate with the clusters, over the variance it would have without them; at least 1 */
+  designEffect: number
+  /** the independent cases these are worth, after the design effect and the degrees of freedom */
+  effective: number
+  /** effective over n: multiply a count by it to read it at the effective sample size */
+  factor: number
+}
+
+/**
+ * A rate over cases that come in clusters (decision B9): the design effect from
+ * the cluster-robust variance of the ratio estimator, with G/(G-1), and Korn
+ * and Graubard's effective sample size (Statistics in Medicine 17:1745, 1998),
+ * n / deff scaled by (t on n-1 over t on G-1) squared, so that few clusters cost
+ * what an estimated variance costs. Read at that size, the exact interval.
+ *
+ * One departure, on the conservative side: at a rate of 0 or 1 every cluster
+ * agrees with every other and the data cannot say how alike a cluster's cases
+ * are, so each cluster counts once. Korn and Graubard set the design effect to
+ * 1 there, which would let 20 near-copies of one answer count as 20 cases.
+ */
+/** The counts a clustered rate is read at: the observed rate, at the effective sample size. */
+export const effectiveCounts = (c: Clustered) => ({ k: c.n ? (c.k / c.n) * c.effective : 0, n: c.effective })
+
+export function clusteredRate(counts: ClusterCount[]): Clustered {
+  const k = counts.reduce((s, c) => s + c.k, 0)
+  const n = counts.reduce((s, c) => s + c.n, 0)
+  const G = counts.length
+  if (G === n || G < 2) return { k, n, clusters: G, designEffect: 1, effective: n, factor: 1 }
+  const p = k / n
+  const dfFactor = (tQuantile(0.975, n - 1) / tQuantile(0.975, G - 1)) ** 2
+  let deff: number
+  let base: number
+  if (k === 0 || k === n) {
+    base = G
+    deff = n / G
+  } else {
+    const varCluster = (G / (G - 1)) * counts.reduce((s, c) => s + (c.k - p * c.n) ** 2, 0) / (n * n)
+    deff = Math.max(1, varCluster / ((p * (1 - p)) / n))
+    base = n / deff
+  }
+  const effective = Math.min(n, base * dfFactor)
+  return { k, n, clusters: G, designEffect: deff, effective, factor: effective / n }
+}
+
+/** One cluster's paired counts: cases graded in both runs, those the second won and those it lost. */
+export type PairCount = { n: number; won: number; lost: number }
+
+/**
+ * Two runs on cases that come in clusters. Durkalski's clustered McNemar
+ * (Statistics in Medicine 22:2417, 2003), (sum of per-cluster differences)
+ * squared over the sum of their squares, which is McNemar's own statistic when
+ * every cluster holds one case; and an interval on the cluster-robust variance
+ * of the paired difference (Obuchowski, Statistics in Medicine 17:1495, 1998),
+ * with t on G-1. The decision is the interval's, as in `compare`. The detectable
+ * difference and the cases needed are the unclustered ones scaled by the
+ * design effect of the difference.
+ */
+export function compareClustered(counts: PairCount[], margin: number | null = null): Comparison & { clusters: number; designEffect: number; method: 'clustered' } {
+  const n = counts.reduce((s, c) => s + c.n, 0)
+  const won = counts.reduce((s, c) => s + c.won, 0)
+  const lost = counts.reduce((s, c) => s + c.lost, 0)
+  const G = counts.length
+  const diff = (won - lost) / n
+  const d = counts.map((c) => c.won - c.lost)
+  const sumSq = d.reduce((s, x) => s + x * x, 0)
+  const chi = sumSq ? (won - lost) ** 2 / sumSq : 0
+  const p = sumSq ? Math.min(1, 2 * normalUpper(Math.sqrt(chi))) : 1
+  const varCluster = G > 1 ? ((G / (G - 1)) * counts.reduce((s, c, i) => s + (d[i] - diff * c.n) ** 2, 0)) / (n * n) : Infinity
+  const half = G > 1 ? tQuantile(0.975, G - 1) * Math.sqrt(varCluster) : Infinity
+  const lo = Math.max(-1, diff - half)
+  const hi = Math.min(1, diff + half)
+  const disc = (won + lost) / n
+  const varNaive = (disc - diff * diff) / n
+  const designEffect = varNaive > 0 && Number.isFinite(varCluster) ? Math.max(1, varCluster / varNaive) : G > 1 ? n / G : Infinity
+  const verdict = lo > EPS ? 'better' : hi < -EPS ? 'worse' : 'refused'
+  const detectable = pairedDetectable(n / designEffect, disc)
+  const need = diff === 0 ? null : pairedNeeded(diff, disc)
+  return {
+    verdict,
+    n,
+    won,
+    lost,
+    diff,
+    lo,
+    hi,
+    midP: p,
+    detectable,
+    needed: need === null ? null : Math.ceil(need * designEffect),
+    margin,
+    noWorse: margin === null ? null : lo > -margin,
+    within: margin === null ? null : lo > -margin && hi < margin,
+    clusters: G,
+    designEffect,
+    method: 'clustered',
   }
 }

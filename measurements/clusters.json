@@ -1,0 +1,359 @@
+{
+ "made_by": "node tools/measure/clusters.ts",
+ "seed": 20261116,
+ "bar": 0.9,
+ "rate": {
+  "trials": 2000,
+  "results": [
+   {
+    "rho": 0,
+    "clusters": 10,
+    "perCluster": 5,
+    "falseFailAtTheBar": {
+     "naive": 0.0215,
+     "clustered": 0.007
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0.001,
+     "clustered": 0
+    }
+   },
+   {
+    "rho": 0,
+    "clusters": 10,
+    "perCluster": 20,
+    "falseFailAtTheBar": {
+     "naive": 0.0105,
+     "clustered": 0.0055
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0.0005,
+     "clustered": 0
+    }
+   },
+   {
+    "rho": 0,
+    "clusters": 30,
+    "perCluster": 5,
+    "falseFailAtTheBar": {
+     "naive": 0.013,
+     "clustered": 0.01
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0.0005,
+     "clustered": 0.0005
+    }
+   },
+   {
+    "rho": 0,
+    "clusters": 30,
+    "perCluster": 20,
+    "falseFailAtTheBar": {
+     "naive": 0.0155,
+     "clustered": 0.011
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0,
+     "clustered": 0
+    }
+   },
+   {
+    "rho": 0,
+    "clusters": 100,
+    "perCluster": 5,
+    "falseFailAtTheBar": {
+     "naive": 0.018,
+     "clustered": 0.0165
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0,
+     "clustered": 0
+    }
+   },
+   {
+    "rho": 0,
+    "clusters": 100,
+    "perCluster": 20,
+    "falseFailAtTheBar": {
+     "naive": 0.019,
+     "clustered": 0.0175
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0,
+     "clustered": 0
+    }
+   },
+   {
+    "rho": 0.2,
+    "clusters": 10,
+    "perCluster": 5,
+    "falseFailAtTheBar": {
+     "naive": 0.0595,
+     "clustered": 0.0065
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0.008,
+     "clustered": 0
+    }
+   },
+   {
+    "rho": 0.2,
+    "clusters": 10,
+    "perCluster": 20,
+    "falseFailAtTheBar": {
+     "naive": 0.149,
+     "clustered": 0.0085
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0.0535,
+     "clustered": 0.016
+    }
+   },
+   {
+    "rho": 0.2,
+    "clusters": 30,
+    "perCluster": 5,
+    "falseFailAtTheBar": {
+     "naive": 0.042,
+     "clustered": 0.006
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0.007,
+     "clustered": 0.005
+    }
+   },
+   {
+    "rho": 0.2,
+    "clusters": 30,
+    "perCluster": 20,
+    "falseFailAtTheBar": {
+     "naive": 0.1595,
+     "clustered": 0.01
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0.027,
+     "clustered": 0.0025
+    }
+   },
+   {
+    "rho": 0.2,
+    "clusters": 100,
+    "perCluster": 5,
+    "falseFailAtTheBar": {
+     "naive": 0.056,
+     "clustered": 0.018
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0.0015,
+     "clustered": 0.0005
+    }
+   },
+   {
+    "rho": 0.2,
+    "clusters": 100,
+    "perCluster": 20,
+    "falseFailAtTheBar": {
+     "naive": 0.171,
+     "clustered": 0.014
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0.002,
+     "clustered": 0
+    }
+   },
+   {
+    "rho": 1,
+    "clusters": 10,
+    "perCluster": 5,
+    "falseFailAtTheBar": {
+     "naive": 0.2695,
+     "clustered": 0.0025
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0.247,
+     "clustered": 0
+    }
+   },
+   {
+    "rho": 1,
+    "clusters": 10,
+    "perCluster": 20,
+    "falseFailAtTheBar": {
+     "naive": 0.248,
+     "clustered": 0.0005
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0.252,
+     "clustered": 0
+    }
+   },
+   {
+    "rho": 1,
+    "clusters": 30,
+    "perCluster": 5,
+    "falseFailAtTheBar": {
+     "naive": 0.1635,
+     "clustered": 0.0075
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0.086,
+     "clustered": 0
+    }
+   },
+   {
+    "rho": 1,
+    "clusters": 30,
+    "perCluster": 20,
+    "falseFailAtTheBar": {
+     "naive": 0.348,
+     "clustered": 0.0045
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0.242,
+     "clustered": 0
+    }
+   },
+   {
+    "rho": 1,
+    "clusters": 100,
+    "perCluster": 5,
+    "falseFailAtTheBar": {
+     "naive": 0.1965,
+     "clustered": 0.023
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0.0455,
+     "clustered": 0
+    }
+   },
+   {
+    "rho": 1,
+    "clusters": 100,
+    "perCluster": 20,
+    "falseFailAtTheBar": {
+     "naive": 0.276,
+     "clustered": 0.0165
+    },
+    "falsePassThreePointsUnder": {
+     "naive": 0.0815,
+     "clustered": 0.0005
+    }
+   }
+  ]
+ },
+ "compare": {
+  "trials": 2000,
+  "families": 50,
+  "perFamily": 4,
+  "results": [
+   {
+    "flips": "items",
+    "churn": 0.06,
+    "effect": 0,
+    "decided": {
+     "tangoOnCases": 0.0435,
+     "clustered": 0.0425
+    }
+   },
+   {
+    "flips": "items",
+    "churn": 0.06,
+    "effect": 0.1,
+    "decided": {
+     "tangoOnCases": 1,
+     "clustered": 1
+    }
+   },
+   {
+    "flips": "items",
+    "churn": 0.1,
+    "effect": 0,
+    "decided": {
+     "tangoOnCases": 0.056,
+     "clustered": 0.0525
+    }
+   },
+   {
+    "flips": "items",
+    "churn": 0.1,
+    "effect": 0.1,
+    "decided": {
+     "tangoOnCases": 1,
+     "clustered": 1
+    }
+   },
+   {
+    "flips": "items",
+    "churn": 0.14,
+    "effect": 0,
+    "decided": {
+     "tangoOnCases": 0.057,
+     "clustered": 0.058
+    }
+   },
+   {
+    "flips": "items",
+    "churn": 0.14,
+    "effect": 0.1,
+    "decided": {
+     "tangoOnCases": 0.985,
+     "clustered": 0.983
+    }
+   },
+   {
+    "flips": "whole families",
+    "churn": 0.06,
+    "effect": 0,
+    "decided": {
+     "tangoOnCases": 0.4835,
+     "clustered": 0.032
+    }
+   },
+   {
+    "flips": "whole families",
+    "churn": 0.06,
+    "effect": 0.1,
+    "decided": {
+     "tangoOnCases": 0.9845,
+     "clustered": 0.564
+    }
+   },
+   {
+    "flips": "whole families",
+    "churn": 0.1,
+    "effect": 0,
+    "decided": {
+     "tangoOnCases": 0.385,
+     "clustered": 0.047
+    }
+   },
+   {
+    "flips": "whole families",
+    "churn": 0.1,
+    "effect": 0.1,
+    "decided": {
+     "tangoOnCases": 0.994,
+     "clustered": 0.75
+    }
+   },
+   {
+    "flips": "whole families",
+    "churn": 0.14,
+    "effect": 0,
+    "decided": {
+     "tangoOnCases": 0.3755,
+     "clustered": 0.0485
+    }
+   },
+   {
+    "flips": "whole families",
+    "churn": 0.14,
+    "effect": 0.1,
+    "decided": {
+     "tangoOnCases": 0.888,
+     "clustered": 0.5005
+    }
+   }
+  ]
+ }
+}

@@ -22,7 +22,7 @@
  *    is not priced rather than costing $0.00.
  */
 import { UserError } from './errors.ts'
-import { againstBar, binomTestP, compare, exactInterval, holm, type BarVerdict, type Comparison } from './stats.ts'
+import { againstBar, binomTestP, clusteredRate, compare, compareClustered, exactInterval, holm, type BarVerdict, type ClusterCount, type Clustered, type Comparison, type PairCount } from './stats.ts'
 import type { ErrorRow, Prices, Row, RunConfig } from './run.ts'
 import type { Usage } from './providers/types.ts'
 
@@ -53,6 +53,8 @@ export type Report = {
   errorKinds: Record<string, number>
   notRun: number
   rate: Rate | null
+  /** set when the rows name clusters: how much they hold, read as independent cases */
+  clusters: Clustered | null
   bar: number | null
   verdict: BarVerdict | null
   /** the verdict with every case kept out counted as a failure, and as a pass */
@@ -65,7 +67,27 @@ export type Report = {
   sampling: { temperature: number | null; seed: number | null; note: string | null }
 }
 
-const rateOf = (k: number, n: number): Rate | null => (n ? { k, n, rate: k / n, ...exactInterval(k, n) } : null)
+/** A rate's interval read at an effective sample size: the counts times `factor`, which is 1 without clusters. */
+const rateAt = (k: number, n: number, factor = 1): Rate | null => (n ? { k, n, rate: k / n, ...exactInterval(k * factor, n * factor) } : null)
+
+/** The bar verdict at an effective sample size, with the counts and the cases needed put back in real cases. */
+function verdictAt(k: number, n: number, bar: number, factor = 1): BarVerdict {
+  const v = againstBar(k * factor, n * factor, bar)
+  return { ...v, k, n, rate: k / n, needed: v.needed === null ? null : Math.ceil(v.needed / factor) }
+}
+
+/** Rows grouped by cluster; a row with none is a cluster of its own. */
+function clusterCounts(rows: Row[]): ClusterCount[] {
+  const by = new Map<string, ClusterCount>()
+  for (const r of rows) {
+    const key = r.cluster === null ? `case ${r.id}` : `cluster ${r.cluster}`
+    const c = by.get(key) ?? { k: 0, n: 0 }
+    c.n++
+    if (r.pass) c.k++
+    by.set(key, c)
+  }
+  return [...by.values()]
+}
 
 function price(u: Usage | null, p: Prices): number | null {
   if (!u) return null
@@ -119,21 +141,28 @@ export function buildReport(config: RunConfig, rows: Row[], errorRows: ErrorRow[
   for (const e of lastError.values()) errorKinds[e.kind] = (errorKinds[e.kind] ?? 0) + 1
   const errored = lastError.size
   const notRun = Math.max(0, config.cases - final.length - errored)
-  const rate = rateOf(passed, graded.length)
+  // cases in one cluster carry less than their count (B9); every verdict below is read at the effective sample size
+  const clustered = graded.some((r) => r.cluster !== null)
+  const clusters = clustered ? clusteredRate(clusterCounts(graded)) : null
+  const factor = clusters?.factor ?? 1
+  const rate = rateAt(passed, graded.length, factor)
   const bar = config.bar
-  const verdict = bar !== null && graded.length ? againstBar(passed, graded.length, bar) : null
+  const verdict = bar !== null && graded.length ? verdictAt(passed, graded.length, bar, factor) : null
   const out = truncated + errored + notRun
   const sensitivity =
-    verdict && out ? { allFail: againstBar(passed, graded.length + out, bar!).verdict, allPass: againstBar(passed + out, graded.length + out, bar!).verdict } : null
+    verdict && out
+      ? { allFail: verdictAt(passed, graded.length + out, bar!, factor).verdict, allPass: verdictAt(passed + out, graded.length + out, bar!, factor).verdict }
+      : null
 
   const tagNames = [...new Set(graded.flatMap((r) => r.tags))].sort()
   const tagRates = tagNames.map((tag) => {
     const these = graded.filter((r) => r.tags.includes(tag))
-    return { tag, ...rateOf(these.filter((r) => r.pass).length, these.length)! }
+    const f = clustered ? clusteredRate(clusterCounts(these)).factor : 1
+    return { tag, f, ...rateAt(these.filter((r) => r.pass).length, these.length, f)! }
   })
-  const ps = bar === null ? [] : tagRates.map((t) => binomTestP(t.k, t.n, bar))
+  const ps = bar === null ? [] : tagRates.map((t) => binomTestP(t.k * t.f, t.n * t.f, bar))
   const decided = holm(ps)
-  const tags: TagLine[] = tagRates.map((t, i) => ({
+  const tags: TagLine[] = tagRates.map(({ f: _f, ...t }, i) => ({
     ...t,
     p: bar === null ? null : ps[i],
     verdict: bar === null ? null : decided[i] ? (bar === 0 || t.rate > bar ? 'pass' : 'fail') : 'cannot tell',
@@ -153,6 +182,7 @@ export function buildReport(config: RunConfig, rows: Row[], errorRows: ErrorRow[
     errorKinds,
     notRun,
     rate,
+    clusters,
     bar,
     verdict,
     sensitivity,
@@ -203,11 +233,15 @@ export function renderReport(r: Report): string {
   const L: string[] = []
   L.push(`evalbar  ${r.suite}  through ${r.provider}`)
   const kept = [r.truncated && `${r.truncated} cut off by the token limit`, r.errored && `${count(r.errored, "error")} (${Object.entries(r.errorKinds).map(([k, n]) => `${n} ${k}`).join(', ')})`, r.notRun && `${r.notRun} not run`].filter(Boolean)
-  L.push(`graded ${int(r.graded)} of ${int(r.cases)} cases${kept.length ? `; kept out of the rate: ${kept.join(', ')}` : ''}`)
+  L.push(`graded ${int(r.graded)} of ${int(r.cases)} cases${r.clusters ? ` in ${count(r.clusters.clusters, 'cluster')}` : ''}${kept.length ? `; kept out of the rate: ${kept.join(', ')}` : ''}`)
   L.push('')
   if (!r.rate) L.push('no case was graded, so there is no rate')
   else {
     L.push(sayRate(r.rate))
+    if (r.clusters)
+      L.push(
+        `  clustered: design effect ${r.clusters.designEffect.toFixed(1)}, so the ${int(r.graded)} cases count as ${r.clusters.effective.toFixed(1)} independent ones, and the interval is theirs`,
+      )
     if (r.verdict) L.push(sayVerdict(r.verdict))
     if (r.sensitivity && r.verdict) {
       const { allFail, allPass } = r.sensitivity
@@ -249,26 +283,44 @@ export function exitCode(r: Report): number {
   return r.verdict.verdict === 'pass' ? 0 : r.verdict.verdict === 'fail' ? 1 : 3
 }
 
-export type Pairing = { comparison: Comparison; onlyA: number; onlyB: number; sameSuite: boolean }
+export type Pairing = {
+  comparison: Comparison & { clusters?: number; designEffect?: number; method?: 'clustered' }
+  onlyA: number
+  onlyB: number
+  sameSuite: boolean
+}
 
 /** Two runs, paired on the cases both graded. */
 export function pairRuns(a: { config: RunConfig; rows: Row[] }, b: { config: RunConfig; rows: Row[] }, margin: number | null): Pairing {
-  const graded = (rows: Row[]) => new Map(rows.filter((r) => r.status === 'graded').map((r) => [r.id, r.pass === true]))
+  const graded = (rows: Row[]) => new Map(rows.filter((r) => r.status === 'graded').map((r) => [r.id, r]))
   const A = graded(a.rows)
   const B = graded(b.rows)
+  // clusters come from A's rows: the same suite gives both runs the same ones (B9)
+  const byCluster = new Map<string, PairCount>()
   let lost = 0
   let won = 0
   let n = 0
-  for (const [id, pa] of A) {
-    if (!B.has(id)) continue
+  for (const [id, ra] of A) {
+    const rb = B.get(id)
+    if (!rb) continue
     n++
-    const pb = B.get(id)!
-    if (pa && !pb) lost++
-    if (!pa && pb) won++
+    const key = ra.cluster === null ? `case ${id}` : `cluster ${ra.cluster}`
+    const c = byCluster.get(key) ?? { n: 0, won: 0, lost: 0 }
+    c.n++
+    if (ra.pass && !rb.pass) {
+      lost++
+      c.lost++
+    }
+    if (!ra.pass && rb.pass) {
+      won++
+      c.won++
+    }
+    byCluster.set(key, c)
   }
   if (!n) throw new UserError('the two runs share no graded case')
+  const clustered = byCluster.size < n
   return {
-    comparison: compare(lost, won, n, margin),
+    comparison: clustered ? compareClustered([...byCluster.values()], margin) : compare(lost, won, n, margin),
     onlyA: [...A.keys()].filter((id) => !B.has(id)).length,
     onlyB: [...B.keys()].filter((id) => !A.has(id)).length,
     sameSuite: a.config.suiteSha256 === b.config.suiteSha256,
@@ -284,7 +336,9 @@ export function renderComparison(p: Pairing, nameA: string, nameB: string): stri
   if (!p.sameSuite) L.push('the runs used different suite files; only the case ids they share are compared')
   if (p.onlyA || p.onlyB) L.push(`${count(p.onlyA, "case")} graded only in A and ${p.onlyB} only in B are left out`)
   L.push(`${count(c.n, 'case')} graded in both: B passed ${c.won} that A failed, and failed ${c.lost} that A passed`)
-  L.push(`difference ${pts(c.diff)} points, 95% interval ${pts(c.lo)} to ${pts(c.hi)}; McNemar mid-p ${c.midP.toFixed(3)}`)
+  if (c.method === 'clustered')
+    L.push(`in ${count(c.clusters!, 'cluster')}, design effect ${c.designEffect!.toFixed(1)}: tested on the clusters, Durkalski's clustered McNemar and a cluster-robust interval`)
+  L.push(`difference ${pts(c.diff)} points, 95% interval ${pts(c.lo)} to ${pts(c.hi)}; ${c.method === 'clustered' ? 'clustered McNemar p' : 'McNemar mid-p'} ${c.midP.toFixed(3)}`)
   if (c.verdict === 'better') L.push('B IS BETTER: the whole interval is above zero')
   else if (c.verdict === 'worse') L.push('B IS WORSE: the whole interval is below zero')
   else {

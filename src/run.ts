@@ -28,6 +28,8 @@ export type Prices = { input: number; output: number; cachedInput?: number }
 export type Row = {
   id: string
   tags: string[]
+  /** the case's cluster, copied so a report needs nothing but the rows */
+  cluster: string | null
   input: string
   output: string
   /** graded, or cut off by the token limit and therefore not graded */
@@ -139,6 +141,7 @@ export async function runSuite(o: {
     const row: Row = {
       id: c.id,
       tags: c.tags,
+      cluster: c.cluster,
       input: inputText(c.input),
       output: reply.text,
       status: truncated ? 'truncated' : 'graded',

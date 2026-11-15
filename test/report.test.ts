@@ -30,10 +30,11 @@ const config = (over: Partial<RunConfig> = {}): RunConfig => ({
   ...over,
 })
 
-type Spec = { pass?: boolean | null; tags?: string[]; usage?: Row['usage']; status?: Row['status']; model?: string }
+type Spec = { pass?: boolean | null; tags?: string[]; usage?: Row['usage']; status?: Row['status']; model?: string; cluster?: string }
 const row = (id: string, s: Spec = {}): Row => ({
   id,
   tags: s.tags ?? [],
+  cluster: s.cluster ?? null,
   input: `input ${id}`,
   output: 'out',
   status: s.status ?? 'graded',

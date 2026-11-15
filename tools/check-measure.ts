@@ -20,7 +20,10 @@ import { parseArgs } from 'node:util'
 const { values } = parseArgs({ options: { root: { type: 'string' } } })
 const root = resolve(values.root ?? resolve(dirname(fileURLToPath(import.meta.url)), '..'))
 
-const MEASUREMENTS = [{ script: 'tools/measure/tag-verdicts.ts', output: 'measurements/tag-verdicts.json' }]
+const MEASUREMENTS = [
+  { script: 'tools/measure/tag-verdicts.ts', output: 'measurements/tag-verdicts.json' },
+  { script: 'tools/measure/clusters.ts', output: 'measurements/clusters.json' },
+]
 
 const fails: string[] = []
 const scratch = mkdtempSync(join(tmpdir(), 'evalbar-measure-'))
@@ -53,4 +56,4 @@ if (fails.length) {
   console.error(fails.map((f) => 'FAIL  ' + f).join('\n'))
   process.exit(1)
 }
-console.log(`check:measure ok: ${MEASUREMENTS.length} measurement run again and identical to the committed file`)
+console.log(`check:measure ok: ${MEASUREMENTS.length} measurements run again and identical to the committed files`)
