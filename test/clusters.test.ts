@@ -11,7 +11,7 @@ import { after, test } from 'node:test'
 import { main } from '../src/app.ts'
 import { toCases } from '../src/cases.ts'
 import type { Row, RunConfig } from '../src/run.ts'
-import { clusteredRate, compareClustered } from '../src/stats.ts'
+import { clusteredRate, compareClustered, effectiveCounts, exactInterval } from '../src/stats.ts'
 
 const root = mkdtempSync(join(tmpdir(), 'evalbar-clusters-'))
 after(() => rmSync(root, { recursive: true, force: true }))
@@ -82,7 +82,18 @@ test('20 near-copies a cluster, all right: the naive count clears 0.95, the clus
   assert.match(naive.out, /^PASS/m)
   const clustered = await cli('report', folder(0.95, copies(10, 20, () => true, true)))
   assert.match(clustered.out, /^CANNOT TELL/m)
-  assert.match(clustered.out, /count as 7\.6 independent ones/)
+  assert.match(clustered.out, /count as 10\.0 independent ones/)
+})
+
+test('all right in 2 clusters of 2 is each cluster once, not an interval from 0 to 1', () => {
+  // tick 8b: the first live run printed 4 of 4 as 0.000 to 1.000, a variance penalty with no variance behind it
+  const c = clusteredRate([
+    { k: 2, n: 2 },
+    { k: 2, n: 2 },
+  ])
+  assert.equal(c.effective, 2)
+  const e = effectiveCounts(c)
+  assert.equal(exactInterval(e.k, e.n).lo.toFixed(3), '0.158')
 })
 
 test('clusters whose cases vary as independent ones cost almost nothing', () => {

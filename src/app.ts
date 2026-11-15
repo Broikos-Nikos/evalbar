@@ -8,7 +8,7 @@
  * strangers deciding in a minute whether it works.
  */
 import { existsSync, readFileSync, writeFileSync } from 'node:fs'
-import { join, resolve } from 'node:path'
+import { join, relative, resolve, sep } from 'node:path'
 import { parseArgs } from 'node:util'
 import { loadCases } from './cases.ts'
 import { UserError } from './errors.ts'
@@ -142,7 +142,8 @@ async function run(argv: string[], io: Io): Promise<number> {
 
   const config: RunConfig = {
     evalbar: VERSION,
-    suite: suite.casesPath,
+    // relative to where evalbar ran, with forward slashes: a run folder that gets committed must not carry this machine's paths
+    suite: relative(process.cwd(), suite.casesPath).split(sep).join('/'),
     suiteSha256: sha256(readFileSync(suite.casesPath)),
     cases: cases.length,
     provider: provider.describe,

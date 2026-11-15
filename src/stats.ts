@@ -431,6 +431,9 @@ export type Clustered = {
   factor: number
 }
 
+/** The counts a clustered rate is read at: the observed rate, at the effective sample size. */
+export const effectiveCounts = (c: Clustered) => ({ k: c.n ? (c.k / c.n) * c.effective : 0, n: c.effective })
+
 /**
  * A rate over cases that come in clusters (decision B9): the design effect from
  * the cluster-robust variance of the ratio estimator, with G/(G-1), and Korn
@@ -442,28 +445,22 @@ export type Clustered = {
  * agrees with every other and the data cannot say how alike a cluster's cases
  * are, so each cluster counts once. Korn and Graubard set the design effect to
  * 1 there, which would let 20 near-copies of one answer count as 20 cases.
+ * There is no variance estimated at that point, so no allowance for estimating
+ * one either: the first live run printed 4 of 4 in 2 clusters as 0.000 to
+ * 1.000, the penalty for a variance on 1 degree of freedom applied to a
+ * variance nobody computed (tick 8b). Each cluster once gives 0.158 to 1.
  */
-/** The counts a clustered rate is read at: the observed rate, at the effective sample size. */
-export const effectiveCounts = (c: Clustered) => ({ k: c.n ? (c.k / c.n) * c.effective : 0, n: c.effective })
-
 export function clusteredRate(counts: ClusterCount[]): Clustered {
   const k = counts.reduce((s, c) => s + c.k, 0)
   const n = counts.reduce((s, c) => s + c.n, 0)
   const G = counts.length
   if (G === n || G < 2) return { k, n, clusters: G, designEffect: 1, effective: n, factor: 1 }
+  if (k === 0 || k === n) return { k, n, clusters: G, designEffect: n / G, effective: G, factor: G / n }
   const p = k / n
   const dfFactor = (tQuantile(0.975, n - 1) / tQuantile(0.975, G - 1)) ** 2
-  let deff: number
-  let base: number
-  if (k === 0 || k === n) {
-    base = G
-    deff = n / G
-  } else {
-    const varCluster = (G / (G - 1)) * counts.reduce((s, c) => s + (c.k - p * c.n) ** 2, 0) / (n * n)
-    deff = Math.max(1, varCluster / ((p * (1 - p)) / n))
-    base = n / deff
-  }
-  const effective = Math.min(n, base * dfFactor)
+  const varCluster = (G / (G - 1)) * counts.reduce((s, c) => s + (c.k - p * c.n) ** 2, 0) / (n * n)
+  const deff = Math.max(1, varCluster / ((p * (1 - p)) / n))
+  const effective = Math.min(n, (n / deff) * dfFactor)
   return { k, n, clusters: G, designEffect: deff, effective, factor: effective / n }
 }
 
@@ -517,5 +514,69 @@ export function compareClustered(counts: PairCount[], margin: number | null = nu
     clusters: G,
     designEffect,
     method: 'clustered',
+  }
+}
+
+export type Agreement = {
+  n: number
+  /** the share of items the humans called a pass */
+  prevalence: number
+  /** raw agreement, printed beside kappa and never instead of it */
+  agreement: number
+  kappa: number
+  kappaLo: number
+  kappaHi: number
+  /** the judge's pass rate on the items humans passed, and its fail rate on the ones they failed */
+  tpr: number | null
+  tnr: number | null
+  /** prevalence and bias adjusted kappa: twice the agreement, less one */
+  pabak: number
+}
+
+/**
+ * Cohen's kappa between a judge and human labels, with the large-sample
+ * variance of Fleiss, Cohen and Everitt (1969) as statsmodels computes it, the
+ * true positive and true negative rates apart, and PABAK beside it, because
+ * 07-evaluation/04 section 4 measured raw agreement 0.96 next to kappa 0.65 on
+ * a skewed set, and a judge that always says pass agrees with 95 percent of a
+ * set where 5 percent fail.
+ */
+export function cohensKappa(pairs: { human: boolean; judge: boolean }[]): Agreement {
+  const n = pairs.length
+  if (!n) throw new RangeError('cohensKappa: no pairs')
+  // rows: human pass, human fail; columns: judge pass, judge fail
+  const t = [
+    [0, 0],
+    [0, 0],
+  ]
+  for (const p of pairs) t[p.human ? 0 : 1][p.judge ? 0 : 1]++
+  const prob = t.map((r) => r.map((x) => x / n))
+  const row = [prob[0][0] + prob[0][1], prob[1][0] + prob[1][1]]
+  const col = [prob[0][0] + prob[1][0], prob[0][1] + prob[1][1]]
+  const agree = prob[0][0] + prob[1][1]
+  const expected = row[0] * col[0] + row[1] * col[1]
+  const kappa = expected === 1 ? 1 : (agree - expected) / (1 - expected)
+  let a = 0
+  let b = 0
+  for (let i = 0; i < 2; i++)
+    for (let j = 0; j < 2; j++) {
+      if (i === j) a += prob[i][i] * (1 - (row[i] + col[i]) * (1 - kappa)) ** 2
+      else b += prob[i][j] * (col[i] + row[j]) ** 2
+    }
+  const c = (kappa - expected * (1 - kappa)) ** 2
+  const variance = expected === 1 ? 0 : (a + (1 - kappa) ** 2 * b - c) / (1 - expected) ** 2 / n
+  const half = Z95 * Math.sqrt(Math.max(0, variance))
+  const humansPass = t[0][0] + t[0][1]
+  const humansFail = t[1][0] + t[1][1]
+  return {
+    n,
+    prevalence: humansPass / n,
+    agreement: agree,
+    kappa,
+    kappaLo: kappa - half,
+    kappaHi: Math.min(1, kappa + half),
+    tpr: humansPass ? t[0][0] / humansPass : null,
+    tnr: humansFail ? t[1][1] / humansFail : null,
+    pabak: 2 * agree - 1,
   }
 }

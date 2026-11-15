@@ -8,7 +8,7 @@
 import assert from 'node:assert/strict'
 import { readFileSync } from 'node:fs'
 import { test } from 'node:test'
-import { againstBar, barTestP, betaInc, binomTestP, casesToDecide, compare, exactInterval, holm, mcnemarMidP, normalUpper, pairedDetectable, pairedNeeded, tango, wilson } from '../src/stats.ts'
+import { againstBar, barTestP, betaInc, cohensKappa, binomTestP, casesToDecide, compare, exactInterval, holm, mcnemarMidP, normalUpper, pairedDetectable, pairedNeeded, tango, wilson } from '../src/stats.ts'
 
 type Ref = {
   wilson: { k: number; n: number; lo: number; hi: number }[]
@@ -169,4 +169,28 @@ test('one tag alone gets the verdict the whole suite gets', () => {
     const rejected = holm([binomTestP(k, n, bar)])[0]
     assert.equal(rejected ? (k / n > bar ? 'pass' : 'fail') : 'cannot tell', v, `${k} of ${n} against ${bar}`)
   }
+})
+
+type Kref = { kappa: { table: number[][]; kappa: number; std: number }[] }
+test("Cohen's kappa and its interval equal statsmodels on 6 tables", () => {
+  for (const r of (ref as unknown as Kref).kappa) {
+    const [[tp, fn], [fp, tn]] = r.table
+    const pairs = [
+      ...Array.from({ length: tp }, () => ({ human: true, judge: true })),
+      ...Array.from({ length: fn }, () => ({ human: true, judge: false })),
+      ...Array.from({ length: fp }, () => ({ human: false, judge: true })),
+      ...Array.from({ length: tn }, () => ({ human: false, judge: false })),
+    ]
+    const k = cohensKappa(pairs)
+    near(k.kappa, r.kappa, 1e-12, `kappa of ${JSON.stringify(r.table)}`)
+    near(k.kappa - k.kappaLo, 1.959963984540054 * r.std, 1e-9, `half width of ${JSON.stringify(r.table)}`)
+  }
+})
+
+test('a judge that always says pass agrees with 95 of 100 and has a kappa of 0', () => {
+  const pairs = Array.from({ length: 100 }, (_, i) => ({ human: i < 95, judge: true }))
+  const k = cohensKappa(pairs)
+  assert.equal(k.agreement, 0.95)
+  assert.equal(k.kappa, 0)
+  assert.deepEqual([k.tpr, k.tnr], [1, 0])
 })

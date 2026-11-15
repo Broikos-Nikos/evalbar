@@ -246,9 +246,18 @@ const CONTROLS: Control[] = [
   {
     gate: 'test/clusters.test.ts',
     why: "Korn and Graubard's own rule at a rate of 1, a design effect of 1, which counts 20 near-copies as 20 cases",
-    breakIt: (dir) => mutate(dir, 'src/stats.ts', '    base = G\n    deff = n / G', '    base = n\n    deff = 1'),
+    breakIt: (dir) =>
+      mutate(dir, 'src/stats.ts', 'designEffect: n / G, effective: G, factor: G / n }', 'designEffect: 1, effective: n, factor: 1 }'),
     run: tests('test/clusters.test.ts'),
     expect: [/✖ 20 near-copies a cluster, all right: the naive count clears 0\.95, the clusters cannot/],
+  },
+  {
+    gate: 'test/clusters.test.ts',
+    why: 'the degrees-of-freedom penalty applied at a rate of 0 or 1, where no variance was estimated',
+    breakIt: (dir) =>
+      mutate(dir, 'src/stats.ts', 'designEffect: n / G, effective: G, factor: G / n }', 'designEffect: n / G, effective: G * (tQuantile(0.975, n - 1) / tQuantile(0.975, G - 1)) ** 2, factor: (G / n) * (tQuantile(0.975, n - 1) / tQuantile(0.975, G - 1)) ** 2 }'),
+    run: tests('test/clusters.test.ts'),
+    expect: [/✖ all right in 2 clusters of 2 is each cluster once, not an interval from 0 to 1/],
   },
   {
     gate: 'test/clusters.test.ts',

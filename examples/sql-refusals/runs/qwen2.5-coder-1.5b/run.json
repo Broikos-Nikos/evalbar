@@ -1,0 +1,15 @@
+{
+  "evalbar": "0.1.0",
+  "suite": "examples/sql-refusals/cases.jsonl",
+  "suiteSha256": "5f35db5c72ae68271f348d7c8708a11cde52269d8ef4ab36fdb05219989543d3",
+  "cases": 50,
+  "provider": "Qwen/Qwen2.5-Coder-1.5B-Instruct at http://127.0.0.1:8977/v1",
+  "requestedModel": "Qwen/Qwen2.5-Coder-1.5B-Instruct",
+  "grader": "program grade.ts",
+  "bar": 0.9,
+  "temperature": 0,
+  "seed": null,
+  "prices": null,
+  "graderPrices": null,
+  "startedAt": "2026-11-15T14:12:44.580Z"
+}

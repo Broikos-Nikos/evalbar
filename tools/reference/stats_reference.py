@@ -10,6 +10,7 @@ TypeScript against implementations it shares no code with:
   and the incomplete beta from scipy.special.
 - McNemar's exact conditional p from statsmodels; the mid-p from scipy's
   binomial distribution, as Fagerland, Lydersen and Laake (2013) define it.
+- Cohen's kappa and its asymptotic standard error from statsmodels' cohens_kappa.
 - Tango's score interval for a paired difference (Tango 1998), with the
   constrained maximum likelihood found by numerical optimisation of the
   multinomial likelihood rather than by the closed-form root evalbar uses,
@@ -56,6 +57,13 @@ def binom_ref(k, n, p0):
     return {"k": k, "n": n, "p0": p0, "exact": float(exact), "score": float(min(1.0, 2 * stats.norm.sf(abs(z))))}
 
 
+def kappa_ref(tp, fn, fp, tn):
+    """rows human pass and fail, columns judge pass and fail"""
+    from statsmodels.stats.inter_rater import cohens_kappa
+    r = cohens_kappa([[tp, fn], [fp, tn]], return_results=True)
+    return {"table": [[tp, fn], [fp, tn]], "kappa": float(r.kappa), "std": float(r.std_kappa)}
+
+
 def constrained_p21(x12, x21, n, d):
     """The MLE of p21 given p12 = p21 + d, by maximising the likelihood numerically."""
     rest = n - x12 - x21
@@ -98,6 +106,7 @@ out = {
     "betainc": [{"x": x, "a": a, "b": b, "value": float(special.betainc(a, b, x))} for x, a, b in [(0.3, 2.0, 5.0), (0.9, 17.0, 4.0), (0.5, 0.5, 0.5), (0.99, 950.0, 51.0), (0.1, 3.7, 12.2)]],
     "binom": [binom_ref(k, n, p0) for k, n, p0 in [(15, 20, 0.9), (16, 20, 0.9), (17, 20, 0.95), (190, 200, 0.9), (1, 10, 0.1), (10, 10, 0.5), (45, 50, 0.8), (3, 2000, 0.001)]],
     "normal_upper": [{"z": z, "upper": float(stats.norm.sf(z))} for z in (0.0, 0.5, 1.0, 1.959964, 2.5, 3.5, -1.0, -2.5)],
+    "kappa": [kappa_ref(*t) for t in [(40, 5, 8, 47), (90, 2, 3, 5), (30, 20, 20, 30), (50, 0, 0, 50), (12, 3, 1, 84), (60, 10, 5, 25)]],
     "tango": [tango(x12, x21, n) for x12, x21, n in [(6, 1, 45), (1, 7, 21), (0, 0, 50), (5, 0, 40), (0, 5, 40), (30, 10, 200), (10, 10, 100), (3, 0, 2000)]],
 }
 json.dump(out, sys.stdout, indent=1)
